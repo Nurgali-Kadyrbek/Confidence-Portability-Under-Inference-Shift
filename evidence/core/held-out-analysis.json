@@ -1,0 +1,1464 @@
+{
+  "analysis_plan_id": "cpis-core-analysis-v5",
+  "analysis_plan_sha256": "698d9602ff985fe6972fefad15011ed1e316bd80a8885875093b866db4961410",
+  "artifact": "cpis-core-test-analysis-v1",
+  "bootstrap_replicates": 5000,
+  "classification_counts": {
+    "change_detected": 1,
+    "equivalent_within_margin": 1,
+    "inconclusive": 14
+  },
+  "classification_note": "counts are per contrast and are a tally of independently classified contrasts, not a pooled or averaged effect. A contrast classified equivalent_within_margin has met the prespecified statistical criterion only; see equivalence_realisation_separation before reading it as evidence that a policy ported",
+  "created_at_utc": "2026-09-22T15:12:42.525325+00:00",
+  "endpoints": [
+    "q",
+    "K",
+    "R",
+    "S",
+    "E",
+    "aC",
+    "aTau"
+  ],
+  "equivalence_margins": {
+    "coverage": 0.05,
+    "selective_risk": 0.025
+  },
+  "equivalence_realisation_separation": {
+    "equivalent_contrasts": [
+      "cpis-test-ministral3-8b-instruct-supergpqa-v1::reference_to_low_top_p"
+    ],
+    "max_realisation_among_equivalent": 0.015,
+    "min_realisation_among_non_equivalent": 0.115,
+    "separated": true
+  },
+  "family": "two_decoder_contrasts_within_model_dataset",
+  "multiplicity": "holm_step_down",
+  "pairs": [
+    {
+      "calibration_run_id": "cpis-calibration-ministral3-8b-instruct-manyifeval-v1-12327a0a93c2",
+      "calibration_status": "selected",
+      "config_sha256": "576aad1a2277ea68e1e31cf2921039288007b0b9f9ce75882bc257ca8330d925",
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "answer_changed": 1.0,
+          "confidence_changed": 0.816667,
+          "confidence_changed_given_answer_identical": null,
+          "deltas": {
+            "E": {
+              "ci_high": -0.208333,
+              "ci_low": -0.301667,
+              "delta": -0.255,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": -0.271667,
+              "ci_low": -0.37,
+              "delta": -0.321667,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.009638,
+              "ci_low": -0.118407,
+              "delta": -0.052376,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": -0.033333,
+              "ci_low": -0.098333,
+              "delta": -0.066667,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": 0.37,
+              "ci_low": 0.271667,
+              "delta": 0.321667,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": false,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 0.8756,
+          "items_with_identical_answer": 0,
+          "raw_p_selective_risk": 0.0796,
+          "realisation": 1.0,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.235,
+            "K": 0.343333,
+            "R": 0.684466,
+            "S": 0.108333,
+            "aC": 0.0,
+            "aTau": 0.656667,
+            "q": 0.0
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        },
+        "reference_to_low_top_p": {
+          "answer_changed": 0.706667,
+          "confidence_changed": 0.215,
+          "confidence_changed_given_answer_identical": 0.005682,
+          "deltas": {
+            "E": {
+              "ci_high": 0.015,
+              "ci_low": -0.031667,
+              "delta": -0.008333,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": 0.043333,
+              "ci_low": -0.008333,
+              "delta": 0.016667,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": -0.005409,
+              "ci_low": -0.055793,
+              "delta": -0.030241,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": 0.043333,
+              "ci_low": 0.006667,
+              "delta": 0.025,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": 0.008333,
+              "ci_low": -0.043333,
+              "delta": -0.016667,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": true,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 0.2338,
+          "items_with_identical_answer": 176,
+          "raw_p_selective_risk": 0.0167,
+          "realisation": 0.706667,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.481667,
+            "K": 0.681667,
+            "R": 0.706601,
+            "S": 0.2,
+            "aC": 0.0,
+            "aTau": 0.318333,
+            "q": 0.0
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        }
+      },
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "experiment_id": "cpis-test-ministral3-8b-instruct-manyifeval-v1",
+      "generations_changed_by_shift": {
+        "high-temperature": {
+          "answer_changed": 1.0,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 0.816667,
+          "confidence_changed_given_answer_identical": null,
+          "items_with_identical_answer": 0,
+          "realisation": 1.0
+        },
+        "low-top-p": {
+          "answer_changed": 0.706667,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 0.215,
+          "confidence_changed_given_answer_identical": 0.005682,
+          "items_with_identical_answer": 176,
+          "realisation": 0.706667
+        }
+      },
+      "items": 600,
+      "model_id": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "model_mode": "instruct",
+      "reference_endpoints": {
+        "E": 0.49,
+        "K": 0.665,
+        "R": 0.736842,
+        "S": 0.175,
+        "aC": 0.0,
+        "aTau": 0.335,
+        "q": 0.0
+      },
+      "run_id": "cpis-test-ministral3-8b-instruct-manyifeval-v1-576aad1a2277",
+      "status": "estimated",
+      "threshold": 0.98
+    },
+    {
+      "calibration_run_id": "cpis-calibration-ministral3-8b-instruct-supergpqa-v1-d90da57c4fc8",
+      "calibration_status": "selected",
+      "config_sha256": "fab5fca325531617ba349e78dd8667a9de263bb5f3a4174c36da496ba9a74707",
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "answer_changed": 0.363333,
+          "confidence_changed": 0.736667,
+          "confidence_changed_given_answer_identical": 0.722513,
+          "deltas": {
+            "E": {
+              "ci_high": -0.196667,
+              "ci_low": -0.278333,
+              "delta": -0.236667,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": -0.315,
+              "ci_low": -0.398333,
+              "delta": -0.356667,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.059395,
+              "ci_low": -0.037327,
+              "delta": 0.011434,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": -0.09,
+              "ci_low": -0.151667,
+              "delta": -0.12,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": 0.398333,
+              "ci_low": 0.315,
+              "delta": 0.356667,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": false,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 1.0,
+          "items_with_identical_answer": 382,
+          "raw_p_selective_risk": 0.6316,
+          "realisation": 0.736667,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.295,
+            "K": 0.428333,
+            "R": 0.688716,
+            "S": 0.133333,
+            "aC": 0.0,
+            "aTau": 0.571667,
+            "q": 0.0
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        },
+        "reference_to_low_top_p": {
+          "answer_changed": 0.01,
+          "confidence_changed": 0.015,
+          "confidence_changed_given_answer_identical": 0.013468,
+          "deltas": {
+            "E": {
+              "ci_high": 0.013333,
+              "ci_low": -0.003333,
+              "delta": 0.005,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": 0.01,
+              "ci_low": -0.003333,
+              "delta": 0.003333,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.011165,
+              "ci_low": -0.003929,
+              "delta": 0.003479,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": 0.003333,
+              "ci_low": -0.006667,
+              "delta": -0.001667,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": 0.003333,
+              "ci_low": -0.01,
+              "delta": -0.003333,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": true,
+          "equivalent_R_at_margin": true,
+          "holm_adjusted_p": 1.0,
+          "items_with_identical_answer": 594,
+          "raw_p_selective_risk": 0.4914,
+          "realisation": 0.015,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.536667,
+            "K": 0.788333,
+            "R": 0.680761,
+            "S": 0.251667,
+            "aC": 0.0,
+            "aTau": 0.211667,
+            "q": 0.0
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "equivalent_within_margin"
+        }
+      },
+      "dataset_id": "m-a-p/SuperGPQA",
+      "experiment_id": "cpis-test-ministral3-8b-instruct-supergpqa-v1",
+      "generations_changed_by_shift": {
+        "high-temperature": {
+          "answer_changed": 0.363333,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 0.736667,
+          "confidence_changed_given_answer_identical": 0.722513,
+          "items_with_identical_answer": 382,
+          "realisation": 0.736667
+        },
+        "low-top-p": {
+          "answer_changed": 0.01,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 0.015,
+          "confidence_changed_given_answer_identical": 0.013468,
+          "items_with_identical_answer": 594,
+          "realisation": 0.015
+        }
+      },
+      "items": 600,
+      "model_id": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "model_mode": "instruct",
+      "reference_endpoints": {
+        "E": 0.531667,
+        "K": 0.785,
+        "R": 0.677282,
+        "S": 0.253333,
+        "aC": 0.0,
+        "aTau": 0.215,
+        "q": 0.0
+      },
+      "run_id": "cpis-test-ministral3-8b-instruct-supergpqa-v1-fab5fca32553",
+      "status": "estimated",
+      "threshold": 0.95
+    },
+    {
+      "calibration_run_id": "cpis-calibration-ministral3-8b-reasoning-manyifeval-v1-db79264e9001",
+      "calibration_status": "selected",
+      "config_sha256": "f8eba2d61d7d79b4158ee6de5539e7f6dca67a3a115d84b7b9a9b12a74ca39c0",
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "answer_changed": 1.0,
+          "confidence_changed": 0.858333,
+          "confidence_changed_given_answer_identical": null,
+          "deltas": {
+            "E": {
+              "ci_high": -0.005,
+              "ci_low": -0.101667,
+              "delta": -0.053333,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": -0.021667,
+              "ci_low": -0.123333,
+              "delta": -0.071667,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.051042,
+              "ci_low": -0.018025,
+              "delta": 0.016606,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": 0.003333,
+              "ci_low": -0.038333,
+              "delta": -0.018333,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.003333,
+              "ci_low": -0.018333,
+              "delta": -0.006667,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": 0.13,
+              "ci_low": 0.028333,
+              "delta": 0.078333,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": false,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 1.0,
+          "items_with_identical_answer": 0,
+          "raw_p_selective_risk": 0.3441,
+          "realisation": 1.0,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.471667,
+            "K": 0.533333,
+            "R": 0.884375,
+            "S": 0.061667,
+            "aC": 0.005,
+            "aTau": 0.461667,
+            "q": 0.0
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        },
+        "reference_to_low_top_p": {
+          "answer_changed": 1.0,
+          "confidence_changed": 0.74,
+          "confidence_changed_given_answer_identical": null,
+          "deltas": {
+            "E": {
+              "ci_high": 0.103333,
+              "ci_low": 0.015,
+              "delta": 0.058333,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": 0.098333,
+              "ci_low": 0.008333,
+              "delta": 0.053333,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.04983,
+              "ci_low": -0.013166,
+              "delta": 0.018307,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": 0.016667,
+              "ci_low": -0.025,
+              "delta": -0.005,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.038333,
+              "ci_low": 0.005,
+              "delta": 0.021667,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": -0.03,
+              "ci_low": -0.12,
+              "delta": -0.075,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": false,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 1.0,
+          "items_with_identical_answer": 0,
+          "raw_p_selective_risk": 0.2634,
+          "realisation": 1.0,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.583333,
+            "K": 0.658333,
+            "R": 0.886076,
+            "S": 0.075,
+            "aC": 0.033333,
+            "aTau": 0.308333,
+            "q": 0.0
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        }
+      },
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "experiment_id": "cpis-test-ministral3-8b-reasoning-manyifeval-v1",
+      "generations_changed_by_shift": {
+        "high-temperature": {
+          "answer_changed": 1.0,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 0.858333,
+          "confidence_changed_given_answer_identical": null,
+          "items_with_identical_answer": 0,
+          "realisation": 1.0
+        },
+        "low-top-p": {
+          "answer_changed": 1.0,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 0.74,
+          "confidence_changed_given_answer_identical": null,
+          "items_with_identical_answer": 0,
+          "realisation": 1.0
+        }
+      },
+      "items": 600,
+      "model_id": "mistralai/Ministral-3-8B-Reasoning-2512",
+      "model_mode": "reasoning",
+      "reference_endpoints": {
+        "E": 0.525,
+        "K": 0.605,
+        "R": 0.867769,
+        "S": 0.08,
+        "aC": 0.011667,
+        "aTau": 0.383333,
+        "q": 0.0
+      },
+      "run_id": "cpis-test-ministral3-8b-reasoning-manyifeval-v1-f8eba2d61d7d",
+      "status": "estimated",
+      "threshold": 0.95
+    },
+    {
+      "calibration_run_id": "cpis-calibration-ministral3-8b-reasoning-supergpqa-v1-c89ed273fee1",
+      "calibration_status": "selected",
+      "config_sha256": "dd09a8b6653a7f8e72ad191da33cece115bced2dfeb32266ba19aa90cf507271",
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "answer_changed": 0.826667,
+          "confidence_changed": 0.56,
+          "confidence_changed_given_answer_identical": 0.442308,
+          "deltas": {
+            "E": {
+              "ci_high": 0.088333,
+              "ci_low": 0.02,
+              "delta": 0.053333,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": 0.075,
+              "ci_low": -0.001667,
+              "delta": 0.036667,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.095477,
+              "ci_low": 0.011982,
+              "delta": 0.053108,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": 0.013333,
+              "ci_low": -0.046667,
+              "delta": -0.016667,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": -0.02,
+              "ci_low": -0.055,
+              "delta": -0.036667,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": 0.05,
+              "ci_low": -0.016667,
+              "delta": 0.016667,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.011667,
+              "ci_low": -0.043333,
+              "delta": -0.016667,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": false,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 0.171,
+          "items_with_identical_answer": 104,
+          "raw_p_selective_risk": 0.0114,
+          "realisation": 0.826667,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.373333,
+            "K": 0.635,
+            "R": 0.587927,
+            "S": 0.261667,
+            "aC": 0.006667,
+            "aTau": 0.28,
+            "q": 0.078333
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        },
+        "reference_to_low_top_p": {
+          "answer_changed": 0.865,
+          "confidence_changed": 0.721667,
+          "confidence_changed_given_answer_identical": 0.481481,
+          "deltas": {
+            "E": {
+              "ci_high": -0.016667,
+              "ci_low": -0.091667,
+              "delta": -0.055,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": -0.096667,
+              "ci_low": -0.186667,
+              "delta": -0.141667,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.101746,
+              "ci_low": -0.008546,
+              "delta": 0.045473,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": -0.051667,
+              "ci_low": -0.121667,
+              "delta": -0.086667,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.113333,
+              "ci_low": 0.056667,
+              "delta": 0.085,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": -0.061667,
+              "ci_low": -0.131667,
+              "delta": -0.096667,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.188333,
+              "ci_low": 0.118333,
+              "delta": 0.153333,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": false,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 1.0,
+          "items_with_identical_answer": 81,
+          "raw_p_selective_risk": 0.1051,
+          "realisation": 0.865,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.265,
+            "K": 0.456667,
+            "R": 0.580292,
+            "S": 0.191667,
+            "aC": 0.128333,
+            "aTau": 0.166667,
+            "q": 0.248333
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        }
+      },
+      "dataset_id": "m-a-p/SuperGPQA",
+      "experiment_id": "cpis-test-ministral3-8b-reasoning-supergpqa-v1",
+      "generations_changed_by_shift": {
+        "high-temperature": {
+          "answer_changed": 0.826667,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 0.56,
+          "confidence_changed_given_answer_identical": 0.442308,
+          "items_with_identical_answer": 104,
+          "realisation": 0.826667
+        },
+        "low-top-p": {
+          "answer_changed": 0.865,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 0.721667,
+          "confidence_changed_given_answer_identical": 0.481481,
+          "items_with_identical_answer": 81,
+          "realisation": 0.865
+        }
+      },
+      "items": 600,
+      "model_id": "mistralai/Ministral-3-8B-Reasoning-2512",
+      "model_mode": "reasoning",
+      "reference_endpoints": {
+        "E": 0.32,
+        "K": 0.598333,
+        "R": 0.534819,
+        "S": 0.278333,
+        "aC": 0.043333,
+        "aTau": 0.263333,
+        "q": 0.095
+      },
+      "run_id": "cpis-test-ministral3-8b-reasoning-supergpqa-v1-dd09a8b6653a",
+      "status": "estimated",
+      "threshold": 0.5
+    },
+    {
+      "calibration_run_id": "cpis-calibration-qwen35-9b-manyifeval-v1-cf38c1f5b219",
+      "calibration_status": "selected",
+      "config_sha256": "970aff611f3196010bbfc6a802ed2490e69f527ef86fbc7c8ea3e36d4de6f559",
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "answer_changed": 0.996667,
+          "confidence_changed": 0.793333,
+          "confidence_changed_given_answer_identical": 0.5,
+          "deltas": {
+            "E": {
+              "ci_high": 0.053333,
+              "ci_low": 0.0,
+              "delta": 0.026667,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": 0.078333,
+              "ci_low": -0.01,
+              "delta": 0.033333,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.156389,
+              "ci_low": -0.023302,
+              "delta": 0.067467,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": 0.045,
+              "ci_low": -0.03,
+              "delta": 0.006667,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": 0.011667,
+              "ci_low": -0.078333,
+              "delta": -0.033333,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": false,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 1.0,
+          "items_with_identical_answer": 2,
+          "raw_p_selective_risk": 0.1549,
+          "realisation": 0.996667,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.086667,
+            "K": 0.27,
+            "R": 0.320988,
+            "S": 0.183333,
+            "aC": 0.0,
+            "aTau": 0.73,
+            "q": 0.0
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        },
+        "reference_to_low_top_p": {
+          "answer_changed": 0.93,
+          "confidence_changed": 0.581667,
+          "confidence_changed_given_answer_identical": 0.119048,
+          "deltas": {
+            "E": {
+              "ci_high": 0.01,
+              "ci_low": -0.03,
+              "delta": -0.01,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": 0.03,
+              "ci_low": -0.043333,
+              "delta": -0.006667,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.043798,
+              "ci_low": -0.111801,
+              "delta": -0.03613,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": 0.035,
+              "ci_low": -0.03,
+              "delta": 0.003333,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": 0.043333,
+              "ci_low": -0.03,
+              "delta": 0.006667,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": true,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 1.0,
+          "items_with_identical_answer": 42,
+          "raw_p_selective_risk": 0.3805,
+          "realisation": 0.93,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.05,
+            "K": 0.23,
+            "R": 0.217391,
+            "S": 0.18,
+            "aC": 0.0,
+            "aTau": 0.77,
+            "q": 0.0
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        }
+      },
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "experiment_id": "cpis-test-qwen35-9b-manyifeval-v1",
+      "generations_changed_by_shift": {
+        "high-temperature": {
+          "answer_changed": 0.996667,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 0.793333,
+          "confidence_changed_given_answer_identical": 0.5,
+          "items_with_identical_answer": 2,
+          "realisation": 0.996667
+        },
+        "low-top-p": {
+          "answer_changed": 0.93,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 0.581667,
+          "confidence_changed_given_answer_identical": 0.119048,
+          "items_with_identical_answer": 42,
+          "realisation": 0.93
+        }
+      },
+      "items": 600,
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "non_thinking",
+      "reference_endpoints": {
+        "E": 0.06,
+        "K": 0.236667,
+        "R": 0.253521,
+        "S": 0.176667,
+        "aC": 0.0,
+        "aTau": 0.763333,
+        "q": 0.0
+      },
+      "run_id": "cpis-test-qwen35-9b-manyifeval-v1-970aff611f31",
+      "status": "estimated",
+      "threshold": 1.0
+    },
+    {
+      "calibration_run_id": "cpis-calibration-qwen35-9b-supergpqa-v1-23ffbf894457",
+      "calibration_status": "selected",
+      "config_sha256": "247006621730d56754fe746e46665c2d44fa816b1770fb453e296ae5c37a298e",
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "answer_changed": 0.221667,
+          "confidence_changed": 0.288333,
+          "confidence_changed_given_answer_identical": 0.24197,
+          "deltas": {
+            "E": {
+              "ci_high": 0.005,
+              "ci_low": -0.041667,
+              "delta": -0.018333,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": -0.038333,
+              "ci_low": -0.093333,
+              "delta": -0.065,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.067346,
+              "ci_low": 0.004803,
+              "delta": 0.035576,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": -0.025,
+              "ci_low": -0.068333,
+              "delta": -0.046667,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": 0.093333,
+              "ci_low": 0.038333,
+              "delta": 0.065,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": false,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 0.3016,
+          "items_with_identical_answer": 467,
+          "raw_p_selective_risk": 0.0232,
+          "realisation": 0.288333,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.343333,
+            "K": 0.553333,
+            "R": 0.620482,
+            "S": 0.21,
+            "aC": 0.0,
+            "aTau": 0.446667,
+            "q": 0.0
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        },
+        "reference_to_low_top_p": {
+          "answer_changed": 0.061667,
+          "confidence_changed": 0.115,
+          "confidence_changed_given_answer_identical": 0.104796,
+          "deltas": {
+            "E": {
+              "ci_high": 0.03,
+              "ci_low": -0.008333,
+              "delta": 0.011667,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": 0.048333,
+              "ci_low": 0.008333,
+              "delta": 0.028333,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.014633,
+              "ci_low": -0.030419,
+              "delta": -0.007586,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": 0.033333,
+              "ci_low": 0.001667,
+              "delta": 0.016667,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": -0.008333,
+              "ci_low": -0.048333,
+              "delta": -0.028333,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": true,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 1.0,
+          "items_with_identical_answer": 563,
+          "raw_p_selective_risk": 0.5164,
+          "realisation": 0.115,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.373333,
+            "K": 0.646667,
+            "R": 0.57732,
+            "S": 0.273333,
+            "aC": 0.0,
+            "aTau": 0.353333,
+            "q": 0.0
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        }
+      },
+      "dataset_id": "m-a-p/SuperGPQA",
+      "experiment_id": "cpis-test-qwen35-9b-supergpqa-v1",
+      "generations_changed_by_shift": {
+        "high-temperature": {
+          "answer_changed": 0.221667,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 0.288333,
+          "confidence_changed_given_answer_identical": 0.24197,
+          "items_with_identical_answer": 467,
+          "realisation": 0.288333
+        },
+        "low-top-p": {
+          "answer_changed": 0.061667,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 0.115,
+          "confidence_changed_given_answer_identical": 0.104796,
+          "items_with_identical_answer": 563,
+          "realisation": 0.115
+        }
+      },
+      "items": 600,
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "non_thinking",
+      "reference_endpoints": {
+        "E": 0.361667,
+        "K": 0.618333,
+        "R": 0.584906,
+        "S": 0.256667,
+        "aC": 0.0,
+        "aTau": 0.381667,
+        "q": 0.0
+      },
+      "run_id": "cpis-test-qwen35-9b-supergpqa-v1-247006621730",
+      "status": "estimated",
+      "threshold": 1.0
+    },
+    {
+      "calibration_run_id": "cpis-calibration-qwen35-9b-thinking-manyifeval-v1-939e0039d490",
+      "calibration_status": "selected",
+      "config_sha256": "1895d18946705694ed885c07f3f5b79b6a55cc49e323a59ad963fc61bb29bfe4",
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "answer_changed": 1.0,
+          "confidence_changed": 1.0,
+          "confidence_changed_given_answer_identical": null,
+          "deltas": {
+            "E": {
+              "ci_high": 0.14,
+              "ci_low": 0.043333,
+              "delta": 0.09,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": 0.136667,
+              "ci_low": 0.038333,
+              "delta": 0.086667,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.026418,
+              "ci_low": 0.006816,
+              "delta": 0.015661,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": 0.0,
+              "ci_low": -0.008333,
+              "delta": -0.003333,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.01,
+              "ci_low": -0.02,
+              "delta": -0.005,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": -0.035,
+              "ci_low": -0.128333,
+              "delta": -0.081667,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": false,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 0.0032,
+          "items_with_identical_answer": 0,
+          "raw_p_selective_risk": 0.0002,
+          "realisation": 1.0,
+          "reject_at_familywise_alpha": true,
+          "shifted_endpoints": {
+            "E": 0.646667,
+            "K": 0.696667,
+            "R": 0.92823,
+            "S": 0.05,
+            "aC": 0.016667,
+            "aTau": 0.286667,
+            "q": 0.0
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "change_detected"
+        },
+        "reference_to_low_top_p": {
+          "answer_changed": 1.0,
+          "confidence_changed": 1.0,
+          "confidence_changed_given_answer_identical": null,
+          "deltas": {
+            "E": {
+              "ci_high": -0.06,
+              "ci_low": -0.16,
+              "delta": -0.11,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": -0.063333,
+              "ci_low": -0.163333,
+              "delta": -0.113333,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": -0.000947,
+              "ci_low": -0.026569,
+              "delta": -0.013239,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": 0.0,
+              "ci_low": -0.008333,
+              "delta": -0.003333,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.24,
+              "ci_low": 0.17,
+              "delta": 0.205,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": -0.045,
+              "ci_low": -0.138333,
+              "delta": -0.091667,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.0,
+              "ci_low": 0.0,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": false,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 0.306,
+          "items_with_identical_answer": 0,
+          "raw_p_selective_risk": 0.0255,
+          "realisation": 1.0,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.446667,
+            "K": 0.496667,
+            "R": 0.899329,
+            "S": 0.05,
+            "aC": 0.226667,
+            "aTau": 0.276667,
+            "q": 0.0
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        }
+      },
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "experiment_id": "cpis-test-qwen35-9b-thinking-manyifeval-v1",
+      "generations_changed_by_shift": {
+        "high-temperature": {
+          "answer_changed": 1.0,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 1.0,
+          "confidence_changed_given_answer_identical": null,
+          "items_with_identical_answer": 0,
+          "realisation": 1.0
+        },
+        "low-top-p": {
+          "answer_changed": 1.0,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 1.0,
+          "confidence_changed_given_answer_identical": null,
+          "items_with_identical_answer": 0,
+          "realisation": 1.0
+        }
+      },
+      "items": 600,
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "thinking",
+      "reference_endpoints": {
+        "E": 0.556667,
+        "K": 0.61,
+        "R": 0.912568,
+        "S": 0.053333,
+        "aC": 0.021667,
+        "aTau": 0.368333,
+        "q": 0.0
+      },
+      "run_id": "cpis-test-qwen35-9b-thinking-manyifeval-v1-1895d1894670",
+      "status": "estimated",
+      "threshold": 0.1
+    },
+    {
+      "calibration_run_id": "cpis-calibration-qwen35-9b-thinking-supergpqa-v1-2730133f9dad",
+      "calibration_status": "selected",
+      "config_sha256": "6e301c597bd63444b319445cd25b8e9b7cbdbc3a0c0ffc24253d54d3be838b7d",
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "answer_changed": 1.0,
+          "confidence_changed": 1.0,
+          "confidence_changed_given_answer_identical": null,
+          "deltas": {
+            "E": {
+              "ci_high": 0.008333,
+              "ci_low": -0.055,
+              "delta": -0.023333,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": -0.015,
+              "ci_low": -0.096667,
+              "delta": -0.056667,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.033056,
+              "ci_low": -0.040005,
+              "delta": -0.003705,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": -0.003333,
+              "ci_low": -0.063333,
+              "delta": -0.033333,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.0,
+              "ci_low": -0.005,
+              "delta": -0.001667,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": 0.096667,
+              "ci_low": 0.015,
+              "delta": 0.056667,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.005,
+              "ci_low": 0.0,
+              "delta": 0.001667,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": false,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 1.0,
+          "items_with_identical_answer": 0,
+          "raw_p_selective_risk": 0.8429,
+          "realisation": 1.0,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.231667,
+            "K": 0.631667,
+            "R": 0.366755,
+            "S": 0.4,
+            "aC": 0.0,
+            "aTau": 0.365,
+            "q": 0.003333
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        },
+        "reference_to_low_top_p": {
+          "answer_changed": 1.0,
+          "confidence_changed": 1.0,
+          "confidence_changed_given_answer_identical": null,
+          "deltas": {
+            "E": {
+              "ci_high": 0.061667,
+              "ci_low": -0.001667,
+              "delta": 0.03,
+              "replicates": 5000
+            },
+            "K": {
+              "ci_high": 0.123333,
+              "ci_low": 0.045,
+              "delta": 0.083333,
+              "replicates": 5000
+            },
+            "R": {
+              "ci_high": 0.034484,
+              "ci_low": -0.03704,
+              "delta": -0.00113,
+              "replicates": 5000
+            },
+            "S": {
+              "ci_high": 0.086667,
+              "ci_low": 0.021667,
+              "delta": 0.053333,
+              "replicates": 5000
+            },
+            "aC": {
+              "ci_high": 0.016667,
+              "ci_low": 0.0,
+              "delta": 0.008333,
+              "replicates": 5000
+            },
+            "aTau": {
+              "ci_high": -0.053333,
+              "ci_low": -0.131667,
+              "delta": -0.091667,
+              "replicates": 5000
+            },
+            "q": {
+              "ci_high": 0.005,
+              "ci_low": -0.005,
+              "delta": 0.0,
+              "replicates": 5000
+            }
+          },
+          "equivalent_K_at_margin": false,
+          "equivalent_R_at_margin": false,
+          "holm_adjusted_p": 1.0,
+          "items_with_identical_answer": 0,
+          "raw_p_selective_risk": 0.9538,
+          "realisation": 1.0,
+          "reject_at_familywise_alpha": false,
+          "shifted_endpoints": {
+            "E": 0.285,
+            "K": 0.771667,
+            "R": 0.36933,
+            "S": 0.486667,
+            "aC": 0.01,
+            "aTau": 0.216667,
+            "q": 0.001667
+          },
+          "significant_and_within_margin": false,
+          "statistical_classification": "inconclusive"
+        }
+      },
+      "dataset_id": "m-a-p/SuperGPQA",
+      "experiment_id": "cpis-test-qwen35-9b-thinking-supergpqa-v1",
+      "generations_changed_by_shift": {
+        "high-temperature": {
+          "answer_changed": 1.0,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 1.0,
+          "confidence_changed_given_answer_identical": null,
+          "items_with_identical_answer": 0,
+          "realisation": 1.0
+        },
+        "low-top-p": {
+          "answer_changed": 1.0,
+          "compared_answers": 600,
+          "compared_confidences": 600,
+          "confidence_changed": 1.0,
+          "confidence_changed_given_answer_identical": null,
+          "items_with_identical_answer": 0,
+          "realisation": 1.0
+        }
+      },
+      "items": 600,
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "thinking",
+      "reference_endpoints": {
+        "E": 0.255,
+        "K": 0.688333,
+        "R": 0.37046,
+        "S": 0.433333,
+        "aC": 0.001667,
+        "aTau": 0.308333,
+        "q": 0.001667
+      },
+      "run_id": "cpis-test-qwen35-9b-thinking-supergpqa-v1-6e301c597bd6",
+      "status": "estimated",
+      "threshold": 0.95
+    }
+  ],
+  "schema_version": "1.0",
+  "threshold_artifact_sha256": "c9cfbac1e2da2c634a0221961faf20664deb283a268e7cc7c519e8c9fe88d425"
+}

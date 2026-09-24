@@ -1,0 +1,105 @@
+schema_version: "1.0"
+record_type: model_integration
+record_id: ministral3-8b-agent-instruct-integration-v2
+model_id: mistralai/Ministral-3-8B-Instruct-2512-BF16
+revision: f6fae9795746f63c9be8344932f01275f3c63734
+tokenizer_id: mistralai/Ministral-3-8B-Instruct-2512-BF16
+tokenizer_revision: f6fae9795746f63c9be8344932f01275f3c63734
+parameter_count_exact: 8918026240
+parameter_count_method: Exact pinned safetensors index metadata; language model is 8,489,553,920 parameters.
+architecture: Mistral3 8B-class dense Instruct checkpoint, language-model-only, 34 text layers and GQA.
+framework: vLLM CUDA native Mistral tool inference, language-model-only, no offload
+framework_version: 0.29.0+cu129
+framework_requirement: >-
+  Official card requires vLLM >=0.12, mistral-common >=1.8.6, native Mistral
+  loading, enable-auto-tool-choice, and the mistral tool parser.
+precision: [bfloat16]
+official_chat_template_sha256: 74eeb55fd3341286ec3fd44e902b7120721acc81cd394e96b431f85e93a1ea56
+message_format: >-
+  Render OpenAI-format messages and tools with the native Mistral tokenizer and
+  pass token IDs directly to vLLM. v11+ calls use [TOOL_CALLS]name[ARGS]{json};
+  assistant tool_calls and nine-character tool_call_id responses are preserved.
+  CPIS tool-call IDs are paired by model, item, and replicate seed while each
+  decoder condition retains an isolated simulator namespace.
+reasoning_controls: This Instruct checkpoint has no reasoning-trace mode and must remain instruct.
+required_special_tokens: [<s>, </s>, <pad>, "[SYSTEM_PROMPT]", "[/SYSTEM_PROMPT]", "[INST]", "[/INST]", "[TOOL_CALLS]", "[ARGS]"]
+eos_and_stop_behavior: Generation EOS is 2; no explicit stop strings, ignore_eos=false, preserve finish reasons.
+recommended_context_limit: 262144
+configured_context_limit: 65536
+recommended_output_limits: >-
+  Validated limits are 1,024 tokens per agent step and 256 for confidence. The
+  paired native preflight observed maxima of 313 and 14 tokens respectively,
+  with no length finish and no force termination.
+native_reference_sampling:
+  temperature: 0.05
+  top_p: 1.0
+  min_p: 0.0
+  presence_penalty: 0.0
+  frequency_penalty: 0.0
+  repetition_penalty: 1.0
+sampler_constraints: Official production guidance is below 0.1; top-k and min-p filtering remain disabled.
+greedy_decoding_caveats: Greedy is a labeled standardized confidence readout, not the native agent reference.
+tool_calling_requirements: >-
+  Use native Mistral token-ID rendering with the minimal BFCL tools and strict
+  v11+ parser. Never retokenize rendered native prompts or repair tool arguments.
+  Tool message IDs must use cpis-agent-tool-call-pair-v1 and exclude decoder
+  condition from their identity.
+structured_output_constraints: Native function envelopes are exact; confidence is prompt-level JSON without guided decoding.
+engine_requirements: >-
+  CUDA-only vLLM 0.29.0+cu129, mistral-common 1.11.7, Transformers 5.16.1,
+  native Mistral formats, spawned worker, BF16, TP=1, one L40, no offload.
+unsupported_configurations:
+  - HF-text retokenization of a native Mistral prompt
+  - Generic non-Mistral tool parser or reasoning mode
+  - Condition-specific tool-call message IDs in a paired decoder comparison
+  - Context truncation or CPU/NVMe parameter offload
+interventions:
+  - intervention_id: reference
+    changed_parameters: {}
+    held_fixed_parameters: {temperature: 0.05, top_p: 1.0, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Prespecified point inside the official below-0.1 production range.
+  - intervention_id: low-temperature
+    changed_parameters: {temperature: 0.0}
+    held_fixed_parameters: {top_p: 1.0, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Deterministic downward shift relative to the native reference.
+  - intervention_id: high-temperature
+    changed_parameters: {temperature: 0.7}
+    held_fixed_parameters: {top_p: 1.0, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Upward shift outside production guidance, development validated.
+  - intervention_id: low-top-p
+    changed_parameters: {top_p: 0.7}
+    held_fixed_parameters: {temperature: 0.05, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Single-factor nucleus shift with top-k and min-p disabled.
+  - intervention_id: high-diversity
+    changed_parameters: {temperature: 1.0, top_p: 1.0}
+    held_fixed_parameters: {min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Prespecified high-temperature agent shift outside production guidance.
+validation_status: development_validated
+validation_evidence: >-
+  Paired-ID native run dev-agent-preflight-ministral3-8b-instruct-bfcl-v2-b3e90757f2cc
+  completed 8 episodes, 117 answer steps, and 16 confidence calls. Seven episodes
+  passed the pinned official BFCL evaluator. One malformed native tool output is
+  retained as an unsuccessful episode. There were no force terminations, length
+  finishes, or invalid confidence records. All records contain the required
+  condition-invariant tool-call pairing identity.
+sources:
+  - source_type: official_model_card
+    url: https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512/blob/5b26027e7b19eeb4b7352e1fed3926375dd2cb4d/README.md
+    revision: 5b26027e7b19eeb4b7352e1fed3926375dd2cb4d
+    artifact_sha256: null
+    note: Official production sampling, native function calling, and vLLM parser requirements.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-BF16/blob/f6fae9795746f63c9be8344932f01275f3c63734/chat_template.jinja
+    revision: f6fae9795746f63c9be8344932f01275f3c63734
+    artifact_sha256: 74eeb55fd3341286ec3fd44e902b7120721acc81cd394e96b431f85e93a1ea56
+    note: Pinned native template and special framing artifact.
+  - source_type: local_validation
+    url: evidence/pilots/dev-agent-preflight-ministral3-8b-instruct-bfcl-v2-evidence-v1/dev-agent-preflight-ministral3-8b-instruct-bfcl-v2-evidence-v1.json
+    revision: repository-record
+    artifact_sha256: null
+    note: Paired tool-message identity, output-limit, official-score, and confidence validation.

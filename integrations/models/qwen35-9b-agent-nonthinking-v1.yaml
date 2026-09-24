@@ -1,0 +1,115 @@
+schema_version: "1.0"
+record_type: model_integration
+record_id: qwen35-9b-agent-nonthinking-integration-v1
+model_id: Qwen/Qwen3.5-9B
+revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+tokenizer_id: Qwen/Qwen3.5-9B
+tokenizer_revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+parameter_count_exact: 9653104368
+parameter_count_method: >-
+  Sum of all pinned safetensors tensor shapes, including model, LM-head, and
+  MTP tensors, as recorded in qwen35-9b-integration-v1.
+architecture: >-
+  Dense Qwen3.5 9B multimodal checkpoint loaded language-model-only; 32 text
+  layers with hybrid linear/full attention. Vision parameters are not loaded.
+framework: vLLM CUDA native tool inference, language-model-only, no offload
+framework_version: 0.29.0+cu129
+framework_requirement: >-
+  Official Qwen3.5 guidance requires a Qwen3.5-capable recent vLLM build,
+  enable-auto-tool-choice, and qwen3_coder tool parsing. CPIS uses the same
+  pinned native template and a strict local parser for direct LLM generation.
+precision: [bfloat16, float32_state]
+official_chat_template_sha256: a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715
+message_format: >-
+  Pass OpenAI-format messages and tools to the pinned tokenizer template. Tool
+  calls use <tool_call><function=name><parameter=key>value</parameter> framing;
+  tool responses use <tool_response> blocks. Preserve structured assistant
+  tool_calls and tool_call_id-linked tool messages in subsequent turns.
+reasoning_controls: >-
+  Non-thinking mode requires chat_template_kwargs.enable_thinking=false on
+  every agent and confidence generation. Qwen3.5 does not support /nothink.
+required_special_tokens: [<|im_start|>, <|im_end|>, <|endoftext|>, <think>, </think>, <tool_call>, </tool_call>, <tool_response>, </tool_response>]
+eos_and_stop_behavior: >-
+  EOS is <|endoftext|> (248044). Use no extra stop strings, ignore_eos=false,
+  and preserve finish reasons and every native tool envelope.
+recommended_context_limit: 262144
+configured_context_limit: 65536
+recommended_output_limits: >-
+  Development preflight uses 1024 tokens per agent step and 256 for confidence;
+  65,536 context is required because BFCL tools alone can exceed 7,500 tokens
+  before trajectory history. Truncation is prohibited and audited.
+native_reference_sampling:
+  temperature: 0.7
+  top_p: 0.8
+  top_k: 20
+  min_p: 0.0
+  presence_penalty: 1.5
+  frequency_penalty: 0.0
+  repetition_penalty: 1.0
+sampler_constraints: >-
+  Preserve native top_k=20 and inactive min_p=0 in every single-coordinate
+  intervention. The top-p intervention is explicitly conditional on top_k=20.
+greedy_decoding_caveats: >-
+  Greedy is not a native agent baseline. It is used only for the separately
+  labeled standardized confidence readout with all stochastic filters disabled.
+tool_calling_requirements: >-
+  Supply the minimal BFCL class tools through the official chat template and
+  parse the documented qwen3_coder XML format. An ordinary no-call response
+  ends a turn; a malformed attempted envelope is an invalid unsuccessful output.
+structured_output_constraints: >-
+  Tool arguments are accepted only from the native envelope and never repaired.
+  Confidence uses prompt-level strict JSON without guided decoding.
+engine_requirements: >-
+  One direct-resident L40, CUDA-only vLLM, BF16, TP=1, 65,536 context,
+  language-model-only, RAID caches, zero CPU/NVMe offload, no DeepSpeed.
+unsupported_configurations:
+  - Tool use without the pinned native chat template and qwen3_coder-compatible parser
+  - Qwen3 /think or /nothink soft switches
+  - Silent context truncation or CPU/NVMe parameter offload
+interventions:
+  - intervention_id: reference
+    changed_parameters: {}
+    held_fixed_parameters: {temperature: 0.7, top_p: 0.8, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Official non-thinking general-task native reference for direct tool use.
+  - intervention_id: low-temperature
+    changed_parameters: {temperature: 0.2}
+    held_fixed_parameters: {top_p: 0.8, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Controlled downward temperature shift with native candidate filtering fixed.
+  - intervention_id: high-temperature
+    changed_parameters: {temperature: 1.2}
+    held_fixed_parameters: {top_p: 0.8, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Controlled upward temperature shift with native candidate filtering fixed.
+  - intervention_id: low-top-p
+    changed_parameters: {top_p: 0.7}
+    held_fixed_parameters: {temperature: 0.7, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Nucleus shift inside the retained native top-20 candidate set.
+  - intervention_id: high-diversity
+    changed_parameters: {temperature: 1.2, top_p: 1.0}
+    held_fixed_parameters: {top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Joint prespecified diversity shift, still bounded by native top-k.
+validation_status: preflight_pending
+validation_evidence: >-
+  Static Qwen3.5 inference is development-validated; the native BFCL renderer,
+  iterative simulator loop, 65,536-token context, and tool parser require the
+  declared development-only agent preflight before a full development run.
+sources:
+  - source_type: official_model_card
+    url: https://huggingface.co/Qwen/Qwen3.5-9B/blob/c202236235762e1c871ad0ccb60c8ee5ba337b9a/README.md
+    revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+    artifact_sha256: c5f5a8c2dddab69cfbf05279235aa5fddb137939a06539c4c7637aa900fef6d0
+    note: Pinned native sampling, mode control, vLLM, and qwen3_coder tool guidance.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/Qwen/Qwen3.5-9B/blob/c202236235762e1c871ad0ccb60c8ee5ba337b9a/chat_template.jinja
+    revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+    artifact_sha256: a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715
+    note: Exact native tools, calls, responses, role framing, and thinking control.
+  - source_type: official_engine_documentation
+    url: https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html
+    revision: accessed-2026-09-20
+    artifact_sha256: null
+    note: Official vLLM Qwen3.5 deployment and tool-parser guidance.

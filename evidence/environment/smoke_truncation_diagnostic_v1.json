@@ -1,0 +1,259 @@
+{
+  "answer_truncation_by_condition": {
+    "high-temperature": {
+      "n": 242,
+      "rate": 0.0,
+      "truncated": 0
+    },
+    "low-top-p": {
+      "n": 242,
+      "rate": 0.0537,
+      "truncated": 13
+    },
+    "reference": {
+      "n": 242,
+      "rate": 0.0165,
+      "truncated": 4
+    }
+  },
+  "clear_repetition_loops": 8,
+  "finding": "truncation is concentrated on the low-top-p shift and is substantially model degeneration, not an insufficient budget",
+  "interpretation": "no truncated record emitted terminal JSON, so each is an invalid output; a repetition loop would not terminate at any budget, so the 32,768 ceiling guards a non-terminating generation rather than cutting off a progressing one. p99 of non-truncated thinking generations is about 9,000 tokens against that ceiling. Truncation is retained as an outcome of the decoder shift under the existing invalid-output rule, not repaired by raising the budget.",
+  "items_per_dataset": 32,
+  "phase": "smoke",
+  "records": [
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "low-top-p",
+      "matrix": "qwen35-9b-thinking-manyifeval",
+      "mode": "thinking",
+      "repetition_score": 27.0,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "a-low-top-p--r-low-top-p",
+      "matrix": "qwen35-9b-thinking-manyifeval",
+      "mode": "thinking",
+      "repetition_score": 7.062,
+      "stage": "confidence",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "reference",
+      "matrix": "qwen35-9b-thinking-manyifeval",
+      "mode": "thinking",
+      "repetition_score": 7.013,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "low-top-p",
+      "matrix": "qwen35-9b-thinking-manyifeval",
+      "mode": "thinking",
+      "repetition_score": 4.114,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32480,
+      "condition": "a-low-top-p--r-low-top-p",
+      "matrix": "qwen35-9b-thinking-manyifeval",
+      "mode": "thinking",
+      "repetition_score": 4.114,
+      "stage": "confidence",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "low-top-p",
+      "matrix": "ministral3-8b-reasoning-manyifeval",
+      "mode": "reasoning",
+      "repetition_score": 3.17,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "low-top-p",
+      "matrix": "qwen35-9b-thinking-manyifeval",
+      "mode": "thinking",
+      "repetition_score": 1.87,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "low-top-p",
+      "matrix": "ministral3-8b-reasoning-supergpqa",
+      "mode": "reasoning",
+      "repetition_score": 0.515,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "a-low-top-p--r-low-top-p",
+      "matrix": "ministral3-8b-reasoning-manyifeval",
+      "mode": "reasoning",
+      "repetition_score": 0.47,
+      "stage": "confidence",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "low-top-p",
+      "matrix": "ministral3-8b-reasoning-supergpqa",
+      "mode": "reasoning",
+      "repetition_score": 0.332,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "low-top-p",
+      "matrix": "ministral3-8b-reasoning-supergpqa",
+      "mode": "reasoning",
+      "repetition_score": 0.282,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 4096,
+      "completion_tokens": 4096,
+      "condition": "reference",
+      "matrix": "qwen35-9b-manyifeval",
+      "mode": "non_thinking",
+      "repetition_score": 0.227,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "low-top-p",
+      "matrix": "qwen35-9b-thinking-manyifeval",
+      "mode": "thinking",
+      "repetition_score": 0.205,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "low-top-p",
+      "matrix": "ministral3-8b-reasoning-supergpqa",
+      "mode": "reasoning",
+      "repetition_score": 0.181,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "a-low-top-p--r-low-top-p",
+      "matrix": "qwen35-9b-thinking-manyifeval",
+      "mode": "thinking",
+      "repetition_score": 0.139,
+      "stage": "confidence",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "low-top-p",
+      "matrix": "ministral3-8b-reasoning-supergpqa",
+      "mode": "reasoning",
+      "repetition_score": 0.121,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "low-top-p",
+      "matrix": "ministral3-8b-reasoning-supergpqa",
+      "mode": "reasoning",
+      "repetition_score": 0.119,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "reference",
+      "matrix": "ministral3-8b-reasoning-supergpqa",
+      "mode": "reasoning",
+      "repetition_score": 0.116,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 4096,
+      "completion_tokens": 4096,
+      "condition": "low-top-p",
+      "matrix": "qwen35-9b-manyifeval",
+      "mode": "non_thinking",
+      "repetition_score": 0.096,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "low-top-p",
+      "matrix": "qwen35-9b-thinking-manyifeval",
+      "mode": "thinking",
+      "repetition_score": 0.082,
+      "stage": "answer",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "a-high-temperature--r-high-temperature",
+      "matrix": "qwen35-9b-thinking-manyifeval",
+      "mode": "thinking",
+      "repetition_score": 0.067,
+      "stage": "confidence",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "a-low-top-p--r-low-top-p",
+      "matrix": "qwen35-9b-thinking-manyifeval",
+      "mode": "thinking",
+      "repetition_score": 0.067,
+      "stage": "confidence",
+      "terminal_json": false
+    },
+    {
+      "budget": 32768,
+      "completion_tokens": 32768,
+      "condition": "reference",
+      "matrix": "qwen35-9b-thinking-manyifeval",
+      "mode": "thinking",
+      "repetition_score": 0.059,
+      "stage": "answer",
+      "terminal_json": false
+    }
+  ],
+  "schema_version": "1.0",
+  "terminal_json_emitted": 0,
+  "truncated_records": 23
+}

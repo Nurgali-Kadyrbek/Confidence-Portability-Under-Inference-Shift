@@ -1,0 +1,434 @@
+{
+  "agents_sha256": "18e2dacfe368e221fd6bca0db93a4dc39f0f0fb3c41f590181ae4e78afa5d94d",
+  "analysis_plan": {
+    "path": "configs/analysis/core-v5.yaml",
+    "plan_id": "cpis-core-analysis-v5",
+    "sha256": "698d9602ff985fe6972fefad15011ed1e316bd80a8885875093b866db4961410"
+  },
+  "batch_and_shard": "batch_size and replica count are answer-affecting and frozen; replica placement across GPUs is scheduling",
+  "decoder_coordinates": "per-model native reference; high-temperature moves temperature only; low-top-p moves top-p only",
+  "frozen_at_utc": "2026-09-21",
+  "invalid_output_treatment": {
+    "acceptance": "valid produced answer AND valid confidence AND C >= tau",
+    "endpoints": [
+      "q_theta",
+      "K_theta",
+      "R_theta",
+      "S_theta",
+      "confidence_invalid_rate"
+    ],
+    "invalid_answer": "delta=0, lowers coverage, Y=0 for ordinary accuracy, never imputed",
+    "invalid_confidence": "delta=0, reported as confidence-invalid rate, never imputed",
+    "supersedes": "malformed answer with usable confidence treated as an accepted error"
+  },
+  "model_revisions": {
+    "Qwen/Qwen3.5-9B#non_thinking": {
+      "answer_max_tokens": 512,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "chat_template_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+      "confidence_max_tokens": 256,
+      "max_model_len": 8192,
+      "mode": "non_thinking",
+      "model_id": "Qwen/Qwen3.5-9B",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "tokenizer_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
+    },
+    "Qwen/Qwen3.5-9B#thinking": {
+      "answer_max_tokens": 32768,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "chat_template_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+      "confidence_max_tokens": 32768,
+      "max_model_len": 65536,
+      "mode": "thinking",
+      "model_id": "Qwen/Qwen3.5-9B",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "tokenizer_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
+    },
+    "mistralai/Ministral-3-8B-Instruct-2512-BF16#instruct": {
+      "answer_max_tokens": 512,
+      "chat_template_kwargs": {},
+      "chat_template_sha256": "74eeb55fd3341286ec3fd44e902b7120721acc81cd394e96b431f85e93a1ea56",
+      "confidence_max_tokens": 256,
+      "max_model_len": 65536,
+      "mode": "instruct",
+      "model_id": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "revision": "f6fae9795746f63c9be8344932f01275f3c63734",
+      "tokenizer_revision": "f6fae9795746f63c9be8344932f01275f3c63734"
+    },
+    "mistralai/Ministral-3-8B-Reasoning-2512#reasoning": {
+      "answer_max_tokens": 32768,
+      "chat_template_kwargs": {},
+      "chat_template_sha256": "6b5044075f09f4daa57beebe2d989d9fbe67dea351f220e1a84e19ddc893f2c2",
+      "confidence_max_tokens": 32768,
+      "max_model_len": 65536,
+      "mode": "reasoning",
+      "model_id": "mistralai/Ministral-3-8B-Reasoning-2512",
+      "revision": "81eaece1948f3875421d9a45bc55487d10e2d894",
+      "tokenizer_revision": "81eaece1948f3875421d9a45bc55487d10e2d894"
+    }
+  },
+  "parsers": {
+    "answer": "final_json_answer_v2",
+    "answer_response_format": "json_answer_v1",
+    "confidence": "final_json_confidence_v2",
+    "confidence_response_format": "json_confidence_v1"
+  },
+  "phases": {
+    "calibration": {
+      "ministral3-8b-instruct-manyifeval-calibration-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "12327a0a93c213da3056b71f2e96741fb2166e12f867f607494d4cebde6ef0f5",
+        "experiment_id": "cpis-calibration-ministral3-8b-instruct-manyifeval-v1",
+        "item_offset": 32,
+        "items": 300,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-calibration-ministral3-8b-instruct-manyifeval-v1-12327a0a93c2",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "ministral3-8b-instruct-supergpqa-calibration-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "d90da57c4fc80d98aed6f1ddcb83fb171b61ea829a7637a51dc1f0a8f56a8b0d",
+        "experiment_id": "cpis-calibration-ministral3-8b-instruct-supergpqa-v1",
+        "item_offset": 32,
+        "items": 300,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-calibration-ministral3-8b-instruct-supergpqa-v1-d90da57c4fc8",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "ministral3-8b-reasoning-manyifeval-calibration-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "db79264e9001823248cbf296452e7203ffe1cffc68ae27f9d7c0c0480f56c061",
+        "experiment_id": "cpis-calibration-ministral3-8b-reasoning-manyifeval-v1",
+        "item_offset": 32,
+        "items": 300,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-calibration-ministral3-8b-reasoning-manyifeval-v1-db79264e9001",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "ministral3-8b-reasoning-supergpqa-calibration-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "c89ed273fee1ca85de439a9b4e791a07aede47e3c233446fa61a6929e6a0e39c",
+        "experiment_id": "cpis-calibration-ministral3-8b-reasoning-supergpqa-v1",
+        "item_offset": 32,
+        "items": 300,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-calibration-ministral3-8b-reasoning-supergpqa-v1-c89ed273fee1",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "qwen35-9b-manyifeval-calibration-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "cf38c1f5b21956b0713a394d8fdb2f705b8968cbf0ea8ece0583422920eb7343",
+        "experiment_id": "cpis-calibration-qwen35-9b-manyifeval-v1",
+        "item_offset": 32,
+        "items": 300,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-calibration-qwen35-9b-manyifeval-v1-cf38c1f5b219",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "qwen35-9b-supergpqa-calibration-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "23ffbf894457f3eee744df0bba1d00497bde33749a74ebfb9c8fab69e80ebd1a",
+        "experiment_id": "cpis-calibration-qwen35-9b-supergpqa-v1",
+        "item_offset": 32,
+        "items": 300,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-calibration-qwen35-9b-supergpqa-v1-23ffbf894457",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "qwen35-9b-thinking-manyifeval-calibration-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "939e0039d4900e5def2891d611a97353acae85b84f1f1e96e2daefb65eb10c57",
+        "experiment_id": "cpis-calibration-qwen35-9b-thinking-manyifeval-v1",
+        "item_offset": 32,
+        "items": 300,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-calibration-qwen35-9b-thinking-manyifeval-v1-939e0039d490",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "qwen35-9b-thinking-supergpqa-calibration-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "2730133f9dad5e4b1d32247a013148e5aa4999ba30b03bc250fba58ca18a0697",
+        "experiment_id": "cpis-calibration-qwen35-9b-thinking-supergpqa-v1",
+        "item_offset": 32,
+        "items": 300,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-calibration-qwen35-9b-thinking-supergpqa-v1-2730133f9dad",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      }
+    },
+    "smoke": {
+      "ministral3-8b-instruct-manyifeval-smoke-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference",
+          "high-temperature",
+          "low-top-p"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "503eb85692798528d99676e6c777136385dcd7ec2fb792fc28971b76cf40e17b",
+        "experiment_id": "cpis-smoke-ministral3-8b-instruct-manyifeval-v1",
+        "item_offset": 0,
+        "items": 32,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-smoke-ministral3-8b-instruct-manyifeval-v1-503eb8569279",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "ministral3-8b-instruct-supergpqa-smoke-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference",
+          "high-temperature",
+          "low-top-p"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "383944a0328d127c8356405d7f7cb6da9bdb65bbb50de972bb0d71687f2ca5f3",
+        "experiment_id": "cpis-smoke-ministral3-8b-instruct-supergpqa-v1",
+        "item_offset": 0,
+        "items": 32,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-smoke-ministral3-8b-instruct-supergpqa-v1-383944a0328d",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "ministral3-8b-reasoning-manyifeval-smoke-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference",
+          "high-temperature",
+          "low-top-p"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "ec7419cc149b9d66b43e69577e5ceccd0f89ed010a004b0e858582f79a71c821",
+        "experiment_id": "cpis-smoke-ministral3-8b-reasoning-manyifeval-v1",
+        "item_offset": 0,
+        "items": 32,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-smoke-ministral3-8b-reasoning-manyifeval-v1-ec7419cc149b",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "ministral3-8b-reasoning-supergpqa-smoke-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference",
+          "high-temperature",
+          "low-top-p"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "3b14602dffa86ae27a6095b7d31f25932a71477dae1bd31eea923fedfa0b128c",
+        "experiment_id": "cpis-smoke-ministral3-8b-reasoning-supergpqa-v1",
+        "item_offset": 0,
+        "items": 32,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-smoke-ministral3-8b-reasoning-supergpqa-v1-3b14602dffa8",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "qwen35-9b-manyifeval-smoke-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference",
+          "high-temperature",
+          "low-top-p"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "d932c89a6def054e67e078b2273dd895029d185eaf17a5a2d42a7050d2e8871c",
+        "experiment_id": "cpis-smoke-qwen35-9b-manyifeval-v1",
+        "item_offset": 0,
+        "items": 32,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-smoke-qwen35-9b-manyifeval-v1-d932c89a6def",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "qwen35-9b-supergpqa-smoke-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference",
+          "high-temperature",
+          "low-top-p"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "5c322b81493d44debaac3eb3aa47577700755dc04a992a7f14fc7e7ce451a143",
+        "experiment_id": "cpis-smoke-qwen35-9b-supergpqa-v1",
+        "item_offset": 0,
+        "items": 32,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-smoke-qwen35-9b-supergpqa-v1-5c322b81493d",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "qwen35-9b-thinking-manyifeval-smoke-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference",
+          "high-temperature",
+          "low-top-p"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "3778d615a07059adbc66a33315396403d04a95d2618a7e1f0e004b9553fd33a8",
+        "experiment_id": "cpis-smoke-qwen35-9b-thinking-manyifeval-v1",
+        "item_offset": 0,
+        "items": 32,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-smoke-qwen35-9b-thinking-manyifeval-v1-3778d615a070",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      },
+      "qwen35-9b-thinking-supergpqa-smoke-v1.yaml": {
+        "batch_size": 64,
+        "conditions": [
+          "reference",
+          "high-temperature",
+          "low-top-p"
+        ],
+        "confidence_cells": "coupled_only",
+        "config_sha256": "8fd569d9ef119f323c8cfc22dcf6a19449d9b5d8e43de9af328f5b37a352b8c1",
+        "experiment_id": "cpis-smoke-qwen35-9b-thinking-supergpqa-v1",
+        "item_offset": 0,
+        "items": 32,
+        "partition": "development",
+        "replicas": 2,
+        "run_id": "cpis-smoke-qwen35-9b-thinking-supergpqa-v1-8fd569d9ef11",
+        "seeds": [
+          1729
+        ],
+        "selection_salt": "cpis-core-phase-subsets-v1"
+      }
+    }
+  },
+  "primary_estimands": {
+    "contrasts": [
+      "reference_to_high_temperature",
+      "reference_to_low_top_p"
+    ],
+    "equivalence_margins": {
+      "coverage": 0.05,
+      "selective_risk": 0.025
+    },
+    "family": "two_decoder_contrasts_within_model_dataset",
+    "multiplicity": "holm_step_down"
+  },
+  "prompts": {
+    "answer_prompt_sha256": "b4efbf7f088070bcef181d305dbf543bbb262ed0c21d6192820e8bb872d34acb",
+    "confidence_prompt_sha256": "2fc1bf8e054df747518b1c133b3204bb927cb2f66e404d91c18d62b0d5aad2a7",
+    "prompt_template_version": "supergpqa-two-pass-probability-v1",
+    "protocol_id": "supergpqa-two-pass-probability-v1"
+  },
+  "protocol_sha256": "3d422b1b3b3a2bfdc122dc6bf2c4aea2623b85070193214a6dbb0bb2b51b1edc",
+  "schema_version": "1.0",
+  "scientific_seed": 1729,
+  "scope": {
+    "agents": "out of scope",
+    "broad_seeds": 1,
+    "certification_phase": "none",
+    "confidence_per_answer": 1,
+    "datasets": 2,
+    "decoder_conditions": 3,
+    "families": 2,
+    "model_conditions": 4
+  },
+  "selections": {
+    "calibration": "300/dataset, offset 32, reference condition only",
+    "held_out_test": "600/dataset, all three conditions, materialised at the test freeze",
+    "salt": "cpis-core-phase-subsets-v1",
+    "smoke": "32/dataset, offset 0, all three conditions",
+    "smoke_calibration_disjoint": true
+  },
+  "threshold_rule": {
+    "chosen_on": "calibration subset of the development partition, frozen before any held-out access",
+    "minimum_coverage": 0.1,
+    "selection": "max_coverage_subject_to_empirical_risk",
+    "target_risk": 0.1
+  }
+}

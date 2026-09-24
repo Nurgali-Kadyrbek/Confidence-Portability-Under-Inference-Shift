@@ -1,0 +1,583 @@
+{
+  "artifact": "cpis-reference-confidence-quality-v1",
+  "artifact_sha256": "881232d435c4cbdc80cb54d665021a8317d8fa95c3fad7b8c84a6d7cd40578f3",
+  "bootstrap": {
+    "replicates": 5000,
+    "seed": 20260922,
+    "unit": "dataset item"
+  },
+  "condition": "reference decoder coordinate, calibration partition",
+  "created_at_utc": "2026-09-22T15:14:49.823473+00:00",
+  "pairs": [
+    {
+      "auroc_excludes_chance": true,
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "experiment_id": "cpis-calibration-ministral3-8b-instruct-manyifeval-v1",
+      "items": 300,
+      "metrics": {
+        "accuracy": {
+          "ci_high": 0.42,
+          "ci_low": 0.31,
+          "estimate": 0.366667,
+          "replicates": 5000
+        },
+        "auroc": {
+          "ci_high": 0.496861,
+          "ci_low": 0.377179,
+          "estimate": 0.437129,
+          "replicates": 5000
+        },
+        "brier": {
+          "ci_high": 0.639386,
+          "ci_low": 0.537383,
+          "estimate": 0.588535,
+          "replicates": 5000
+        },
+        "brier_discrimination": {
+          "ci_high": 0.001985,
+          "ci_low": -0.0,
+          "estimate": 0.0,
+          "replicates": 5000
+        },
+        "brier_miscalibration": {
+          "ci_high": 0.424194,
+          "ci_low": 0.294665,
+          "estimate": 0.356313,
+          "replicates": 5000
+        },
+        "brier_skill_score": {
+          "ci_high": -1.209092,
+          "ci_low": -1.974247,
+          "estimate": -1.534363,
+          "replicates": 5000
+        },
+        "brier_uncertainty": {
+          "ci_high": 0.2436,
+          "ci_low": 0.2139,
+          "estimate": 0.232222,
+          "replicates": 5000
+        },
+        "confidence_accuracy_gap": {
+          "ci_high": 0.631367,
+          "ci_low": 0.5157,
+          "estimate": 0.573467,
+          "replicates": 5000
+        },
+        "discrimination_skill": {
+          "ci_high": 0.008517,
+          "ci_low": -0.0,
+          "estimate": 0.0,
+          "replicates": 5000
+        },
+        "mean_confidence": {
+          "ci_high": 0.953667,
+          "ci_low": 0.9244,
+          "estimate": 0.940133,
+          "replicates": 5000
+        }
+      },
+      "model_id": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "model_mode": "instruct",
+      "run_id": "cpis-calibration-ministral3-8b-instruct-manyifeval-v1-12327a0a93c2"
+    },
+    {
+      "auroc_excludes_chance": false,
+      "dataset_id": "m-a-p/SuperGPQA",
+      "experiment_id": "cpis-calibration-ministral3-8b-instruct-supergpqa-v1",
+      "items": 300,
+      "metrics": {
+        "accuracy": {
+          "ci_high": 0.326667,
+          "ci_low": 0.226667,
+          "estimate": 0.276667,
+          "replicates": 5000
+        },
+        "auroc": {
+          "ci_high": 0.594924,
+          "ci_low": 0.480211,
+          "estimate": 0.539531,
+          "replicates": 5000
+        },
+        "brier": {
+          "ci_high": 0.641908,
+          "ci_low": 0.548884,
+          "estimate": 0.59527,
+          "replicates": 5000
+        },
+        "brier_discrimination": {
+          "ci_high": 0.012364,
+          "ci_low": 0.000537,
+          "estimate": 0.002867,
+          "replicates": 5000
+        },
+        "brier_miscalibration": {
+          "ci_high": 0.469077,
+          "ci_low": 0.337988,
+          "estimate": 0.398016,
+          "replicates": 5000
+        },
+        "brier_skill_score": {
+          "ci_high": -1.515654,
+          "ci_low": -2.657044,
+          "estimate": -1.974534,
+          "replicates": 5000
+        },
+        "brier_uncertainty": {
+          "ci_high": 0.219956,
+          "ci_low": 0.175289,
+          "estimate": 0.200122,
+          "replicates": 5000
+        },
+        "confidence_accuracy_gap": {
+          "ci_high": 0.660367,
+          "ci_low": 0.550967,
+          "estimate": 0.6051,
+          "replicates": 5000
+        },
+        "discrimination_skill": {
+          "ci_high": 0.061434,
+          "ci_low": 0.002687,
+          "estimate": 0.014328,
+          "replicates": 5000
+        },
+        "mean_confidence": {
+          "ci_high": 0.904433,
+          "ci_low": 0.857,
+          "estimate": 0.881767,
+          "replicates": 5000
+        }
+      },
+      "model_id": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "model_mode": "instruct",
+      "run_id": "cpis-calibration-ministral3-8b-instruct-supergpqa-v1-d90da57c4fc8"
+    },
+    {
+      "auroc_excludes_chance": false,
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "experiment_id": "cpis-calibration-ministral3-8b-reasoning-manyifeval-v1",
+      "items": 300,
+      "metrics": {
+        "accuracy": {
+          "ci_high": 0.153333,
+          "ci_low": 0.08,
+          "estimate": 0.116667,
+          "replicates": 5000
+        },
+        "auroc": {
+          "ci_high": 0.606971,
+          "ci_low": 0.424552,
+          "estimate": 0.517308,
+          "replicates": 5000
+        },
+        "brier": {
+          "ci_high": 0.767528,
+          "ci_low": 0.694309,
+          "estimate": 0.732072,
+          "replicates": 5000
+        },
+        "brier_discrimination": {
+          "ci_high": 0.003037,
+          "ci_low": 0.0,
+          "estimate": 0.000361,
+          "replicates": 5000
+        },
+        "brier_miscalibration": {
+          "ci_high": 0.688907,
+          "ci_low": 0.567786,
+          "estimate": 0.627865,
+          "replicates": 5000
+        },
+        "brier_skill_score": {
+          "ci_high": -4.326051,
+          "ci_low": -9.03935,
+          "estimate": -6.000937,
+          "replicates": 5000
+        },
+        "brier_uncertainty": {
+          "ci_high": 0.131982,
+          "ci_low": 0.075436,
+          "estimate": 0.104568,
+          "replicates": 5000
+        },
+        "confidence_accuracy_gap": {
+          "ci_high": 0.817288,
+          "ci_low": 0.73777,
+          "estimate": 0.77835,
+          "replicates": 5000
+        },
+        "discrimination_skill": {
+          "ci_high": 0.028591,
+          "ci_low": 0.0,
+          "estimate": 0.003451,
+          "replicates": 5000
+        },
+        "mean_confidence": {
+          "ci_high": 0.912727,
+          "ci_low": 0.875627,
+          "estimate": 0.895017,
+          "replicates": 5000
+        }
+      },
+      "model_id": "mistralai/Ministral-3-8B-Reasoning-2512",
+      "model_mode": "reasoning",
+      "run_id": "cpis-calibration-ministral3-8b-reasoning-manyifeval-v1-db79264e9001"
+    },
+    {
+      "auroc_excludes_chance": false,
+      "dataset_id": "m-a-p/SuperGPQA",
+      "experiment_id": "cpis-calibration-ministral3-8b-reasoning-supergpqa-v1",
+      "items": 300,
+      "metrics": {
+        "accuracy": {
+          "ci_high": 0.406667,
+          "ci_low": 0.3,
+          "estimate": 0.353333,
+          "replicates": 5000
+        },
+        "auroc": {
+          "ci_high": 0.573619,
+          "ci_low": 0.438382,
+          "estimate": 0.507104,
+          "replicates": 5000
+        },
+        "brier": {
+          "ci_high": 0.438282,
+          "ci_low": 0.356117,
+          "estimate": 0.396178,
+          "replicates": 5000
+        },
+        "brier_discrimination": {
+          "ci_high": 0.013028,
+          "ci_low": 0.000294,
+          "estimate": 0.003169,
+          "replicates": 5000
+        },
+        "brier_miscalibration": {
+          "ci_high": 0.217979,
+          "ci_low": 0.128569,
+          "estimate": 0.168372,
+          "replicates": 5000
+        },
+        "brier_skill_score": {
+          "ci_high": -0.501246,
+          "ci_low": -0.989636,
+          "estimate": -0.715241,
+          "replicates": 5000
+        },
+        "brier_uncertainty": {
+          "ci_high": 0.243151,
+          "ci_low": 0.213018,
+          "estimate": 0.230975,
+          "replicates": 5000
+        },
+        "confidence_accuracy_gap": {
+          "ci_high": 0.306196,
+          "ci_low": 0.174116,
+          "estimate": 0.239584,
+          "replicates": 5000
+        },
+        "discrimination_skill": {
+          "ci_high": 0.056554,
+          "ci_low": 0.001291,
+          "estimate": 0.013722,
+          "replicates": 5000
+        },
+        "mean_confidence": {
+          "ci_high": 0.633207,
+          "ci_low": 0.553473,
+          "estimate": 0.592917,
+          "replicates": 5000
+        }
+      },
+      "model_id": "mistralai/Ministral-3-8B-Reasoning-2512",
+      "model_mode": "reasoning",
+      "run_id": "cpis-calibration-ministral3-8b-reasoning-supergpqa-v1-c89ed273fee1"
+    },
+    {
+      "auroc_excludes_chance": true,
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "experiment_id": "cpis-calibration-qwen35-9b-manyifeval-v1",
+      "items": 300,
+      "metrics": {
+        "accuracy": {
+          "ci_high": 0.686667,
+          "ci_low": 0.573333,
+          "estimate": 0.63,
+          "replicates": 5000
+        },
+        "auroc": {
+          "ci_high": 0.777105,
+          "ci_low": 0.666076,
+          "estimate": 0.723819,
+          "replicates": 5000
+        },
+        "brier": {
+          "ci_high": 0.330111,
+          "ci_low": 0.238725,
+          "estimate": 0.283757,
+          "replicates": 5000
+        },
+        "brier_discrimination": {
+          "ci_high": 0.061492,
+          "ci_low": 0.026032,
+          "estimate": 0.040323,
+          "replicates": 5000
+        },
+        "brier_miscalibration": {
+          "ci_high": 0.130308,
+          "ci_low": 0.063339,
+          "estimate": 0.09098,
+          "replicates": 5000
+        },
+        "brier_skill_score": {
+          "ci_high": -0.088558,
+          "ci_low": -0.359522,
+          "estimate": -0.217319,
+          "replicates": 5000
+        },
+        "brier_uncertainty": {
+          "ci_high": 0.244622,
+          "ci_low": 0.215156,
+          "estimate": 0.2331,
+          "replicates": 5000
+        },
+        "confidence_accuracy_gap": {
+          "ci_high": 0.311367,
+          "ci_low": 0.2051,
+          "estimate": 0.257767,
+          "replicates": 5000
+        },
+        "discrimination_skill": {
+          "ci_high": 0.260971,
+          "ci_low": 0.114119,
+          "estimate": 0.172988,
+          "replicates": 5000
+        },
+        "mean_confidence": {
+          "ci_high": 0.911133,
+          "ci_low": 0.863467,
+          "estimate": 0.887767,
+          "replicates": 5000
+        }
+      },
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "non_thinking",
+      "run_id": "cpis-calibration-qwen35-9b-manyifeval-v1-cf38c1f5b219"
+    },
+    {
+      "auroc_excludes_chance": false,
+      "dataset_id": "m-a-p/SuperGPQA",
+      "experiment_id": "cpis-calibration-qwen35-9b-supergpqa-v1",
+      "items": 300,
+      "metrics": {
+        "accuracy": {
+          "ci_high": 0.38,
+          "ci_low": 0.273333,
+          "estimate": 0.326667,
+          "replicates": 5000
+        },
+        "auroc": {
+          "ci_high": 0.579374,
+          "ci_low": 0.457516,
+          "estimate": 0.52013,
+          "replicates": 5000
+        },
+        "brier": {
+          "ci_high": 0.652669,
+          "ci_low": 0.549004,
+          "estimate": 0.601263,
+          "replicates": 5000
+        },
+        "brier_discrimination": {
+          "ci_high": 0.007972,
+          "ci_low": 0.0,
+          "estimate": 0.001344,
+          "replicates": 5000
+        },
+        "brier_miscalibration": {
+          "ci_high": 0.452923,
+          "ci_low": 0.320036,
+          "estimate": 0.382652,
+          "replicates": 5000
+        },
+        "brier_skill_score": {
+          "ci_high": -1.347588,
+          "ci_low": -2.257463,
+          "estimate": -1.733564,
+          "replicates": 5000
+        },
+        "brier_uncertainty": {
+          "ci_high": 0.2356,
+          "ci_low": 0.198622,
+          "estimate": 0.219956,
+          "replicates": 5000
+        },
+        "confidence_accuracy_gap": {
+          "ci_high": 0.635233,
+          "ci_low": 0.518733,
+          "estimate": 0.5776,
+          "replicates": 5000
+        },
+        "discrimination_skill": {
+          "ci_high": 0.03634,
+          "ci_low": 2e-06,
+          "estimate": 0.006112,
+          "replicates": 5000
+        },
+        "mean_confidence": {
+          "ci_high": 0.931267,
+          "ci_low": 0.874067,
+          "estimate": 0.904267,
+          "replicates": 5000
+        }
+      },
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "non_thinking",
+      "run_id": "cpis-calibration-qwen35-9b-supergpqa-v1-23ffbf894457"
+    },
+    {
+      "auroc_excludes_chance": true,
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "experiment_id": "cpis-calibration-qwen35-9b-thinking-manyifeval-v1",
+      "items": 300,
+      "metrics": {
+        "accuracy": {
+          "ci_high": 0.1,
+          "ci_low": 0.043333,
+          "estimate": 0.07,
+          "replicates": 5000
+        },
+        "auroc": {
+          "ci_high": 0.871764,
+          "ci_low": 0.774229,
+          "estimate": 0.825309,
+          "replicates": 5000
+        },
+        "brier": {
+          "ci_high": 0.314505,
+          "ci_low": 0.223031,
+          "estimate": 0.268826,
+          "replicates": 5000
+        },
+        "brier_discrimination": {
+          "ci_high": 0.019528,
+          "ci_low": 0.00398,
+          "estimate": 0.009759,
+          "replicates": 5000
+        },
+        "brier_miscalibration": {
+          "ci_high": 0.263569,
+          "ci_low": 0.16395,
+          "estimate": 0.211628,
+          "replicates": 5000
+        },
+        "brier_skill_score": {
+          "ci_high": -1.704245,
+          "ci_low": -5.775345,
+          "estimate": -3.014892,
+          "replicates": 5000
+        },
+        "brier_uncertainty": {
+          "ci_high": 0.092747,
+          "ci_low": 0.042538,
+          "estimate": 0.066957,
+          "replicates": 5000
+        },
+        "confidence_accuracy_gap": {
+          "ci_high": 0.371966,
+          "ci_low": 0.279758,
+          "estimate": 0.325911,
+          "replicates": 5000
+        },
+        "discrimination_skill": {
+          "ci_high": 0.219697,
+          "ci_low": 0.091997,
+          "estimate": 0.145749,
+          "replicates": 5000
+        },
+        "mean_confidence": {
+          "ci_high": 0.444744,
+          "ci_low": 0.348507,
+          "estimate": 0.395911,
+          "replicates": 5000
+        }
+      },
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "thinking",
+      "run_id": "cpis-calibration-qwen35-9b-thinking-manyifeval-v1-939e0039d490"
+    },
+    {
+      "auroc_excludes_chance": true,
+      "dataset_id": "m-a-p/SuperGPQA",
+      "experiment_id": "cpis-calibration-qwen35-9b-thinking-supergpqa-v1",
+      "items": 300,
+      "metrics": {
+        "accuracy": {
+          "ci_high": 0.586667,
+          "ci_low": 0.473333,
+          "estimate": 0.53,
+          "replicates": 5000
+        },
+        "auroc": {
+          "ci_high": 0.77988,
+          "ci_low": 0.670876,
+          "estimate": 0.727709,
+          "replicates": 5000
+        },
+        "brier": {
+          "ci_high": 0.409517,
+          "ci_low": 0.314445,
+          "estimate": 0.360706,
+          "replicates": 5000
+        },
+        "brier_discrimination": {
+          "ci_high": 0.067838,
+          "ci_low": 0.02904,
+          "estimate": 0.04439,
+          "replicates": 5000
+        },
+        "brier_miscalibration": {
+          "ci_high": 0.207246,
+          "ci_low": 0.118531,
+          "estimate": 0.155996,
+          "replicates": 5000
+        },
+        "brier_skill_score": {
+          "ci_high": -0.286416,
+          "ci_low": -0.642862,
+          "estimate": -0.448036,
+          "replicates": 5000
+        },
+        "brier_uncertainty": {
+          "ci_high": 0.249989,
+          "ci_low": 0.242489,
+          "estimate": 0.2491,
+          "replicates": 5000
+        },
+        "confidence_accuracy_gap": {
+          "ci_high": 0.404367,
+          "ci_low": 0.292767,
+          "estimate": 0.347633,
+          "replicates": 5000
+        },
+        "discrimination_skill": {
+          "ci_high": 0.272885,
+          "ci_low": 0.116975,
+          "estimate": 0.178201,
+          "replicates": 5000
+        },
+        "mean_confidence": {
+          "ci_high": 0.902533,
+          "ci_low": 0.851733,
+          "estimate": 0.877633,
+          "replicates": 5000
+        }
+      },
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "thinking",
+      "run_id": "cpis-calibration-qwen35-9b-thinking-supergpqa-v1-2730133f9dad"
+    }
+  ],
+  "schema_version": "1.0",
+  "status": "secondary descriptive; not confirmatory and not multiplicity corrected"
+}

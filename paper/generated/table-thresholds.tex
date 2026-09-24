@@ -1,0 +1,20 @@
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\small
+\caption{Frozen thresholds and the granularity of the confidence channel. The endpoint column records which branch of the prespecified rule applied. The last two columns describe the reported-confidence distribution at calibration.\label{tab:thresholds}}
+\begin{tabular}{llllcccrl}
+\toprule
+\textbf{Model} & \textbf{Regime} & \textbf{Data} & \textbf{Endpoint} & $\boldsymbol{\tau_0}$ & \textbf{Coverage} & \textbf{Risk} & \textbf{Values} & \textbf{Top atom (mass)} \\
+\midrule
+Ministral-3-8B & instruct & ManyIFEval & coverage 0.50 & 0.98 & 0.637 & 0.670 & 9 & 0.98 (0.61) \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & coverage 0.50 & 0.95 & 0.790 & 0.713 & 16 & 0.95 (0.73) \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & coverage 0.50 & 0.95 & 0.610 & 0.869 & 15 & 0.95 (0.44) \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & coverage 0.50 & 0.50 & 0.577 & 0.584 & 19 & 0.80 (0.13) \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & risk target & 1.00 & 0.230 & 0.087 & 12 & 0.95 (0.40) \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & coverage 0.50 & 1.00 & 0.627 & 0.665 & 11 & 1.00 (0.63) \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & coverage 0.50 & 0.10 & 0.650 & 0.892 & 21 & 0.00 (0.18) \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & coverage 0.50 & 0.95 & 0.693 & 0.370 & 17 & 0.95 (0.39) \tabularnewline
+\bottomrule
+\end{tabular}
+\end{adjustwidth}
+\end{table}

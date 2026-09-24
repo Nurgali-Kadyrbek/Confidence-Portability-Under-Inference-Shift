@@ -1,0 +1,28 @@
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\footnotesize
+\caption{The 16 prespecified held-out contrasts. $I_A$ and $I_C$ are the fractions of answer and confidence generations the shift changed. Intervals are 95\% item-clustered paired bootstrap; $p$ is Holm-adjusted within each model--dataset family.\label{tab:contrasts}}
+\begin{tabular}{llllcccccccl}
+\toprule
+\textbf{Model} & \textbf{Regime} & \textbf{Data} & \textbf{Shift} & $\boldsymbol{I_A}$ & $\boldsymbol{I_C}$ & $\boldsymbol{\Delta q}$ & $\boldsymbol{\Delta K}$ & $\boldsymbol{\Delta R}$ \textbf{(95\% CI)} & $\boldsymbol{\Delta S}$ & \textbf{Holm} $\boldsymbol{p}$ & \textbf{Class} \\
+\midrule
+Ministral-3-8B & instruct & ManyIFEval & high-$T$ & 1.00 & 0.82 & +0.000 & -0.322 & -0.052 [-0.118, +0.010] & -0.067 & 0.876 & inconclusive \tabularnewline
+Ministral-3-8B & instruct & ManyIFEval & low-$p$ & 0.71 & 0.21 & +0.000 & +0.017 & -0.030 [-0.056, -0.005] & +0.025 & 0.234 & inconclusive \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & high-$T$ & 0.36 & 0.74 & +0.000 & -0.357 & +0.011 [-0.037, +0.059] & -0.120 & 1.000 & inconclusive \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & low-$p$ & 0.01 & 0.01 & +0.000 & +0.003 & +0.003 [-0.004, +0.011] & -0.002 & 1.000 & equivalent \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & high-$T$ & 1.00 & 0.86 & +0.000 & -0.072 & +0.017 [-0.018, +0.051] & -0.018 & 1.000 & inconclusive \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & low-$p$ & 1.00 & 0.74 & +0.000 & +0.053 & +0.018 [-0.013, +0.050] & -0.005 & 1.000 & inconclusive \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & high-$T$ & 0.83 & 0.56 & -0.017 & +0.037 & +0.053 [+0.012, +0.095] & -0.017 & 0.171 & inconclusive \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & low-$p$ & 0.86 & 0.72 & +0.153 & -0.142 & +0.045 [-0.009, +0.102] & -0.087 & 1.000 & inconclusive \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & high-$T$ & 1.00 & 0.79 & +0.000 & +0.033 & +0.067 [-0.023, +0.156] & +0.007 & 1.000 & inconclusive \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & low-$p$ & 0.93 & 0.58 & +0.000 & -0.007 & -0.036 [-0.112, +0.044] & +0.003 & 1.000 & inconclusive \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & high-$T$ & 0.22 & 0.29 & +0.000 & -0.065 & +0.036 [+0.005, +0.067] & -0.047 & 0.302 & inconclusive \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & low-$p$ & 0.06 & 0.12 & +0.000 & +0.028 & -0.008 [-0.030, +0.015] & +0.017 & 1.000 & inconclusive \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & high-$T$ & 1.00 & 1.00 & +0.000 & +0.087 & +0.016 [+0.007, +0.026] & -0.003 & 0.003 & change \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & low-$p$ & 1.00 & 1.00 & +0.000 & -0.113 & -0.013 [-0.027, -0.001] & -0.003 & 0.306 & inconclusive \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & high-$T$ & 1.00 & 1.00 & +0.002 & -0.057 & -0.004 [-0.040, +0.033] & -0.033 & 1.000 & inconclusive \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & low-$p$ & 1.00 & 1.00 & +0.000 & +0.083 & -0.001 [-0.037, +0.034] & +0.053 & 1.000 & inconclusive \tabularnewline
+\bottomrule
+\end{tabular}
+\end{adjustwidth}
+\end{table}

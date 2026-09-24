@@ -1,0 +1,87 @@
+schema_version: "1.0"
+record_type: dataset_integration
+record_id: stylembpp-integration-v1
+dataset_id: kenoharada/Multiple-Instructions-Following:StyleMBPP
+revision: 5c1ba29e631e2bbee981ebd620898c2750c5ddbf
+source_sha256: 9835347c29380d54c56d78c6c98af96d436ed5088768e786add85b1214d4f1b2
+license_and_access: >-
+  Public, unauthenticated official GitHub repository. It does not declare a
+  top-level dataset license. CPIS stores source/prepared tasks only on RAID,
+  cites the paper and repository, and does not redistribute task content in Git.
+official_splits: >-
+  The official release is one flat 3,000-row JSONL file: six instruction-load
+  variants for each of 500 MBPP base tasks. CPIS assigns whole base-task groups
+  to frozen internal partitions before model use.
+unit_of_observation: >-
+  The independent unit is the original MBPP task_id. Its six constraint-load
+  variants, decoder configurations, and seeds are clustered repeated measures.
+grouping_and_dependence: >-
+  Each task_id has exactly one variant at instruction counts 1--6. All variants
+  remain in one partition and final resampling clusters by task_id.
+official_task_representation: >-
+  Use the official prompt field verbatim and retain the complete model response.
+  The scoring payload preserves functional tests and enabled style-rule IDs.
+official_scoring: >-
+  Pin the released evaluator: extract the first fenced Python block, execute the
+  official test_list, and apply the requested Pylint/custom style checks. Primary
+  success is functional tests pass AND every requested constraint passes.
+allowed_normalization: >-
+  Only the official evaluator's fenced-Python extraction is allowed. CPIS does
+  not repair code, add imports, rewrite indentation, or select a later code block.
+invalid_output_handling: >-
+  Missing/empty fenced Python code is unsuccessful. Timeouts, exceptions,
+  functional failures, and any requested constraint failure are unsuccessful.
+  Invalid confidence is forced abstention and separately reported.
+evaluation_type: deterministic official tests plus static rules; no model judge
+duplicate_and_transformed_relationships: >-
+  The 3,000 rows are derived from 500 original MBPP tasks. Prepared row IDs are
+  unique, but all six variants cluster on the original task_id.
+contamination_considerations: >-
+  MBPP and StyleMBPP are public and likely represented in model training data.
+  CPIS estimates paired within-task decoder effects and does not describe raw
+  code success as contamination-free.
+benchmark_exclusions: >-
+  No official row is excluded. Preparation rejects schema changes, absent tests,
+  missing load levels, or anything other than 500 complete six-variant groups.
+evaluator_revision: 5c1ba29e631e2bbee981ebd620898c2750c5ddbf:code_bench
+preparation_algorithm: >-
+  group-preserving-hash-40-30-30-v1 with salt stylembpp-base-task-split-v1;
+  deterministic hashing assigns 200 base tasks to development and 150 each to
+  certification/test, carrying all six variants with their task.
+prepared_partitions:
+  - partition: development
+    rows: 1200
+    sha256: 2115ae750a67bc5d35457e7c896c16bcb37abefee37d1a325514411b506a5d42
+    relative_cache_path: prepared/stylembpp-v1-sealed/items-development.jsonl
+  - partition: certification
+    rows: 900
+    sha256: b84ce999cda795c9ccff50ea08503d7dd1e7b566ce60697e57ffc2d1a1e3fd45
+    relative_cache_path: prepared/stylembpp-v1-sealed/items-certification.jsonl
+  - partition: test
+    rows: 900
+    sha256: a8fc7b3d4110524afb0297b3a3749af8855641ccc8a3bd742d79de11a51e3144
+    relative_cache_path: prepared/stylembpp-v1-sealed/items-test.jsonl
+access_firewall: >-
+  Generation configurations point to one sealed partition file. Development may
+  access only its file; certification and test require versioned phase gates.
+sources:
+  - source_type: official_dataset_artifact
+    url: https://github.com/kenoharada/Multiple-Instructions-Following/blob/5c1ba29e631e2bbee981ebd620898c2750c5ddbf/data/stylembpp.jsonl
+    revision: 5c1ba29e631e2bbee981ebd620898c2750c5ddbf
+    artifact_sha256: 9835347c29380d54c56d78c6c98af96d436ed5088768e786add85b1214d4f1b2
+    note: Pinned official 3,000-row tasks, tests, reference code, and style rules.
+  - source_type: official_dataset_artifact
+    url: https://github.com/kenoharada/Multiple-Instructions-Following/blob/5c1ba29e631e2bbee981ebd620898c2750c5ddbf/code_bench/eval.py
+    revision: 5c1ba29e631e2bbee981ebd620898c2750c5ddbf
+    artifact_sha256: 899d0f6e98c3144d65c38c1f7d65bfff46b132c4d855a124520fc3c071091d1a
+    note: Pinned official conjunction of functional and requested style checks.
+  - source_type: official_paper
+    url: https://aclanthology.org/2025.findings-emnlp.896/
+    revision: 2025.findings-emnlp.896
+    artifact_sha256: null
+    note: Official Findings of EMNLP 2025 paper defining StyleMBPP and evaluation.
+  - source_type: local_validation
+    url: evidence/data/stylembpp_preparation_v1.json
+    revision: repository-record
+    artifact_sha256: null
+    note: Group-preserving partition counts, load balance, and sealed hashes.

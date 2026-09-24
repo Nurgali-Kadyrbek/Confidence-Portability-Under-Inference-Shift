@@ -1,0 +1,165 @@
+schema_version: "1.0"
+record_type: model_integration
+record_id: ministral3-14b-reasoning-integration-v2
+model_id: mistralai/Ministral-3-14B-Reasoning-2512
+revision: 51f9210f3cd20f3452a80d5819d15dc61cc50630
+tokenizer_id: mistralai/Ministral-3-14B-Reasoning-2512
+tokenizer_revision: 51f9210f3cd20f3452a80d5819d15dc61cc50630
+parameter_count_exact: 13945031680
+parameter_count_method: >-
+  Exact total_parameters metadata from pinned model.safetensors.index.json;
+  inventory covers language model, multimodal projector, and vision tower. CPIS
+  loads only the language model for text tasks.
+architecture: >-
+  Mistral3ForConditionalGeneration multimodal dense model. The text model has
+  40 layers, hidden size 5120, intermediate size 16384, 32 attention heads,
+  8 KV heads, head dimension 128, and vocabulary size 131072. The 24-layer
+  vision tower is disabled in CPIS static studies.
+framework: vLLM CUDA inference, language-model-only, no offload
+framework_version: 0.29.0+cu129
+framework_requirement: >-
+  The official card requires vLLM >=0.12.0 and mistral-common >=1.8.6 and
+  specifies tokenizer_mode=mistral, config_format=mistral,
+  load_format=mistral, and reasoning-parser=mistral for API-side separation.
+  It recommends two H200s only to exploit the full context and permits one GPU
+  when a smaller context is sufficient. CPIS pins Transformers 5.16.1 because
+  5.17.0 renamed a Pixtral class required by vLLM 0.29, and must prove direct
+  L40 residency at reduced context before development use.
+precision: [bfloat16]
+official_chat_template_sha256: 6b5044075f09f4daa57beebe2d989d9fbe67dea351f220e1a84e19ddc893f2c2
+message_format: >-
+  Use the pinned Jinja template. A user-only conversation receives the official
+  reasoning system prompt and SYSTEM_PROMPT/INST framing. CPIS provides no
+  replacement system prompt and no tools for static benchmarks.
+reasoning_controls: >-
+  This dedicated Reasoning checkpoint emits [THINK]...[/THINK] before its final
+  response and requires the official reasoning system prompt, which the pinned
+  template inserts by default. Raw storage retains both reasoning and answer.
+required_special_tokens: [<s>, </s>, <pad>, "[SYSTEM_PROMPT]", "[/SYSTEM_PROMPT]", "[INST]", "[/INST]", "[THINK]", "[/THINK]"]
+eos_and_stop_behavior: >-
+  The generation config sets BOS=1, EOS=2, and PAD=11. CPIS uses no additional
+  stop strings, sets ignore_eos=false, and records the backend finish reason.
+recommended_context_limit: 262144
+configured_context_limit: 65536
+recommended_output_limits: >-
+  CPIS provisions 65,536 total tokens and caps answer and confidence calls at
+  32,768 output tokens. The matrix preflight observed no reference-answer
+  truncation and no fixed native-reference confidence truncation. Low-temperature
+  and low-top-p answer truncations remain explicit invalid outcomes.
+native_reference_sampling:
+  temperature: 1.0
+  top_p: 0.95
+  min_p: 0.0
+  presence_penalty: 0.0
+  frequency_penalty: 0.0
+  repetition_penalty: 1.0
+sampler_constraints: >-
+  The explicit 14B recommendation is temperature 1 for most environments.
+  Official code examples still define temperature 0.7 and top_p=0.95; CPIS
+  gives priority to the prose recommendation for temperature and retains the
+  example's top_p because no contrary value is specified. Top-k and min-p are
+  disabled and penalties neutralized explicitly.
+greedy_decoding_caveats: >-
+  Greedy confidence decoding is unsupported: 17/35 development-preflight calls
+  reached the 32,768-token cap across all five answer conditions. The fixed
+  standardized readout uses the model-native reference sampler instead.
+tool_calling_requirements: >-
+  Tool use requires auto-tool choice and the Mistral tool-call parser. Static
+  benchmark runs supply no tools. The API reasoning parser must not be used to
+  discard reasoning before immutable raw storage.
+structured_output_constraints: >-
+  JSON is supported, but CPIS uses prompt-level structure without guided
+  decoding. The full trace and any malformed terminal output are retained.
+engine_requirements: >-
+  CUDA-only vLLM 0.29.0+cu129, mistral-common 1.11.7, Transformers 5.16.1,
+  BF16,
+  language-model-only, Mistral tokenizer/config/load modes, reduced 65536-token
+  context, RAID caches, and no CPU/NVMe offload or DeepSpeed. Prefer TP=1 only
+  if direct one-L40 preflight succeeds; otherwise use a direct-resident TP size
+  that stays within the eight GPUs without offload.
+unsupported_configurations:
+  - Omitting or replacing the official reasoning system prompt
+  - Treating the 8B example temperature 0.7 as the 14B prose recommendation without disclosure
+  - Treating this as a mode switch on the 14B Instruct weights
+  - Discarding reasoning before immutable raw storage
+  - Loading the vision tower for text-only tasks
+  - Any CPU or NVMe parameter offload
+  - Greedy or temperature-zero confidence readout for the reasoning checkpoint
+interventions:
+  - intervention_id: reference
+    changed_parameters: {}
+    held_fixed_parameters: {temperature: 1.0, top_p: 0.95, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Official 14B reasoning temperature with official-example top-p, pending exact checkpoint and L40 validation.
+  - intervention_id: low-temperature
+    changed_parameters: {temperature: 0.7}
+    held_fixed_parameters: {top_p: 0.95, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Single-factor downward temperature intervention matching the value used in official examples.
+  - intervention_id: high-temperature
+    changed_parameters: {temperature: 1.2}
+    held_fixed_parameters: {top_p: 0.95, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Single-factor upward temperature intervention requiring development validation.
+  - intervention_id: low-top-p
+    changed_parameters: {top_p: 0.7}
+    held_fixed_parameters: {temperature: 1.0, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Single-factor nucleus intervention with top-k and min-p disabled.
+  - intervention_id: high-diversity
+    changed_parameters: {temperature: 1.2, top_p: 1.0}
+    held_fixed_parameters: {min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Joint high-temperature and unrestricted-top-p contrast requiring development validation.
+  - intervention_id: standardized-deterministic-readout
+    changed_parameters: {temperature: 0.0, top_p: 1.0}
+    held_fixed_parameters: {min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: unsupported
+    interpretation: Development preflight showed pathological nontermination at the fixed output cap.
+validation_status: development_validated
+validation_evidence: >-
+  Exact official revision, BF16 checkpoint, architecture, reasoning prompt,
+  engine requirements, and native reference are pinned. Direct one-L40
+  residency is validated. The eight-item matrix preflight completed all 40
+  answer calls: reference, high-temperature, and high-diversity answers had no
+  length finish; two low-temperature and three low-top-p answers reached the
+  cap and remain invalid outcomes. Of 128 immutable confidence calls, 17/35
+  greedy standardized readouts reached the cap across every answer condition,
+  compared with 0/35 fixed native-reference readouts. Greedy readout is
+  unsupported; native-reference fixed readout is development-validated.
+sources:
+  - source_type: official_model_card
+    url: https://huggingface.co/mistralai/Ministral-3-14B-Reasoning-2512/blob/51f9210f3cd20f3452a80d5819d15dc61cc50630/README.md
+    revision: 51f9210f3cd20f3452a80d5819d15dc61cc50630
+    artifact_sha256: 0abaf444981d9f3ee4a13d63e88a9d53b56a1cb38bd93c80cc6b763267ded673
+    note: Pinned official 14B reasoning sampling, system-prompt, context, vLLM, and hardware guidance.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/mistralai/Ministral-3-14B-Reasoning-2512/blob/51f9210f3cd20f3452a80d5819d15dc61cc50630/SYSTEM_PROMPT.txt
+    revision: 51f9210f3cd20f3452a80d5819d15dc61cc50630
+    artifact_sha256: aba1efaff0bdc73f4a864139e2c07dce8fc1e3df7b5d5c2b2623df6816697156
+    note: Pinned mandatory reasoning behavior and THINK delimiters.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/mistralai/Ministral-3-14B-Reasoning-2512/blob/51f9210f3cd20f3452a80d5819d15dc61cc50630/chat_template.jinja
+    revision: 51f9210f3cd20f3452a80d5819d15dc61cc50630
+    artifact_sha256: 6b5044075f09f4daa57beebe2d989d9fbe67dea351f220e1a84e19ddc893f2c2
+    note: Pinned official system prompt, reasoning chunks, role formatting, tools, and generation prompt.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/mistralai/Ministral-3-14B-Reasoning-2512/blob/51f9210f3cd20f3452a80d5819d15dc61cc50630/config.json
+    revision: 51f9210f3cd20f3452a80d5819d15dc61cc50630
+    artifact_sha256: b1897778395bb1795489a048ebde2e6d216eee21014ce9c18193d15f097454a6
+    note: Pinned architecture, BF16 dtype, 262144 context, and multimodal configuration.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/mistralai/Ministral-3-14B-Reasoning-2512/blob/51f9210f3cd20f3452a80d5819d15dc61cc50630/model.safetensors.index.json
+    revision: 51f9210f3cd20f3452a80d5819d15dc61cc50630
+    artifact_sha256: null
+    note: Pinned exact parameter total, tensor inventory, shard map, and total byte size.
+  - source_type: local_validation
+    url: evidence/environment/l40_gpu_stack.json
+    revision: repository-record
+    artifact_sha256: null
+    note: Pinned L40 runtime, direct-residency, and global no-offload validation.
+  - source_type: local_validation
+    url: evidence/pilots/dev-matrix-preflight-ministral3-14b-reasoning-supergpqa-v1-diagnostic-v1.json
+    revision: repository-record
+    artifact_sha256: null
+    note: Decoder intervention, output-limit, and fixed-readout compatibility diagnostic.

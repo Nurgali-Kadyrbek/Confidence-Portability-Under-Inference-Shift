@@ -1,0 +1,28 @@
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\footnotesize
+\caption{The outcome partition. $S$ and $E$ at the reference configuration, then the change in each of the five disjoint components under each shift. By construction $S+E+q+a_C+a_\tau=1$ and $K=S+E$.\label{tab:partition}}
+\begin{tabular}{llllccccccc}
+\toprule
+\textbf{Model} & \textbf{Regime} & \textbf{Data} & \textbf{Shift} & $\boldsymbol{S_0}$ & $\boldsymbol{E_0}$ & $\boldsymbol{\Delta S}$ & $\boldsymbol{\Delta E}$ & $\boldsymbol{\Delta q}$ & $\boldsymbol{\Delta a_C}$ & $\boldsymbol{\Delta a_\tau}$ \\
+\midrule
+Ministral-3-8B & instruct & ManyIFEval & high-$T$ & 0.175 & 0.490 & -0.067 & -0.255 & +0.000 & +0.000 & +0.322 \tabularnewline
+Ministral-3-8B & instruct & ManyIFEval & low-$p$ & 0.175 & 0.490 & +0.025 & -0.008 & +0.000 & +0.000 & -0.017 \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & high-$T$ & 0.253 & 0.532 & -0.120 & -0.237 & +0.000 & +0.000 & +0.357 \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & low-$p$ & 0.253 & 0.532 & -0.002 & +0.005 & +0.000 & +0.000 & -0.003 \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & high-$T$ & 0.080 & 0.525 & -0.018 & -0.053 & +0.000 & -0.007 & +0.078 \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & low-$p$ & 0.080 & 0.525 & -0.005 & +0.058 & +0.000 & +0.022 & -0.075 \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & high-$T$ & 0.278 & 0.320 & -0.017 & +0.053 & -0.017 & -0.037 & +0.017 \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & low-$p$ & 0.278 & 0.320 & -0.087 & -0.055 & +0.153 & +0.085 & -0.097 \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & high-$T$ & 0.177 & 0.060 & +0.007 & +0.027 & +0.000 & +0.000 & -0.033 \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & low-$p$ & 0.177 & 0.060 & +0.003 & -0.010 & +0.000 & +0.000 & +0.007 \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & high-$T$ & 0.257 & 0.362 & -0.047 & -0.018 & +0.000 & +0.000 & +0.065 \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & low-$p$ & 0.257 & 0.362 & +0.017 & +0.012 & +0.000 & +0.000 & -0.028 \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & high-$T$ & 0.053 & 0.557 & -0.003 & +0.090 & +0.000 & -0.005 & -0.082 \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & low-$p$ & 0.053 & 0.557 & -0.003 & -0.110 & +0.000 & +0.205 & -0.092 \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & high-$T$ & 0.433 & 0.255 & -0.033 & -0.023 & +0.002 & -0.002 & +0.057 \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & low-$p$ & 0.433 & 0.255 & +0.053 & +0.030 & +0.000 & +0.008 & -0.092 \tabularnewline
+\bottomrule
+\end{tabular}
+\end{adjustwidth}
+\end{table}

@@ -1,0 +1,134 @@
+schema_version: "1.0"
+record_type: model_integration
+record_id: qwen35-9b-integration-v1
+model_id: Qwen/Qwen3.5-9B
+revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+tokenizer_id: Qwen/Qwen3.5-9B
+tokenizer_revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+parameter_count_exact: 9653104368
+parameter_count_method: >-
+  Sum of all pinned safetensors tensor shapes: 8,392,695,024 model,
+  1,017,118,720 LM-head, and 243,290,624 MTP parameters.
+architecture: >-
+  Qwen3_5ForConditionalGeneration multimodal dense model; the text component has
+  32 layers in a repeating three-linear-attention/one-full-attention pattern,
+  hidden size 4096, 16 attention heads, and 4 KV heads. CPIS loads only the
+  language model and does not load/use the vision encoder.
+framework: vLLM CUDA inference, language-model-only, no offload
+framework_version: 0.29.0+cu129
+framework_requirement: >-
+  The pinned official card requires a Qwen3.5-capable vLLM main/nightly build.
+  The installed pinned 0.29.0+cu129 build recognizes qwen3_5; checkpoint-specific
+  L40 validation is required before shifted inference.
+precision: [bfloat16, float32_state]
+official_chat_template_sha256: a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715
+message_format: >-
+  Use the pinned tokenizer Jinja template with a user message and assistant
+  generation prompt. No system message or tools are supplied for SuperGPQA.
+reasoning_controls: >-
+  Thinking is default; Qwen3.5 does not support /think or /nothink. Non-thinking
+  mode requires chat_template_kwargs.enable_thinking=false, which emits an empty
+  think block before the direct response.
+required_special_tokens: [<|im_start|>, <|im_end|>, <|endoftext|>, <think>, </think>]
+eos_and_stop_behavior: >-
+  text_config eos_token_id 248044 is <|endoftext|>. CPIS uses no explicit stop
+  strings, sets ignore_eos=false, and records backend finish reasons.
+recommended_context_limit: 262144
+configured_context_limit: 8192
+recommended_output_limits: >-
+  The card recommends 32,768 tokens for open-ended work and 81,920 for complex
+  contests. The exact-answer MCQ protocol caps answers at 512 and confidence at
+  256; checkpoint preflight must verify stopped output and no truncation.
+native_reference_sampling:
+  temperature: 0.7
+  top_p: 0.8
+  top_k: 20
+  min_p: 0.0
+  presence_penalty: 1.5
+  frequency_penalty: 0.0
+  repetition_penalty: 1.0
+sampler_constraints: >-
+  Native top_k=20 remains active in deployment-relative temperature and top-p
+  interventions. Top-p therefore operates inside the top-20 candidate set and
+  high diversity is top-20 bounded. min_p=0 is inactive. Values are explicit.
+greedy_decoding_caveats: >-
+  Greedy decoding is not a native recommendation. It is restricted to the
+  standardized confidence mitigation with temperature=0, top_p=1, top_k/min_p
+  unset, and neutral penalties; it is never an answer baseline.
+tool_calling_requirements: >-
+  Agentic tool use would require vLLM qwen3_coder parsing and auto-tool choice;
+  this MCQ study supplies no tools and enables no tool parser.
+structured_output_constraints: >-
+  The official card recommends prompt-level JSON for MCQ benchmarking. CPIS
+  follows that guidance without guided decoding, retaining every raw output.
+engine_requirements: >-
+  CUDA-only vLLM, BF16, TP=1, one L40 replica, language-model-only, native sampler,
+  all caches on RAID, and no CPU/NVMe offload or DeepSpeed.
+unsupported_configurations:
+  - Qwen3 /think and /nothink soft switches for Qwen3.5
+  - Full-vocabulary interpretation of top_p while native top_k=20 is active
+  - Tool use without qwen3_coder parsing
+  - CPU or NVMe parameter offload
+interventions:
+  - intervention_id: reference
+    changed_parameters: {}
+    held_fixed_parameters: {temperature: 0.7, top_p: 0.8, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Official non-thinking general-task model-native reference.
+  - intervention_id: low-temperature
+    changed_parameters: {temperature: 0.2}
+    held_fixed_parameters: {top_p: 0.8, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Relative temperature intervention with all other native samplers fixed.
+  - intervention_id: high-temperature
+    changed_parameters: {temperature: 1.2}
+    held_fixed_parameters: {top_p: 0.8, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Relative temperature intervention with all other native samplers fixed.
+  - intervention_id: low-top-p
+    changed_parameters: {top_p: 0.7}
+    held_fixed_parameters: {temperature: 0.7, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Native-relative nucleus intervention inside the top-20 candidate set.
+  - intervention_id: high-diversity
+    changed_parameters: {temperature: 1.2, top_p: 1.0}
+    held_fixed_parameters: {top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Joint high-temperature/high-top-p contrast bounded by native top_k=20.
+  - intervention_id: standardized-deterministic-readout
+    changed_parameters: {temperature: 0.0, top_p: 1.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    held_fixed_parameters: {}
+    status: supported_with_limitation
+    interpretation: Development-only deterministic confidence mitigation, not an answer configuration.
+validation_status: development_validated
+validation_evidence: >-
+  Reference preflight dev-preflight-qwen35-9b-supergpqa-v1-bc875c92b7a1
+  completed 8 answer and 8 confidence calls on one L40 with direct BF16
+  residency, 0 invalids, all stop finish reasons, no truncation, and verified
+  zero-generation resume. Generation commit d68fbca2ef30718353e143561d231ce76c6ea20f.
+sources:
+  - source_type: official_model_card
+    url: https://huggingface.co/Qwen/Qwen3.5-9B/blob/c202236235762e1c871ad0ccb60c8ee5ba337b9a/README.md
+    revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+    artifact_sha256: c5f5a8c2dddab69cfbf05279235aa5fddb137939a06539c4c7637aa900fef6d0
+    note: Pinned sampling, non-thinking, context, JSON, vLLM, and tool guidance.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/Qwen/Qwen3.5-9B/blob/c202236235762e1c871ad0ccb60c8ee5ba337b9a/config.json
+    revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+    artifact_sha256: d0883072e01861ed0b2d47be3c16c36a8e81c224c7ffaa310c6558fb3f932b05
+    note: Pinned architecture, BF16, context, and EOS configuration.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/Qwen/Qwen3.5-9B/blob/c202236235762e1c871ad0ccb60c8ee5ba337b9a/chat_template.jinja
+    revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+    artifact_sha256: a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715
+    note: Pinned role framing and enable_thinking behavior.
+  - source_type: official_engine_documentation
+    url: https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html
+    revision: accessed-2026-09-20
+    artifact_sha256: null
+    note: Official vLLM Qwen3.5 runtime guidance.
+  - source_type: local_validation
+    url: evidence/environment/l40_gpu_stack.json
+    revision: repository-record
+    artifact_sha256: null
+    note: Pinned L40 CUDA runtime and no-offload engine validation.

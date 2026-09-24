@@ -1,0 +1,96 @@
+schema_version: "1.0"
+record_type: dataset_integration
+record_id: medxpertqa-text-integration-v1
+dataset_id: TsinghuaC3I/MedXpertQA
+revision: 7e7c465a68eb2b866926bfa59c8c9d17a8daba65
+source_sha256: 07ea977f7e326909b51c883b65f6ad7f399fc6db07408ef3630f4e3048ec71b2
+license_and_access: >-
+  Public official Hugging Face dataset under the MIT license and without an
+  authentication gate. CPIS uses only the text-only files and downloads no
+  medical images.
+official_splits: >-
+  The Text subset contains an official five-example few-shot development file
+  and a 2,450-question test file. CPIS excludes the five prompt demonstrations
+  and freezes internal development/certification/test partitions of the complete
+  official Text test file before any model outcome is observed.
+unit_of_observation: >-
+  One text medical multiple-choice question identified by its official Text-N
+  ID. Decoder conditions and replicate generations are repeated measurements of
+  that question.
+grouping_and_dependence: >-
+  Questions are stratified by official medical_task, body_system, and
+  question_type metadata. Resampling clusters on the original question ID and
+  carries every decoder condition and seed with the sampled item.
+official_task_representation: >-
+  The official question string already contains the A--J answer choices. CPIS
+  preserves that string byte-for-byte after JSON decoding and preserves the
+  official option order; success is selecting the source label.
+official_scoring: >-
+  Deterministic exact match to the official label field. The official release
+  provides labels rather than a separate evaluator, so CPIS tests the direct
+  field comparison and does not use an LLM judge.
+allowed_normalization: >-
+  Strip surrounding whitespace and compare the option letter case-insensitively.
+  No semantic answer mapping, option reordering, or partial credit is permitted.
+invalid_output_handling: >-
+  An answer that cannot be parsed as terminal answer JSON is incorrect. Invalid
+  confidence is forced abstention operationally and separately reported.
+evaluation_type: deterministic answer-letter evaluation; no model judge
+duplicate_and_transformed_relationships: >-
+  Official IDs are unique and CPIS creates no derived question variants. Any
+  repeated generations remain clustered by the original Text-N ID.
+contamination_considerations: >-
+  The benchmark is public and its questions were collected from public medical
+  examinations before expert review and rephrasing, so pretraining contamination
+  cannot be ruled out. CPIS makes paired within-item decoder contrasts and does
+  not interpret raw accuracy as contamination-free.
+benchmark_exclusions: >-
+  The five official few-shot development examples are excluded by design because
+  EXPERIMENT.md defines the 2,450-question Text set. Preparation rejects schema
+  deviations, duplicate IDs, missing A--J options, invalid labels, or missing
+  official task/system/type metadata; no row in the official Text test file is
+  otherwise excluded.
+evaluator_revision: cpis-exact-match-casefold-v1
+preparation_algorithm: >-
+  official-strata-exact-40-30-30-v1 with salt
+  medxpertqa-text-official-strata-v1: deterministically balance official
+  medical_task x body_system x question_type strata while enforcing exact
+  980/735/735 internal partition totals.
+prepared_partitions:
+  - partition: development
+    rows: 980
+    sha256: 1bea91d9d12e2e9354ec3c59ec198ee98b94858187c21874b5ac40ec2dd99fed
+    relative_cache_path: prepared/medxpertqa-text-v1-sealed/items-development.jsonl
+  - partition: certification
+    rows: 735
+    sha256: 10016d23430431dd8ea766be6c0a36d82a2c26ed542ff2decbc7b4801eddaaba
+    relative_cache_path: prepared/medxpertqa-text-v1-sealed/items-certification.jsonl
+  - partition: test
+    rows: 735
+    sha256: 786806fc010a5fc5062a76f08d9796d66275b2641b02619cb6e2b78c341db6dc
+    relative_cache_path: prepared/medxpertqa-text-v1-sealed/items-test.jsonl
+access_firewall: >-
+  Generation configurations must point to exactly one partition-specific file.
+  Development may access only items-development.jsonl. Certification and test
+  require separate versioned phase gates and immutable access events.
+sources:
+  - source_type: official_dataset_card
+    url: https://huggingface.co/datasets/TsinghuaC3I/MedXpertQA/blob/7e7c465a68eb2b866926bfa59c8c9d17a8daba65/README.md
+    revision: 7e7c465a68eb2b866926bfa59c8c9d17a8daba65
+    artifact_sha256: 7deb132dc3745ad22c8e0c3726e7f40cd30675ba5b400e876b85b138fa40c25a
+    note: Pinned official dataset description, split definitions, schema, license, and citation.
+  - source_type: official_dataset_artifact
+    url: https://huggingface.co/datasets/TsinghuaC3I/MedXpertQA/blob/7e7c465a68eb2b866926bfa59c8c9d17a8daba65/Text/test.jsonl
+    revision: 7e7c465a68eb2b866926bfa59c8c9d17a8daba65
+    artifact_sha256: 07ea977f7e326909b51c883b65f6ad7f399fc6db07408ef3630f4e3048ec71b2
+    note: Pinned official 2,450-row text-only source with A--J labels and task metadata.
+  - source_type: official_paper
+    url: https://proceedings.mlr.press/v267/zuo25a.html
+    revision: PMLR-v267-zuo25a
+    artifact_sha256: null
+    note: Official ICML 2025 paper defining MedXpertQA construction and evaluation.
+  - source_type: local_validation
+    url: evidence/data/medxpertqa_text_preparation_v1.json
+    revision: repository-record
+    artifact_sha256: null
+    note: Deterministic partition counts, official-strata summary, and sealed hashes.

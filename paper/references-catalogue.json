@@ -1,0 +1,190 @@
+{
+  "policy": "Background literature must be formally published: no arXiv-only or other preprint-only records are used where a published version exists. Entries without a Crossref DOI are admitted when they are either peer-reviewed proceedings not indexed by Crossref or first-party model/dataset artifacts used as experimental inputs and pinned by immutable revision URL. BibTeX is supplied explicitly for every such entry.",
+  "references": [
+    {
+      "key": "brier1950",
+      "doi": "10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2",
+      "why": "the Brier score"
+    },
+    {
+      "key": "murphy1973",
+      "doi": "10.1175/1520-0450(1973)012<0595:ANVPOT>2.0.CO;2",
+      "why": "calibration-refinement decomposition of the Brier score"
+    },
+    {
+      "key": "gneiting2007proper",
+      "doi": "10.1198/016214506000001437",
+      "why": "proper scoring rules"
+    },
+    {
+      "key": "gneiting2007sharpness",
+      "doi": "10.1111/j.1467-9868.2007.00587.x",
+      "why": "calibration and sharpness for probabilistic forecasts"
+    },
+    {
+      "key": "dimitriadis2021corp",
+      "doi": "10.1073/pnas.2016191118",
+      "why": "CORP decomposition and bin-free reliability diagrams"
+    },
+    {
+      "key": "dimitriadis2024triptych",
+      "doi": "10.1016/j.ijforecast.2023.09.007",
+      "why": "evaluating probabilistic classifiers"
+    },
+    {
+      "key": "chow1970",
+      "doi": "10.1109/TIT.1970.1054406",
+      "why": "the reject option and error-reject tradeoff"
+    },
+    {
+      "key": "efron1979",
+      "doi": "10.1214/aos/1176344552",
+      "why": "the bootstrap"
+    },
+    {
+      "key": "ayer1955",
+      "doi": "10.1214/aoms/1177728423",
+      "why": "the pool-adjacent-violators algorithm"
+    },
+    {
+      "key": "zadrozny2002",
+      "doi": "10.1145/775047.775151",
+      "why": "isotonic calibration of classifier scores"
+    },
+    {
+      "key": "niculescu2005",
+      "doi": "10.1145/1102351.1102430",
+      "why": "predicting good probabilities with supervised learning"
+    },
+    {
+      "key": "song2025greedy",
+      "doi": "10.18653/v1/2025.naacl-long.211",
+      "why": "non-determinism in LLM evaluation"
+    },
+    {
+      "key": "tian2023calibration",
+      "doi": "10.18653/v1/2023.emnlp-main.330",
+      "why": "verbalized confidence from RLHF language models"
+    },
+    {
+      "key": "renze2024temperature",
+      "doi": "10.18653/v1/2024.findings-emnlp.432",
+      "why": "effect of sampling temperature on LLM problem solving"
+    },
+    {
+      "key": "harada2025manyifeval",
+      "doi": "10.18653/v1/2025.findings-emnlp.896",
+      "why": "official ManyIFEval paper and benchmark definition"
+    },
+    {
+      "key": "kovari2024decision",
+      "doi": "10.3390/info15110725",
+      "why": "Information: AI decision support, accuracy and trust"
+    },
+    {
+      "key": "bhattacharjee2025entropy",
+      "doi": "10.3390/info16100875",
+      "why": "Information: uncertainty quantification for medical AI"
+    },
+    {
+      "key": "darwish2025hallucination",
+      "doi": "10.3390/info16070517",
+      "why": "Information: mitigating LLM hallucination"
+    },
+    {
+      "key": "alghamdi2024healthcare",
+      "doi": "10.3390/info15070371",
+      "why": "Information: reliability of deployed LLM agents"
+    },
+    {
+      "key": "schuster2021consistent",
+      "doi": "10.18653/v1/2021.emnlp-main.406",
+      "why": "consistent accelerated inference with confidence thresholds"
+    },
+    {
+      "key": "ulmer2024calibrating",
+      "doi": "10.18653/v1/2024.acl-long.824",
+      "why": "calibrating LLMs from generations only"
+    },
+    {
+      "key": "yona2024faithful",
+      "doi": "10.18653/v1/2024.emnlp-main.443",
+      "why": "whether LLMs faithfully express intrinsic uncertainty in words"
+    },
+    {
+      "key": "xu2024sayself",
+      "doi": "10.18653/v1/2024.emnlp-main.343",
+      "why": "teaching LLMs to express confidence"
+    },
+    {
+      "key": "vaswani2017",
+      "doi": null,
+      "why": "transformer architecture",
+      "bibtex": "@inproceedings{vaswani2017,\n  author = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, {\\L}ukasz and Polosukhin, Illia},\n  title = {Attention Is All You Need},\n  booktitle = {Advances in Neural Information Processing Systems 30},\n  year = {2017},\n  publisher = {Curran Associates, Inc.}\n}\n"
+    },
+    {
+      "key": "geifman2017selective",
+      "doi": null,
+      "why": "selective classification for deep networks",
+      "bibtex": "@inproceedings{geifman2017selective,\n  author = {Geifman, Yonatan and El-Yaniv, Ran},\n  title = {Selective Classification for Deep Neural Networks},\n  booktitle = {Advances in Neural Information Processing Systems 30},\n  year = {2017},\n  publisher = {Curran Associates, Inc.}\n}\n"
+    },
+    {
+      "key": "lakshminarayanan2017ensembles",
+      "doi": null,
+      "why": "predictive uncertainty via deep ensembles",
+      "bibtex": "@inproceedings{lakshminarayanan2017ensembles,\n  author = {Lakshminarayanan, Balaji and Pritzel, Alexander and Blundell, Charles},\n  title = {Simple and Scalable Predictive Uncertainty Estimation Using Deep Ensembles},\n  booktitle = {Advances in Neural Information Processing Systems 30},\n  year = {2017},\n  publisher = {Curran Associates, Inc.}\n}\n"
+    },
+    {
+      "key": "guo2017calibration",
+      "doi": null,
+      "why": "miscalibration of modern neural networks",
+      "bibtex": "@inproceedings{guo2017calibration,\n  author = {Guo, Chuan and Pleiss, Geoff and Sun, Yu and Weinberger, Kilian Q.},\n  title = {On Calibration of Modern Neural Networks},\n  booktitle = {Proceedings of the 34th International Conference on Machine Learning},\n  series = {Proceedings of Machine Learning Research},\n  volume = {70},\n  pages = {1321--1330},\n  year = {2017},\n  publisher = {PMLR}\n}\n"
+    },
+    {
+      "key": "holtzman2020nucleus",
+      "doi": null,
+      "why": "nucleus (top-p) sampling",
+      "bibtex": "@inproceedings{holtzman2020nucleus,\n  author = {Holtzman, Ari and Buys, Jan and Du, Li and Forbes, Maxwell and Choi, Yejin},\n  title = {The Curious Case of Neural Text Degeneration},\n  booktitle = {Proceedings of the 8th International Conference on Learning Representations (ICLR)},\n  year = {2020}\n}\n"
+    },
+    {
+      "key": "elyaniv2010foundations",
+      "doi": null,
+      "why": "foundations of selective classification",
+      "bibtex": "@article{elyaniv2010foundations,\n  author = {El-Yaniv, Ran and Wiener, Yair},\n  title = {On the Foundations of Noise-Free Selective Classification},\n  journal = {Journal of Machine Learning Research},\n  volume = {11},\n  pages = {1605--1641},\n  year = {2010}\n}\n"
+    },
+    {
+      "key": "holm1979",
+      "doi": null,
+      "why": "Holm step-down multiple comparison procedure",
+      "bibtex": "@article{holm1979,\n  author = {Holm, Sture},\n  title = {A Simple Sequentially Rejective Multiple Test Procedure},\n  journal = {Scandinavian Journal of Statistics},\n  volume = {6},\n  number = {2},\n  pages = {65--70},\n  year = {1979}\n}\n"
+    },
+    {
+      "key": "qwen35card",
+      "doi": null,
+      "kind": "official_artifact",
+      "why": "exact Qwen3.5-9B checkpoint and official inference guidance",
+      "bibtex": "@misc{qwen35card,\n  author = {{Qwen Team}},\n  title = {{Qwen3.5-9B} Model Card},\n  year = {2026},\n  howpublished = {\\url{https://huggingface.co/Qwen/Qwen3.5-9B/tree/c202236235762e1c871ad0ccb60c8ee5ba337b9a}},\n  note = {Accessed 23 September 2026}\n}\n"
+    },
+    {
+      "key": "ministralinstructcard",
+      "doi": null,
+      "kind": "official_artifact",
+      "why": "exact Ministral-3-8B Instruct BF16 checkpoint",
+      "bibtex": "@misc{ministralinstructcard,\n  author = {{Mistral AI}},\n  title = {{Ministral-3-8B-Instruct-2512-BF16} Model Card},\n  year = {2025},\n  howpublished = {\\url{https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-BF16/tree/f6fae9795746f63c9be8344932f01275f3c63734}},\n  note = {Accessed 23 September 2026}\n}\n"
+    },
+    {
+      "key": "ministralreasoningcard",
+      "doi": null,
+      "kind": "official_artifact",
+      "why": "exact Ministral-3-8B Reasoning checkpoint",
+      "bibtex": "@misc{ministralreasoningcard,\n  author = {{Mistral AI}},\n  title = {{Ministral-3-8B-Reasoning-2512} Model Card},\n  year = {2025},\n  howpublished = {\\url{https://huggingface.co/mistralai/Ministral-3-8B-Reasoning-2512/tree/81eaece1948f3875421d9a45bc55487d10e2d894}},\n  note = {Accessed 23 September 2026}\n}\n"
+    },
+    {
+      "key": "supergpqacard",
+      "doi": null,
+      "kind": "official_artifact",
+      "why": "exact SuperGPQA dataset release used by the study",
+      "bibtex": "@misc{supergpqacard,\n  author = {{M-A-P Team}},\n  title = {{SuperGPQA} Dataset Card},\n  year = {2025},\n  howpublished = {\\url{https://huggingface.co/datasets/m-a-p/SuperGPQA/tree/4430d4458112c7d4497fdcf94d7cc223313d6acf}},\n  note = {Accessed 23 September 2026}\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "artifacts": {
+    "calibration_thresholds": {
+      "path": "evidence/protocol/calibration_thresholds_v1.json",
+      "sha256": "a14672705c5c11b27360627ef548a40b971df1a9eaf7e34892d229eafd920dc0"
+    },
+    "figure_coverage": {
+      "path": "evidence/core/figures/forest-K.svg",
+      "sha256": "54208a82b7dd4a0cde5975614961ca4ee0875940df72b3c81e79767d816aa270"
+    },
+    "figure_risk": {
+      "path": "evidence/core/figures/forest-R.svg",
+      "sha256": "2c7cb78d421bd8c36b503a3fdab43108337bf60e69fe580e509e1acb857145b7"
+    },
+    "figure_success": {
+      "path": "evidence/core/figures/forest-S.svg",
+      "sha256": "a2eb321b42aa62e2ea1d49a28efee60f27da3169dfa7f387dfe61835ce1e6da7"
+    },
+    "freeze": {
+      "path": "evidence/protocol/core_study_freeze_v1.json",
+      "sha256": "4417d096cf0dbae76871cfecf8b90c1eeffabce1e884714ff53d5ae9677b8fb1"
+    },
+    "held_out_analysis": {
+      "path": "evidence/core/held-out-analysis.json",
+      "sha256": "77ad0cb94efc65209ff7fc27897c55160d0c41cc6f7b76078d3398d4d117ea65"
+    },
+    "measurement_properties": {
+      "path": "evidence/core/measurement-properties.json",
+      "sha256": "2b418ed9e655e6974dc95560d6676b804bc0fc71d7126c453e530f18d98a7177"
+    },
+    "reference_confidence_quality": {
+      "path": "evidence/core/reference-confidence-quality-heldout.json",
+      "sha256": "5df72e00f26289d73fadb077bdb70c224387c2074a8a00aa141a88c35bc3af62"
+    },
+    "seed_robustness": {
+      "path": "evidence/core/seed-robustness.json",
+      "sha256": "69606a843c8f92b3e72a68f13081bb30a58393d4b60f1b9f7238d9acb210d8ff"
+    },
+    "table_calibration": {
+      "path": "evidence/core/table-calibration-thresholds.md",
+      "sha256": "8844835ab57bd952047133b38c1a15bf8360ad791575da7c9753dbb1de59ba6d"
+    },
+    "table_classification": {
+      "path": "evidence/core/table-classification-summary.md",
+      "sha256": "67b1e5b8df24acf1627f5fea6c2d92334b6fead72f0fd563ed17eb707c3665f9"
+    },
+    "table_confidence_quantisation": {
+      "path": "evidence/core/table-confidence-quantisation.md",
+      "sha256": "ace4bea403000e594362dc88078d7988f0e7cb047772af374a9e80199eeba927"
+    },
+    "table_endpoints": {
+      "path": "evidence/core/table-held-out-endpoints.md",
+      "sha256": "05a5f74de6db0bb717ba67c9f5c729290fcd229253c84b99547aa4720cddfc99"
+    },
+    "table_outcome_partition": {
+      "path": "evidence/core/table-outcome-partition.md",
+      "sha256": "62f8327895c935ed5caf1132f4650274a26bcfb888aecf220ed6d78c71524ff1"
+    },
+    "table_realisation": {
+      "path": "evidence/core/table-realisation.md",
+      "sha256": "162b93f8902e8d15ec95c5b6ee4263a6eaa7e000e49c2a3b8cf24d9a87765244"
+    },
+    "table_reference_quality": {
+      "path": "evidence/core/table-reference-confidence-quality.md",
+      "sha256": "c3fc7855f72125916936897652078a9035afe4ee089fe418382f6b70fcba7bff"
+    },
+    "table_risk_precision": {
+      "path": "evidence/core/table-risk-precision.md",
+      "sha256": "6d4295d7a9b6d39437036b18f8380b4ab2237f07b61d53b7b080991d159c53a8"
+    },
+    "table_seed_robustness": {
+      "path": "evidence/core/table-seed-robustness.md",
+      "sha256": "32dcff5f777031b0feaebb9ef81713f4bc0f6e5bc6af625a8e4901a02c31976b"
+    }
+  },
+  "generated_at_utc": "2026-09-23T02:11:13.674376+00:00",
+  "git_commit": "00865b8c7c61b40747c47a07ca05154c17e159f9",
+  "git_dirty": true
+}

@@ -1,0 +1,2147 @@
+{
+  "artifact": "cpis-seed-robustness-v1",
+  "artifact_sha256": "31396a3a02f82e0f62a7720de4f0b0e5e89fbfc472fa82feba0470e84ef27e7a",
+  "created_at_utc": "2026-09-22T23:58:06.432197+00:00",
+  "interpretation": "seed_share_of_variance is the fraction of the per-item contrast variability attributable to resampling the decoder, under the batching regime of this run. Selective risk R is a ratio and has no per-item decomposition; its across-seed spread is reported but it carries no variance split",
+  "pairs": [
+    {
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "across_seed_summary": {
+            "E": {
+              "mean": -0.192708,
+              "per_seed": {
+                "1729": -0.234375,
+                "2718": -0.15625,
+                "3141": -0.1875
+              },
+              "range": 0.078125,
+              "sd": 0.032106,
+              "sign_consistent": true
+            },
+            "K": {
+              "mean": -0.278646,
+              "per_seed": {
+                "1729": -0.382812,
+                "2718": -0.15625,
+                "3141": -0.296875
+              },
+              "range": 0.226562,
+              "sd": 0.093387,
+              "sign_consistent": true
+            },
+            "R": {
+              "mean": -0.007568,
+              "per_seed": {
+                "1729": 0.091954,
+                "2718": -0.106667,
+                "3141": -0.007992
+              },
+              "range": 0.198621,
+              "sd": 0.081087,
+              "sign_consistent": false
+            },
+            "S": {
+              "mean": -0.085938,
+              "per_seed": {
+                "1729": -0.148438,
+                "2718": 0.0,
+                "3141": -0.109375
+              },
+              "range": 0.148438,
+              "sd": 0.062825,
+              "sign_consistent": true
+            },
+            "aC": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": 0.278646,
+              "per_seed": {
+                "1729": 0.382812,
+                "2718": 0.15625,
+                "3141": 0.296875
+              },
+              "range": 0.226562,
+              "sd": 0.093387,
+              "sign_consistent": true
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.12432183,
+              "items": 128,
+              "seed_share_of_variance": 0.564974,
+              "total": 0.28578016,
+              "within_item_across_seeds": 0.16145833
+            },
+            "K": {
+              "between_item": 0.15586344,
+              "items": 128,
+              "seed_share_of_variance": 0.563716,
+              "total": 0.35725233,
+              "within_item_across_seeds": 0.20138889
+            },
+            "S": {
+              "between_item": 0.10182634,
+              "items": 33,
+              "seed_share_of_variance": 0.388948,
+              "total": 0.16664116,
+              "within_item_across_seeds": 0.06481481
+            },
+            "aC": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "aTau": {
+              "between_item": 0.15586344,
+              "items": 128,
+              "seed_share_of_variance": 0.563716,
+              "total": 0.35725233,
+              "within_item_across_seeds": 0.20138889
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        },
+        "reference_to_low_top_p": {
+          "across_seed_summary": {
+            "E": {
+              "mean": -0.005209,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": -0.023438,
+                "3141": 0.007812
+              },
+              "range": 0.03125,
+              "sd": 0.013279,
+              "sign_consistent": false
+            },
+            "K": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": -0.007812,
+                "2718": -0.007812,
+                "3141": 0.015625
+              },
+              "range": 0.023437,
+              "sd": 0.011048,
+              "sign_consistent": false
+            },
+            "R": {
+              "mean": -0.008485,
+              "per_seed": {
+                "1729": 0.008658,
+                "2718": -0.030991,
+                "3141": -0.003123
+              },
+              "range": 0.039649,
+              "sd": 0.016625,
+              "sign_consistent": false
+            },
+            "S": {
+              "mean": 0.005208,
+              "per_seed": {
+                "1729": -0.007813,
+                "2718": 0.015625,
+                "3141": 0.007813
+              },
+              "range": 0.023438,
+              "sd": 0.009744,
+              "sign_consistent": false
+            },
+            "aC": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": -0.0,
+              "per_seed": {
+                "1729": 0.007812,
+                "2718": 0.007812,
+                "3141": -0.015625
+              },
+              "range": 0.023437,
+              "sd": 0.011048,
+              "sign_consistent": false
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.04337565,
+              "items": 128,
+              "seed_share_of_variance": 0.621359,
+              "total": 0.11455621,
+              "within_item_across_seeds": 0.07118056
+            },
+            "K": {
+              "between_item": 0.04340278,
+              "items": 128,
+              "seed_share_of_variance": 0.621212,
+              "total": 0.11458333,
+              "within_item_across_seeds": 0.07118056
+            },
+            "S": {
+              "between_item": 0.0295166,
+              "items": 67,
+              "seed_share_of_variance": 0.65804,
+              "total": 0.08631593,
+              "within_item_across_seeds": 0.05679934
+            },
+            "aC": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "aTau": {
+              "between_item": 0.04340278,
+              "items": 128,
+              "seed_share_of_variance": 0.621212,
+              "total": 0.11458333,
+              "within_item_across_seeds": 0.07118056
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        }
+      },
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "experiment_id": "cpis-seeds-ministral3-8b-instruct-manyifeval-v1",
+      "items": 128,
+      "model_id": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "model_mode": "instruct",
+      "run_id": "cpis-seeds-ministral3-8b-instruct-manyifeval-v1-dddf367066a8",
+      "seeds": [
+        1729,
+        2718,
+        3141
+      ],
+      "status": "estimated",
+      "threshold": 0.98
+    },
+    {
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "across_seed_summary": {
+            "E": {
+              "mean": -0.231771,
+              "per_seed": {
+                "1729": -0.234375,
+                "2718": -0.234375,
+                "3141": -0.226562
+              },
+              "range": 0.007813,
+              "sd": 0.003683,
+              "sign_consistent": true
+            },
+            "K": {
+              "mean": -0.375,
+              "per_seed": {
+                "1729": -0.382812,
+                "2718": -0.375,
+                "3141": -0.367188
+              },
+              "range": 0.015624,
+              "sd": 0.006378,
+              "sign_consistent": true
+            },
+            "R": {
+              "mean": 0.040864,
+              "per_seed": {
+                "1729": 0.039286,
+                "2718": 0.037085,
+                "3141": 0.046221
+              },
+              "range": 0.009136,
+              "sd": 0.003893,
+              "sign_consistent": true
+            },
+            "S": {
+              "mean": -0.143229,
+              "per_seed": {
+                "1729": -0.148438,
+                "2718": -0.140625,
+                "3141": -0.140625
+              },
+              "range": 0.007813,
+              "sd": 0.003683,
+              "sign_consistent": true
+            },
+            "aC": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": 0.375,
+              "per_seed": {
+                "1729": 0.382812,
+                "2718": 0.375,
+                "3141": 0.367188
+              },
+              "range": 0.015624,
+              "sd": 0.006378,
+              "sign_consistent": true
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.13638645,
+              "items": 128,
+              "seed_share_of_variance": 0.393644,
+              "total": 0.22492811,
+              "within_item_across_seeds": 0.08854167
+            },
+            "K": {
+              "between_item": 0.13888889,
+              "items": 128,
+              "seed_share_of_variance": 0.455782,
+              "total": 0.25520833,
+              "within_item_across_seeds": 0.11631944
+            },
+            "S": {
+              "between_item": 0.01357001,
+              "items": 56,
+              "seed_share_of_variance": 0.53911,
+              "total": 0.02944303,
+              "within_item_across_seeds": 0.01587302
+            },
+            "aC": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "aTau": {
+              "between_item": 0.13888889,
+              "items": 128,
+              "seed_share_of_variance": 0.455782,
+              "total": 0.25520833,
+              "within_item_across_seeds": 0.11631944
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        },
+        "reference_to_low_top_p": {
+          "across_seed_summary": {
+            "E": {
+              "mean": -0.002604,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": -0.007812
+              },
+              "range": 0.007812,
+              "sd": 0.003683,
+              "sign_consistent": true
+            },
+            "K": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "R": {
+              "mean": -0.003205,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": -0.009615
+              },
+              "range": 0.009615,
+              "sd": 0.004533,
+              "sign_consistent": true
+            },
+            "S": {
+              "mean": 0.002604,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.007813
+              },
+              "range": 0.007813,
+              "sd": 0.003683,
+              "sign_consistent": true
+            },
+            "aC": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.00086127,
+              "items": 128,
+              "seed_share_of_variance": 0.668407,
+              "total": 0.00259738,
+              "within_item_across_seeds": 0.00173611
+            },
+            "K": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "S": {
+              "between_item": 0.00104812,
+              "items": 105,
+              "seed_share_of_variance": 0.66879,
+              "total": 0.00316453,
+              "within_item_across_seeds": 0.0021164
+            },
+            "aC": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "aTau": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        }
+      },
+      "dataset_id": "m-a-p/SuperGPQA",
+      "experiment_id": "cpis-seeds-ministral3-8b-instruct-supergpqa-v1",
+      "items": 128,
+      "model_id": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "model_mode": "instruct",
+      "run_id": "cpis-seeds-ministral3-8b-instruct-supergpqa-v1-d1b839f49a0d",
+      "seeds": [
+        1729,
+        2718,
+        3141
+      ],
+      "status": "estimated",
+      "threshold": 0.95
+    },
+    {
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "across_seed_summary": {
+            "E": {
+              "mean": -0.054687,
+              "per_seed": {
+                "1729": -0.09375,
+                "2718": -0.070312,
+                "3141": 0.0
+              },
+              "range": 0.09375,
+              "sd": 0.039836,
+              "sign_consistent": true
+            },
+            "K": {
+              "mean": -0.028646,
+              "per_seed": {
+                "1729": -0.078125,
+                "2718": -0.054688,
+                "3141": 0.046875
+              },
+              "range": 0.125,
+              "sd": 0.054252,
+              "sign_consistent": false
+            },
+            "R": {
+              "mean": -0.052545,
+              "per_seed": {
+                "1729": -0.050239,
+                "2718": -0.03902,
+                "3141": -0.068376
+              },
+              "range": 0.029356,
+              "sd": 0.012095,
+              "sign_consistent": true
+            },
+            "S": {
+              "mean": 0.026042,
+              "per_seed": {
+                "1729": 0.015625,
+                "2718": 0.015625,
+                "3141": 0.046875
+              },
+              "range": 0.03125,
+              "sd": 0.014731,
+              "sign_consistent": true
+            },
+            "aC": {
+              "mean": 0.005208,
+              "per_seed": {
+                "1729": -0.015625,
+                "2718": 0.007812,
+                "3141": 0.023438
+              },
+              "range": 0.039063,
+              "sd": 0.016053,
+              "sign_consistent": false
+            },
+            "aTau": {
+              "mean": 0.023438,
+              "per_seed": {
+                "1729": 0.09375,
+                "2718": 0.046875,
+                "3141": -0.070312
+              },
+              "range": 0.164062,
+              "sd": 0.068998,
+              "sign_consistent": false
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.11419678,
+              "items": 128,
+              "seed_share_of_variance": 0.67721,
+              "total": 0.35378011,
+              "within_item_across_seeds": 0.23958333
+            },
+            "K": {
+              "between_item": 0.11810303,
+              "items": 128,
+              "seed_share_of_variance": 0.706813,
+              "total": 0.40282525,
+              "within_item_across_seeds": 0.28472222
+            },
+            "S": {
+              "between_item": 0.02001082,
+              "items": 43,
+              "seed_share_of_variance": 0.53049,
+              "total": 0.04262064,
+              "within_item_across_seeds": 0.02260982
+            },
+            "aC": {
+              "between_item": 0.00518121,
+              "items": 128,
+              "seed_share_of_variance": 0.667826,
+              "total": 0.01559787,
+              "within_item_across_seeds": 0.01041667
+            },
+            "aTau": {
+              "between_item": 0.10969374,
+              "items": 128,
+              "seed_share_of_variance": 0.72431,
+              "total": 0.39788818,
+              "within_item_across_seeds": 0.28819444
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        },
+        "reference_to_low_top_p": {
+          "across_seed_summary": {
+            "E": {
+              "mean": 0.046875,
+              "per_seed": {
+                "1729": 0.015625,
+                "2718": 0.054688,
+                "3141": 0.070312
+              },
+              "range": 0.054687,
+              "sd": 0.022999,
+              "sign_consistent": true
+            },
+            "K": {
+              "mean": 0.075521,
+              "per_seed": {
+                "1729": 0.039062,
+                "2718": 0.09375,
+                "3141": 0.09375
+              },
+              "range": 0.054688,
+              "sd": 0.02578,
+              "sign_consistent": true
+            },
+            "R": {
+              "mean": -0.031118,
+              "per_seed": {
+                "1729": -0.028915,
+                "2718": -0.044598,
+                "3141": -0.019841
+              },
+              "range": 0.024757,
+              "sd": 0.010226,
+              "sign_consistent": true
+            },
+            "S": {
+              "mean": 0.028646,
+              "per_seed": {
+                "1729": 0.023438,
+                "2718": 0.039063,
+                "3141": 0.023437
+              },
+              "range": 0.015626,
+              "sd": 0.007366,
+              "sign_consistent": true
+            },
+            "aC": {
+              "mean": 0.020833,
+              "per_seed": {
+                "1729": 0.03125,
+                "2718": 0.023438,
+                "3141": 0.007812
+              },
+              "range": 0.023438,
+              "sd": 0.009744,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": -0.096354,
+              "per_seed": {
+                "1729": -0.070312,
+                "2718": -0.117188,
+                "3141": -0.101562
+              },
+              "range": 0.046876,
+              "sd": 0.019488,
+              "sign_consistent": true
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.11412218,
+              "items": 128,
+              "seed_share_of_variance": 0.619448,
+              "total": 0.29988607,
+              "within_item_across_seeds": 0.18576389
+            },
+            "K": {
+              "between_item": 0.11842855,
+              "items": 128,
+              "seed_share_of_variance": 0.635633,
+              "total": 0.32502577,
+              "within_item_across_seeds": 0.20659722
+            },
+            "S": {
+              "between_item": 0.03651569,
+              "items": 59,
+              "seed_share_of_variance": 0.171014,
+              "total": 0.04404865,
+              "within_item_across_seeds": 0.00753296
+            },
+            "aC": {
+              "between_item": 0.00998264,
+              "items": 128,
+              "seed_share_of_variance": 0.676056,
+              "total": 0.03081597,
+              "within_item_across_seeds": 0.02083333
+            },
+            "aTau": {
+              "between_item": 0.12005615,
+              "items": 128,
+              "seed_share_of_variance": 0.643824,
+              "total": 0.33707004,
+              "within_item_across_seeds": 0.21701389
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        }
+      },
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "experiment_id": "cpis-seeds-ministral3-8b-reasoning-manyifeval-v1",
+      "items": 128,
+      "model_id": "mistralai/Ministral-3-8B-Reasoning-2512",
+      "model_mode": "reasoning",
+      "run_id": "cpis-seeds-ministral3-8b-reasoning-manyifeval-v1-ae51c577e334",
+      "seeds": [
+        1729,
+        2718,
+        3141
+      ],
+      "status": "estimated",
+      "threshold": 0.95
+    },
+    {
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "across_seed_summary": {
+            "E": {
+              "mean": 0.046875,
+              "per_seed": {
+                "1729": 0.070312,
+                "2718": 0.023438,
+                "3141": 0.046875
+              },
+              "range": 0.046874,
+              "sd": 0.019136,
+              "sign_consistent": true
+            },
+            "K": {
+              "mean": 0.020833,
+              "per_seed": {
+                "1729": 0.070312,
+                "2718": 0.0,
+                "3141": -0.007812
+              },
+              "range": 0.078124,
+              "sd": 0.035132,
+              "sign_consistent": false
+            },
+            "R": {
+              "mean": 0.058794,
+              "per_seed": {
+                "1729": 0.055714,
+                "2718": 0.036585,
+                "3141": 0.084083
+              },
+              "range": 0.047498,
+              "sd": 0.019513,
+              "sign_consistent": true
+            },
+            "S": {
+              "mean": -0.026042,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": -0.023438,
+                "3141": -0.054688
+              },
+              "range": 0.054688,
+              "sd": 0.022402,
+              "sign_consistent": true
+            },
+            "aC": {
+              "mean": -0.023438,
+              "per_seed": {
+                "1729": -0.03125,
+                "2718": -0.046875,
+                "3141": 0.007812
+              },
+              "range": 0.054687,
+              "sd": 0.022999,
+              "sign_consistent": false
+            },
+            "aTau": {
+              "mean": 0.039062,
+              "per_seed": {
+                "1729": 0.007812,
+                "2718": 0.0625,
+                "3141": 0.046875
+              },
+              "range": 0.054688,
+              "sd": 0.023,
+              "sign_consistent": true
+            },
+            "q": {
+              "mean": -0.036458,
+              "per_seed": {
+                "1729": -0.046875,
+                "2718": -0.015625,
+                "3141": -0.046875
+              },
+              "range": 0.03125,
+              "sd": 0.014731,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.06898329,
+              "items": 128,
+              "seed_share_of_variance": 0.665351,
+              "total": 0.20613607,
+              "within_item_across_seeds": 0.13715278
+            },
+            "K": {
+              "between_item": 0.08116319,
+              "items": 128,
+              "seed_share_of_variance": 0.674783,
+              "total": 0.24956597,
+              "within_item_across_seeds": 0.16840278
+            },
+            "S": {
+              "between_item": 0.05324315,
+              "items": 62,
+              "seed_share_of_variance": 0.498229,
+              "total": 0.10611053,
+              "within_item_across_seeds": 0.05286738
+            },
+            "aC": {
+              "between_item": 0.01420763,
+              "items": 128,
+              "seed_share_of_variance": 0.675043,
+              "total": 0.04372152,
+              "within_item_across_seeds": 0.02951389
+            },
+            "aTau": {
+              "between_item": 0.0653144,
+              "items": 128,
+              "seed_share_of_variance": 0.688105,
+              "total": 0.20941162,
+              "within_item_across_seeds": 0.14409722
+            },
+            "q": {
+              "between_item": 0.0316569,
+              "items": 128,
+              "seed_share_of_variance": 0.65747,
+              "total": 0.09242079,
+              "within_item_across_seeds": 0.06076389
+            }
+          }
+        },
+        "reference_to_low_top_p": {
+          "across_seed_summary": {
+            "E": {
+              "mean": -0.03125,
+              "per_seed": {
+                "1729": -0.03125,
+                "2718": -0.03125,
+                "3141": -0.03125
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "K": {
+              "mean": -0.078125,
+              "per_seed": {
+                "1729": -0.085938,
+                "2718": -0.054688,
+                "3141": -0.09375
+              },
+              "range": 0.039062,
+              "sd": 0.016877,
+              "sign_consistent": true
+            },
+            "R": {
+              "mean": 0.01375,
+              "per_seed": {
+                "1729": 0.02,
+                "2718": -0.00439,
+                "3141": 0.025641
+              },
+              "range": 0.030031,
+              "sd": 0.013032,
+              "sign_consistent": false
+            },
+            "S": {
+              "mean": -0.046875,
+              "per_seed": {
+                "1729": -0.054688,
+                "2718": -0.023438,
+                "3141": -0.0625
+              },
+              "range": 0.039062,
+              "sd": 0.016877,
+              "sign_consistent": true
+            },
+            "aC": {
+              "mean": 0.083333,
+              "per_seed": {
+                "1729": 0.09375,
+                "2718": 0.039062,
+                "3141": 0.117188
+              },
+              "range": 0.078126,
+              "sd": 0.032734,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": -0.130208,
+              "per_seed": {
+                "1729": -0.140625,
+                "2718": -0.09375,
+                "3141": -0.15625
+              },
+              "range": 0.0625,
+              "sd": 0.026557,
+              "sign_consistent": true
+            },
+            "q": {
+              "mean": 0.125,
+              "per_seed": {
+                "1729": 0.132812,
+                "2718": 0.109375,
+                "3141": 0.132812
+              },
+              "range": 0.023437,
+              "sd": 0.011048,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.06325955,
+              "items": 128,
+              "seed_share_of_variance": 0.651107,
+              "total": 0.1813151,
+              "within_item_across_seeds": 0.11805556
+            },
+            "K": {
+              "between_item": 0.13104926,
+              "items": 128,
+              "seed_share_of_variance": 0.586352,
+              "total": 0.31681315,
+              "within_item_across_seeds": 0.18576389
+            },
+            "S": {
+              "between_item": 0.02986031,
+              "items": 51,
+              "seed_share_of_variance": 0.684602,
+              "total": 0.09467512,
+              "within_item_across_seeds": 0.06481481
+            },
+            "aC": {
+              "between_item": 0.03645833,
+              "items": 128,
+              "seed_share_of_variance": 0.676923,
+              "total": 0.11284722,
+              "within_item_across_seeds": 0.07638889
+            },
+            "aTau": {
+              "between_item": 0.06985135,
+              "items": 128,
+              "seed_share_of_variance": 0.635011,
+              "total": 0.19137912,
+              "within_item_across_seeds": 0.12152778
+            },
+            "q": {
+              "between_item": 0.07638889,
+              "items": 128,
+              "seed_share_of_variance": 0.592593,
+              "total": 0.1875,
+              "within_item_across_seeds": 0.11111111
+            }
+          }
+        }
+      },
+      "dataset_id": "m-a-p/SuperGPQA",
+      "experiment_id": "cpis-seeds-ministral3-8b-reasoning-supergpqa-v1",
+      "items": 128,
+      "model_id": "mistralai/Ministral-3-8B-Reasoning-2512",
+      "model_mode": "reasoning",
+      "run_id": "cpis-seeds-ministral3-8b-reasoning-supergpqa-v1-94c7d898c7d3",
+      "seeds": [
+        1729,
+        2718,
+        3141
+      ],
+      "status": "estimated",
+      "threshold": 0.5
+    },
+    {
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "across_seed_summary": {
+            "E": {
+              "mean": 0.020833,
+              "per_seed": {
+                "1729": 0.015625,
+                "2718": -0.015625,
+                "3141": 0.0625
+              },
+              "range": 0.078125,
+              "sd": 0.032106,
+              "sign_consistent": false
+            },
+            "K": {
+              "mean": 0.033854,
+              "per_seed": {
+                "1729": -0.015625,
+                "2718": 0.03125,
+                "3141": 0.085938
+              },
+              "range": 0.101563,
+              "sd": 0.041504,
+              "sign_consistent": false
+            },
+            "R": {
+              "mean": 0.05498,
+              "per_seed": {
+                "1729": 0.08125,
+                "2718": -0.098224,
+                "3141": 0.181913
+              },
+              "range": 0.280137,
+              "sd": 0.115864,
+              "sign_consistent": false
+            },
+            "S": {
+              "mean": 0.013021,
+              "per_seed": {
+                "1729": -0.03125,
+                "2718": 0.046875,
+                "3141": 0.023437
+              },
+              "range": 0.078125,
+              "sd": 0.032734,
+              "sign_consistent": false
+            },
+            "aC": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": -0.033854,
+              "per_seed": {
+                "1729": 0.015625,
+                "2718": -0.03125,
+                "3141": -0.085938
+              },
+              "range": 0.101563,
+              "sd": 0.041504,
+              "sign_consistent": false
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.02734375,
+              "items": 128,
+              "seed_share_of_variance": 0.706977,
+              "total": 0.09331597,
+              "within_item_across_seeds": 0.06597222
+            },
+            "K": {
+              "between_item": 0.08826362,
+              "items": 128,
+              "seed_share_of_variance": 0.669527,
+              "total": 0.26708306,
+              "within_item_across_seeds": 0.17881944
+            },
+            "S": {
+              "between_item": 0.08333333,
+              "items": 8,
+              "seed_share_of_variance": 0.586207,
+              "total": 0.20138889,
+              "within_item_across_seeds": 0.11805556
+            },
+            "aC": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "aTau": {
+              "between_item": 0.08826362,
+              "items": 128,
+              "seed_share_of_variance": 0.669527,
+              "total": 0.26708306,
+              "within_item_across_seeds": 0.17881944
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        },
+        "reference_to_low_top_p": {
+          "across_seed_summary": {
+            "E": {
+              "mean": -0.005208,
+              "per_seed": {
+                "1729": -0.015625,
+                "2718": -0.03125,
+                "3141": 0.03125
+              },
+              "range": 0.0625,
+              "sd": 0.026557,
+              "sign_consistent": false
+            },
+            "K": {
+              "mean": 0.018229,
+              "per_seed": {
+                "1729": -0.03125,
+                "2718": 0.007812,
+                "3141": 0.078125
+              },
+              "range": 0.109375,
+              "sd": 0.045256,
+              "sign_consistent": false
+            },
+            "R": {
+              "mean": -0.034932,
+              "per_seed": {
+                "1729": -0.040179,
+                "2718": -0.143678,
+                "3141": 0.07906
+              },
+              "range": 0.222738,
+              "sd": 0.091008,
+              "sign_consistent": false
+            },
+            "S": {
+              "mean": 0.023437,
+              "per_seed": {
+                "1729": -0.015625,
+                "2718": 0.039062,
+                "3141": 0.046875
+              },
+              "range": 0.0625,
+              "sd": 0.027805,
+              "sign_consistent": false
+            },
+            "aC": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": -0.018229,
+              "per_seed": {
+                "1729": 0.03125,
+                "2718": -0.007812,
+                "3141": -0.078125
+              },
+              "range": 0.109375,
+              "sd": 0.045256,
+              "sign_consistent": false
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.02080621,
+              "items": 128,
+              "seed_share_of_variance": 0.733588,
+              "total": 0.07809787,
+              "within_item_across_seeds": 0.05729167
+            },
+            "K": {
+              "between_item": 0.05956353,
+              "items": 128,
+              "seed_share_of_variance": 0.686131,
+              "total": 0.18977186,
+              "within_item_across_seeds": 0.13020833
+            },
+            "S": {
+              "between_item": 0.0,
+              "items": 11,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "aC": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "aTau": {
+              "between_item": 0.05956353,
+              "items": 128,
+              "seed_share_of_variance": 0.686131,
+              "total": 0.18977186,
+              "within_item_across_seeds": 0.13020833
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        }
+      },
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "experiment_id": "cpis-seeds-qwen35-9b-manyifeval-v1",
+      "items": 128,
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "non_thinking",
+      "run_id": "cpis-seeds-qwen35-9b-manyifeval-v1-e16c28bc4be2",
+      "seeds": [
+        1729,
+        2718,
+        3141
+      ],
+      "status": "estimated",
+      "threshold": 1.0
+    },
+    {
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "across_seed_summary": {
+            "E": {
+              "mean": -0.010417,
+              "per_seed": {
+                "1729": -0.023438,
+                "2718": -0.007812,
+                "3141": 0.0
+              },
+              "range": 0.023438,
+              "sd": 0.009744,
+              "sign_consistent": true
+            },
+            "K": {
+              "mean": -0.059896,
+              "per_seed": {
+                "1729": -0.085938,
+                "2718": -0.070312,
+                "3141": -0.023438
+              },
+              "range": 0.0625,
+              "sd": 0.026557,
+              "sign_consistent": true
+            },
+            "R": {
+              "mean": 0.050899,
+              "per_seed": {
+                "1729": 0.061905,
+                "2718": 0.067901,
+                "3141": 0.02289
+              },
+              "range": 0.045011,
+              "sd": 0.019956,
+              "sign_consistent": true
+            },
+            "S": {
+              "mean": -0.049479,
+              "per_seed": {
+                "1729": -0.0625,
+                "2718": -0.0625,
+                "3141": -0.023438
+              },
+              "range": 0.039062,
+              "sd": 0.018414,
+              "sign_consistent": true
+            },
+            "aC": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": 0.059896,
+              "per_seed": {
+                "1729": 0.085938,
+                "2718": 0.070312,
+                "3141": 0.023438
+              },
+              "range": 0.0625,
+              "sd": 0.026557,
+              "sign_consistent": true
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.03982205,
+              "items": 128,
+              "seed_share_of_variance": 0.635551,
+              "total": 0.10926649,
+              "within_item_across_seeds": 0.06944444
+            },
+            "K": {
+              "between_item": 0.05630832,
+              "items": 128,
+              "seed_share_of_variance": 0.581143,
+              "total": 0.13443332,
+              "within_item_across_seeds": 0.078125
+            },
+            "S": {
+              "between_item": 0.01730495,
+              "items": 69,
+              "seed_share_of_variance": 0.578514,
+              "total": 0.04105697,
+              "within_item_across_seeds": 0.02375201
+            },
+            "aC": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "aTau": {
+              "between_item": 0.05630832,
+              "items": 128,
+              "seed_share_of_variance": 0.581143,
+              "total": 0.13443332,
+              "within_item_across_seeds": 0.078125
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        },
+        "reference_to_low_top_p": {
+          "across_seed_summary": {
+            "E": {
+              "mean": 0.03125,
+              "per_seed": {
+                "1729": 0.03125,
+                "2718": 0.03125,
+                "3141": 0.03125
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "K": {
+              "mean": 0.054688,
+              "per_seed": {
+                "1729": 0.054688,
+                "2718": 0.0625,
+                "3141": 0.046875
+              },
+              "range": 0.015625,
+              "sd": 0.006379,
+              "sign_consistent": true
+            },
+            "R": {
+              "mean": -0.005308,
+              "per_seed": {
+                "1729": -0.007576,
+                "2718": -0.013872,
+                "3141": 0.005523
+              },
+              "range": 0.019395,
+              "sd": 0.008079,
+              "sign_consistent": false
+            },
+            "S": {
+              "mean": 0.023438,
+              "per_seed": {
+                "1729": 0.023438,
+                "2718": 0.03125,
+                "3141": 0.015625
+              },
+              "range": 0.015625,
+              "sd": 0.006379,
+              "sign_consistent": true
+            },
+            "aC": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": -0.054688,
+              "per_seed": {
+                "1729": -0.054688,
+                "2718": -0.0625,
+                "3141": -0.046875
+              },
+              "range": 0.015625,
+              "sd": 0.006379,
+              "sign_consistent": true
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.02853733,
+              "items": 128,
+              "seed_share_of_variance": 0.536155,
+              "total": 0.06152344,
+              "within_item_across_seeds": 0.03298611
+            },
+            "K": {
+              "between_item": 0.02565511,
+              "items": 128,
+              "seed_share_of_variance": 0.54916,
+              "total": 0.05690511,
+              "within_item_across_seeds": 0.03125
+            },
+            "S": {
+              "between_item": 0.01233145,
+              "items": 82,
+              "seed_share_of_variance": 0.529699,
+              "total": 0.02622034,
+              "within_item_across_seeds": 0.01388889
+            },
+            "aC": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "aTau": {
+              "between_item": 0.02565511,
+              "items": 128,
+              "seed_share_of_variance": 0.54916,
+              "total": 0.05690511,
+              "within_item_across_seeds": 0.03125
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        }
+      },
+      "dataset_id": "m-a-p/SuperGPQA",
+      "experiment_id": "cpis-seeds-qwen35-9b-supergpqa-v1",
+      "items": 128,
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "non_thinking",
+      "run_id": "cpis-seeds-qwen35-9b-supergpqa-v1-0a702391f2c0",
+      "seeds": [
+        1729,
+        2718,
+        3141
+      ],
+      "status": "estimated",
+      "threshold": 1.0
+    },
+    {
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "across_seed_summary": {
+            "E": {
+              "mean": -0.028646,
+              "per_seed": {
+                "1729": 0.039062,
+                "2718": -0.140625,
+                "3141": 0.015625
+              },
+              "range": 0.179687,
+              "sd": 0.079757,
+              "sign_consistent": false
+            },
+            "K": {
+              "mean": -0.028646,
+              "per_seed": {
+                "1729": 0.039062,
+                "2718": -0.140625,
+                "3141": 0.015625
+              },
+              "range": 0.179687,
+              "sd": 0.079757,
+              "sign_consistent": false
+            },
+            "R": {
+              "mean": -0.004495,
+              "per_seed": {
+                "1729": 0.005229,
+                "2718": -0.020645,
+                "3141": 0.001932
+              },
+              "range": 0.025874,
+              "sd": 0.011499,
+              "sign_consistent": false
+            },
+            "S": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": -0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "aC": {
+              "mean": -0.010417,
+              "per_seed": {
+                "1729": 0.023438,
+                "2718": -0.023438,
+                "3141": -0.03125
+              },
+              "range": 0.054688,
+              "sd": 0.02415,
+              "sign_consistent": false
+            },
+            "aTau": {
+              "mean": 0.039062,
+              "per_seed": {
+                "1729": -0.0625,
+                "2718": 0.164062,
+                "3141": 0.015625
+              },
+              "range": 0.226562,
+              "sd": 0.093967,
+              "sign_consistent": false
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.11983914,
+              "items": 128,
+              "seed_share_of_variance": 0.618691,
+              "total": 0.31428358,
+              "within_item_across_seeds": 0.19444444
+            },
+            "K": {
+              "between_item": 0.11983914,
+              "items": 128,
+              "seed_share_of_variance": 0.618691,
+              "total": 0.31428358,
+              "within_item_across_seeds": 0.19444444
+            },
+            "S": {
+              "between_item": 0.0,
+              "items": 65,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "aC": {
+              "between_item": 0.0172526,
+              "items": 128,
+              "seed_share_of_variance": 0.584856,
+              "total": 0.04155816,
+              "within_item_across_seeds": 0.02430556
+            },
+            "aTau": {
+              "between_item": 0.1121894,
+              "items": 128,
+              "seed_share_of_variance": 0.642228,
+              "total": 0.31357829,
+              "within_item_across_seeds": 0.20138889
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        },
+        "reference_to_low_top_p": {
+          "across_seed_summary": {
+            "E": {
+              "mean": -0.182292,
+              "per_seed": {
+                "1729": -0.195312,
+                "2718": -0.203125,
+                "3141": -0.148438
+              },
+              "range": 0.054687,
+              "sd": 0.02415,
+              "sign_consistent": true
+            },
+            "K": {
+              "mean": -0.190104,
+              "per_seed": {
+                "1729": -0.203125,
+                "2718": -0.21875,
+                "3141": -0.148438
+              },
+              "range": 0.070312,
+              "sd": 0.030145,
+              "sign_consistent": true
+            },
+            "R": {
+              "mean": -0.0182,
+              "per_seed": {
+                "1729": -0.024526,
+                "2718": -0.006286,
+                "3141": -0.023787
+              },
+              "range": 0.01824,
+              "sd": 0.00843,
+              "sign_consistent": true
+            },
+            "S": {
+              "mean": -0.007812,
+              "per_seed": {
+                "1729": -0.007812,
+                "2718": -0.015625,
+                "3141": -0.0
+              },
+              "range": 0.015625,
+              "sd": 0.006379,
+              "sign_consistent": true
+            },
+            "aC": {
+              "mean": 0.21875,
+              "per_seed": {
+                "1729": 0.21875,
+                "2718": 0.234375,
+                "3141": 0.203125
+              },
+              "range": 0.03125,
+              "sd": 0.012758,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": -0.028646,
+              "per_seed": {
+                "1729": -0.015625,
+                "2718": -0.015625,
+                "3141": -0.054688
+              },
+              "range": 0.039063,
+              "sd": 0.018414,
+              "sign_consistent": true
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.11433919,
+              "items": 128,
+              "seed_share_of_variance": 0.654932,
+              "total": 0.33135308,
+              "within_item_across_seeds": 0.21701389
+            },
+            "K": {
+              "between_item": 0.11403402,
+              "items": 128,
+              "seed_share_of_variance": 0.660872,
+              "total": 0.33625624,
+              "within_item_across_seeds": 0.22222222
+            },
+            "S": {
+              "between_item": 0.0,
+              "items": 55,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "aC": {
+              "between_item": 0.06846788,
+              "items": 128,
+              "seed_share_of_variance": 0.669806,
+              "total": 0.20735677,
+              "within_item_across_seeds": 0.13888889
+            },
+            "aTau": {
+              "between_item": 0.09379747,
+              "items": 128,
+              "seed_share_of_variance": 0.715686,
+              "total": 0.32990858,
+              "within_item_across_seeds": 0.23611111
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        }
+      },
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "experiment_id": "cpis-seeds-qwen35-9b-thinking-manyifeval-v1",
+      "items": 128,
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "thinking",
+      "run_id": "cpis-seeds-qwen35-9b-thinking-manyifeval-v1-72eb1dced8fa",
+      "seeds": [
+        1729,
+        2718,
+        3141
+      ],
+      "status": "estimated",
+      "threshold": 0.1
+    },
+    {
+      "contrasts": {
+        "reference_to_high_temperature": {
+          "across_seed_summary": {
+            "E": {
+              "mean": -0.054687,
+              "per_seed": {
+                "1729": -0.023438,
+                "2718": -0.070312,
+                "3141": -0.070312
+              },
+              "range": 0.046874,
+              "sd": 0.022097,
+              "sign_consistent": true
+            },
+            "K": {
+              "mean": -0.057292,
+              "per_seed": {
+                "1729": -0.0625,
+                "2718": -0.054688,
+                "3141": -0.054688
+              },
+              "range": 0.007812,
+              "sd": 0.003683,
+              "sign_consistent": true
+            },
+            "R": {
+              "mean": -0.045211,
+              "per_seed": {
+                "1729": -0.000605,
+                "2718": -0.067943,
+                "3141": -0.067084
+              },
+              "range": 0.067338,
+              "sd": 0.031543,
+              "sign_consistent": true
+            },
+            "S": {
+              "mean": -0.002604,
+              "per_seed": {
+                "1729": -0.039062,
+                "2718": 0.015625,
+                "3141": 0.015625
+              },
+              "range": 0.054687,
+              "sd": 0.02578,
+              "sign_consistent": false
+            },
+            "aC": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": 0.057292,
+              "per_seed": {
+                "1729": 0.0625,
+                "2718": 0.054688,
+                "3141": 0.054688
+              },
+              "range": 0.007812,
+              "sd": 0.003683,
+              "sign_consistent": true
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.05343289,
+              "items": 128,
+              "seed_share_of_variance": 0.688417,
+              "total": 0.17148844,
+              "within_item_across_seeds": 0.11805556
+            },
+            "K": {
+              "between_item": 0.09220378,
+              "items": 128,
+              "seed_share_of_variance": 0.618219,
+              "total": 0.24150933,
+              "within_item_across_seeds": 0.14930556
+            },
+            "S": {
+              "between_item": 0.01333644,
+              "items": 78,
+              "seed_share_of_variance": 0.782841,
+              "total": 0.06141336,
+              "within_item_across_seeds": 0.04807692
+            },
+            "aC": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            },
+            "aTau": {
+              "between_item": 0.09220378,
+              "items": 128,
+              "seed_share_of_variance": 0.618219,
+              "total": 0.24150933,
+              "within_item_across_seeds": 0.14930556
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        },
+        "reference_to_low_top_p": {
+          "across_seed_summary": {
+            "E": {
+              "mean": -0.005208,
+              "per_seed": {
+                "1729": 0.007812,
+                "2718": -0.039062,
+                "3141": 0.015625
+              },
+              "range": 0.054687,
+              "sd": 0.02415,
+              "sign_consistent": false
+            },
+            "K": {
+              "mean": 0.03125,
+              "per_seed": {
+                "1729": 0.007812,
+                "2718": 0.0625,
+                "3141": 0.023438
+              },
+              "range": 0.054688,
+              "sd": 0.022999,
+              "sign_consistent": true
+            },
+            "R": {
+              "mean": -0.022587,
+              "per_seed": {
+                "1729": 0.006579,
+                "2718": -0.082064,
+                "3141": 0.007724
+              },
+              "range": 0.089788,
+              "sd": 0.042059,
+              "sign_consistent": false
+            },
+            "S": {
+              "mean": 0.036458,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.101562,
+                "3141": 0.007812
+              },
+              "range": 0.101562,
+              "sd": 0.046146,
+              "sign_consistent": true
+            },
+            "aC": {
+              "mean": 0.002604,
+              "per_seed": {
+                "1729": 0.007812,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.007812,
+              "sd": 0.003683,
+              "sign_consistent": true
+            },
+            "aTau": {
+              "mean": -0.033854,
+              "per_seed": {
+                "1729": -0.015625,
+                "2718": -0.0625,
+                "3141": -0.023438
+              },
+              "range": 0.046875,
+              "sd": 0.020505,
+              "sign_consistent": true
+            },
+            "q": {
+              "mean": 0.0,
+              "per_seed": {
+                "1729": 0.0,
+                "2718": 0.0,
+                "3141": 0.0
+              },
+              "range": 0.0,
+              "sd": 0.0,
+              "sign_consistent": true
+            }
+          },
+          "variance_decomposition": {
+            "E": {
+              "between_item": 0.04858398,
+              "items": 128,
+              "seed_share_of_variance": 0.689009,
+              "total": 0.15622287,
+              "within_item_across_seeds": 0.10763889
+            },
+            "K": {
+              "between_item": 0.0719401,
+              "items": 128,
+              "seed_share_of_variance": 0.677372,
+              "total": 0.22298177,
+              "within_item_across_seeds": 0.15104167
+            },
+            "S": {
+              "between_item": 0.02706651,
+              "items": 85,
+              "seed_share_of_variance": 0.503526,
+              "total": 0.05451749,
+              "within_item_across_seeds": 0.02745098
+            },
+            "aC": {
+              "between_item": 0.00086127,
+              "items": 128,
+              "seed_share_of_variance": 0.668407,
+              "total": 0.00259738,
+              "within_item_across_seeds": 0.00173611
+            },
+            "aTau": {
+              "between_item": 0.07090251,
+              "items": 128,
+              "seed_share_of_variance": 0.67802,
+              "total": 0.22020806,
+              "within_item_across_seeds": 0.14930556
+            },
+            "q": {
+              "between_item": 0.0,
+              "items": 128,
+              "seed_share_of_variance": null,
+              "total": 0.0,
+              "within_item_across_seeds": 0.0
+            }
+          }
+        }
+      },
+      "dataset_id": "m-a-p/SuperGPQA",
+      "experiment_id": "cpis-seeds-qwen35-9b-thinking-supergpqa-v1",
+      "items": 128,
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "thinking",
+      "run_id": "cpis-seeds-qwen35-9b-thinking-supergpqa-v1-f7e16bb9caea",
+      "seeds": [
+        1729,
+        2718,
+        3141
+      ],
+      "status": "estimated",
+      "threshold": 0.95
+    }
+  ],
+  "schema_version": "1.0",
+  "status": "secondary robustness; not confirmatory and not multiplicity corrected",
+  "threshold_artifact_sha256": "c9cfbac1e2da2c634a0221961faf20664deb283a268e7cc7c519e8c9fe88d425"
+}

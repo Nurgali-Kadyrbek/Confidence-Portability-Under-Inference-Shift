@@ -1,0 +1,147 @@
+schema_version: "1.0"
+record_type: model_integration
+record_id: qwen35-4b-thinking-integration-v1
+model_id: Qwen/Qwen3.5-4B
+revision: 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+tokenizer_id: Qwen/Qwen3.5-4B
+tokenizer_revision: 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+parameter_count_exact: 4659865088
+parameter_count_method: >-
+  Sum of all pinned safetensors tensor shapes: 4,539,265,536 model parameters
+  plus 120,599,552 MTP parameters.
+architecture: >-
+  Qwen3_5ForConditionalGeneration dense multimodal model; text component has 32
+  layers, hidden size 2560, 16 attention heads, 4 KV heads, and tied embeddings.
+  CPIS loads the language model only and does not load the vision encoder.
+framework: vLLM CUDA inference, language-model-only, no offload
+framework_version: 0.29.0+cu129
+framework_requirement: >-
+  Official Qwen3.5 guidance requires a compatible vLLM main/nightly release. The
+  pinned 0.29.0+cu129 build recognizes qwen3_5 and passed direct L40 preflight.
+precision: [bfloat16, float32_state]
+official_chat_template_sha256: a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715
+message_format: >-
+  Use the pinned tokenizer Jinja template with one user message and assistant
+  generation prompt. SuperGPQA uses no system message or tools.
+reasoning_controls: >-
+  Thinking is the official default. CPIS explicitly sets enable_thinking=true;
+  Qwen3.5 does not support the earlier /think or /nothink soft switches.
+required_special_tokens: [<|im_start|>, <|im_end|>, <|endoftext|>, <think>, </think>]
+eos_and_stop_behavior: >-
+  text_config eos_token_id 248044 is <|endoftext|>. CPIS supplies no stop
+  strings, sets ignore_eos=false, records the finish reason, and retains the
+  complete reasoning trace and terminal answer.
+recommended_context_limit: 262144
+configured_context_limit: 65536
+recommended_output_limits: >-
+  The card recommends 32,768 output tokens for most queries and 81,920 for
+  complex contests. CPIS provisions 65,536 total context and 32,768 output
+  tokens for both passes. Native-reference maxima were 6,283 answer and 5,782
+  confidence tokens, and all calls stopped.
+native_reference_sampling:
+  temperature: 1.0
+  top_p: 0.95
+  top_k: 20
+  min_p: 0.0
+  presence_penalty: 1.5
+  frequency_penalty: 0.0
+  repetition_penalty: 1.0
+sampler_constraints: >-
+  Native top_k=20 remains active in deployment-relative temperature and top-p
+  shifts, so top-p operates inside the top-20 set. min_p=0 is inactive. The
+  thinking reference must not inherit non-thinking temperature=0.7/top_p=0.8.
+greedy_decoding_caveats: >-
+  The official card recommends stochastic thinking. Qwen3.5-9B preflight showed
+  temperature-zero thinking can enter a full-length repetition loop under the
+  shared template. This checkpoint therefore uses the same explicitly labeled
+  deterministic direct/non-thinking readout as the standardized mitigation;
+  greedy thinking is not treated as a valid condition.
+tool_calling_requirements: >-
+  Agentic use requires qwen3_coder tool parsing and auto-tool choice. This static
+  study supplies no tools and enables no tool parser.
+structured_output_constraints: >-
+  Official guidance recommends prompt-level JSON for MCQ benchmarking. CPIS does
+  not use guided decoding; it retains reasoning and parses only terminal JSON.
+engine_requirements: >-
+  CUDA-only vLLM, BF16, TP=1, one L40 replica, language-model-only, native
+  sampler, RAID caches, and no CPU/NVMe offload, DeepSpeed, or training stack.
+unsupported_configurations:
+  - Qwen3 /think and /nothink soft switches for Qwen3.5
+  - Non-thinking temperature=0.7/top_p=0.8 treated as the thinking-native baseline
+  - Full-vocabulary interpretation of top_p while native top_k=20 is active
+  - Temperature-zero thinking for answers or confidence readout
+  - CPU or NVMe parameter offload
+interventions:
+  - intervention_id: reference
+    changed_parameters: {}
+    held_fixed_parameters: {temperature: 1.0, top_p: 0.95, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Official thinking-mode general-task model-native reference.
+  - intervention_id: low-temperature
+    changed_parameters: {temperature: 0.6}
+    held_fixed_parameters: {top_p: 0.95, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Single-factor temperature intervention validated in the development matrix preflight.
+  - intervention_id: high-temperature
+    changed_parameters: {temperature: 1.2}
+    held_fixed_parameters: {top_p: 0.95, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Single-factor upward temperature intervention validated in the development matrix preflight.
+  - intervention_id: low-top-p
+    changed_parameters: {top_p: 0.7}
+    held_fixed_parameters: {temperature: 1.0, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Validated native-relative nucleus intervention inside retained top_k=20.
+  - intervention_id: high-diversity
+    changed_parameters: {temperature: 1.2, top_p: 1.0}
+    held_fixed_parameters: {top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Validated joint high-temperature/high-top-p contrast bounded by top_k=20.
+  - intervention_id: standardized-direct-deterministic-readout
+    changed_parameters: {temperature: 0.0, top_p: 1.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    held_fixed_parameters: {}
+    status: supported_with_limitation
+    interpretation: Development-only mitigation using enable_thinking=false on the same weights; mode plus sampler change are explicit.
+validation_status: development_validated
+validation_evidence: >-
+  dev-preflight-qwen35-4b-thinking-supergpqa-v1-ac288ed79672 ran on one L40
+  with direct BF16 residency. All eight answers and eight confidence calls
+  stopped and parsed; maxima were 6,283 and 5,782 tokens. All raw files are
+  read-only and exact-commit resume reused all outputs with zero generation.
+  The subsequent 8-item matrix preflight exercised all five answer conditions,
+  all coupled/report-only readouts, and the deterministic direct readout: 40
+  answers and 144 confidence calls all stopped and parsed without invalids.
+  Answer and confidence maxima were 10,894 and 10,154 tokens, below the frozen
+  32,768-token cap. This validates the planned shifts operationally; it does not
+  turn the small preflight outcomes into scientific evidence.
+sources:
+  - source_type: official_model_card
+    url: https://huggingface.co/Qwen/Qwen3.5-4B/blob/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a/README.md
+    revision: 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+    artifact_sha256: null
+    note: Pinned official thinking-mode sampling, mode, context, JSON, vLLM, and tool guidance.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/Qwen/Qwen3.5-4B/blob/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a/config.json
+    revision: 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+    artifact_sha256: ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670
+    note: Pinned architecture, BF16, context, and EOS configuration.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/Qwen/Qwen3.5-4B/blob/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a/chat_template.jinja
+    revision: 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+    artifact_sha256: a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715
+    note: Pinned role framing, thinking tags, and enable_thinking behavior.
+  - source_type: official_engine_documentation
+    url: https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html
+    revision: accessed-2026-09-20
+    artifact_sha256: null
+    note: Official vLLM Qwen3.5 runtime guidance.
+  - source_type: local_validation
+    url: evidence/pilots/qwen35-4b-thinking-supergpqa-preflight-v1.md
+    revision: repository-record
+    artifact_sha256: null
+    note: Dedicated native thinking-mode L40 length, parsing, residency, and resume validation.
+  - source_type: local_validation
+    url: evidence/pilots/qwen35-4b-thinking-supergpqa-matrix-preflight-v1.md
+    revision: repository-record
+    artifact_sha256: null
+    note: All planned answer/readout cells completed and parsed under the pinned matrix protocol.

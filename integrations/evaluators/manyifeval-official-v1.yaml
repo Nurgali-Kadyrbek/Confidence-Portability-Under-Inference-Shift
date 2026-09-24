@@ -1,0 +1,48 @@
+schema_version: "1.0"
+record_type: evaluator_integration
+record_id: manyifeval-official-evaluator-v1
+scorer: manyifeval_official_v1
+source_project: kenoharada/Multiple-Instructions-Following
+source_revision: 5c1ba29e631e2bbee981ebd620898c2750c5ddbf
+source_root_relative_to_dataset_cache: upstream/multiple-instructions-following/5c1ba29e631e2bbee981ebd620898c2750c5ddbf
+source_archive_sha256: 3a3d6b6a96ed9642ecb9f6a54d33ba795c4e42ec65d2bf929c6a35d4158fcd48
+artifacts:
+  - relative_path: evaluation.py
+    sha256: 0c3320ec1716d5dc0d5991cbb7a21eb6552142da821aaebc7252f22b118f08f5
+  - relative_path: utils.py
+    sha256: 613d61f1b477267d845026dddf9f10f5c29563a6ef4968ea141db4bf6d8fbbbd
+  - relative_path: instruction_following_eval/__init__.py
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - relative_path: instruction_following_eval/evaluation_main.py
+    sha256: 5fdc16ea814a5201cf6d3be63d9ac4b616da8517f67ee7adb2aee3cde35fa5c6
+  - relative_path: instruction_following_eval/instructions.py
+    sha256: 0165cde6379c3f6bba468a7759fa27247b72f4b8d5fd2821c27d72a34e0e25ce
+  - relative_path: instruction_following_eval/instructions_registry.py
+    sha256: 042338c16bd33231b7b42612d1ca075f48f6fdbc53d0d5e7a700b29da416067b
+  - relative_path: instruction_following_eval/instructions_util.py
+    sha256: 3c99e463ab63f73429efb75e333cbff6deb017e41658566e4c4bc4ecf39085db
+runtime_assets:
+  - relative_path: evaluator-assets/nltk/tokenizers/punkt.zip
+    sha256: 51c3078994aeaf650bfc8e028be4fb42b4a0d177d41c012b6a983979653660ec
+  - relative_path: evaluator-assets/nltk/tokenizers/punkt_tab.zip
+    sha256: e57f64187974277726a3417ca6f181ec5403676c717672eef6a748a7b20e0106
+python_version: "3.11"
+package_versions:
+  absl-py: 2.3.1
+  immutabledict: 4.2.2
+  langdetect: 1.0.9
+  nltk: 3.9.2
+deterministic_controls:
+  - Set langdetect DetectorFactory.seed=0 before importing the registry.
+  - Set Python random seed to 1234, matching the released utility module.
+  - Require the pinned NLTK punkt resource from RAID with network disabled.
+sandbox:
+  required: false
+  engine: none
+  network: none
+  read_only_root: true
+  run_as_non_root: true
+  memory_limit_mb: null
+  pids_limit: null
+  image_reference: null
+  image_id_sha256: null

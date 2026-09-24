@@ -1,0 +1,20 @@
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\footnotesize
+\caption{Reference-configuration confidence quality on held-out data (600 items per pair). Intervals are item-bootstrap percentiles. BSS is the Brier skill score against the base-rate forecast; MCB/UNC and DSC/UNC are the normalised miscalibration and discrimination components of the Brier score. These are secondary descriptive comparisons and carry no multiplicity correction.\label{tab:refquality}}
+\begin{tabular}{lllccccccc}
+\toprule
+\textbf{Model} & \textbf{Regime} & \textbf{Data} & \textbf{Acc.} & \textbf{Mean $C$} & \textbf{Gap} & \textbf{AUROC (95\% CI)} & \textbf{BSS (95\% CI)} & \textbf{MCB/UNC} & \textbf{DSC/UNC} \\
+\midrule
+Ministral-3-8B & instruct & ManyIFEval & 0.302 & 0.930 & +0.628 & 0.447 [0.404, 0.489] & -1.952 [-2.362, -1.628] & 1.967 & 0.016 \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & 0.302 & 0.894 & +0.592 & 0.539 [0.500, 0.577] & -1.795 [-2.175, -1.482] & 1.803 & 0.008 \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & 0.125 & 0.873 & +0.748 & 0.527 [0.467, 0.587] & -5.447 [-7.145, -4.302] & 5.456 & 0.009 \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & 0.373 & 0.614 & +0.240 & 0.589 [0.542, 0.637] & -0.524 [-0.694, -0.376] & 0.566 & 0.042 \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & 0.543 & 0.888 & +0.344 & 0.671 [0.630, 0.711] & -0.463 [-0.591, -0.351] & 0.564 & 0.101 \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & 0.375 & 0.934 & +0.559 & 0.550 [0.510, 0.591] & -1.450 [-1.726, -1.218] & 1.463 & 0.013 \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & 0.053 & 0.361 & +0.308 & 0.873 [0.835, 0.905] & -3.894 [-6.294, -2.537] & 4.022 & 0.128 \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & 0.565 & 0.879 & +0.314 & 0.645 [0.602, 0.689] & -0.411 [-0.528, -0.299] & 0.488 & 0.078 \tabularnewline
+\bottomrule
+\end{tabular}
+\end{adjustwidth}
+\end{table}

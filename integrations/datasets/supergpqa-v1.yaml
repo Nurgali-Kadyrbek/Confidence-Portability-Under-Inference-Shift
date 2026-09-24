@@ -1,0 +1,87 @@
+schema_version: "1.0"
+record_type: dataset_integration
+record_id: supergpqa-integration-v1
+dataset_id: m-a-p/SuperGPQA
+revision: 4430d4458112c7d4497fdcf94d7cc223313d6acf
+source_sha256: 28b998e70205ee95e540317b5adc06a06552a3961fb50b153df126b833f7a910
+license_and_access: >-
+  Public Hugging Face dataset under ODC-BY. The card requires attribution and
+  compliance with licenses of referenced source datasets; no authentication gate.
+official_splits: >-
+  The pinned repository provides one 26,529-row JSONL file and no official
+  development/certification/test split. CPIS freezes a study sample and splits it
+  before outcome analysis using the recorded deterministic algorithm.
+unit_of_observation: >-
+  One source question identified by its immutable UUID. Decoder conditions and
+  replicate generations are repeated measurements of that question.
+grouping_and_dependence: >-
+  Questions are nested in 285 subfields and 13 disciplines. Item-clustered
+  resampling is primary; full-sample SuperGPQA bootstrap is stratified by
+  discipline/subfield where stratum sizes permit.
+official_task_representation: >-
+  English question plus ordered answer options. CPIS preserves source option
+  order and labels them A onward; success is selecting source answer_letter.
+official_scoring: >-
+  Deterministic exact match to answer_letter. The pinned repository contains no
+  released official evaluator (its leaderboard tutorial is marked coming soon),
+  so CPIS implements and tests this direct field comparison rather than a judge.
+allowed_normalization: >-
+  Strip surrounding whitespace and compare the option letter case-insensitively.
+  No semantic answer mapping, option reordering, or partial credit is permitted.
+invalid_output_handling: >-
+  An answer that cannot be parsed as the terminal answer JSON is incorrect. An
+  invalid confidence is forced abstention operationally and separately reported.
+evaluation_type: deterministic answer-letter evaluation; no model judge
+duplicate_and_transformed_relationships: >-
+  Source UUIDs are unique. The selected artifact contains one row per UUID and
+  creates no derived variants. Repeated generations remain clustered by UUID.
+contamination_considerations: >-
+  SuperGPQA is public and some content derives from named public benchmarks, so
+  pretraining contamination cannot be ruled out. CPIS makes within-item paired
+  decoder contrasts and will not interpret raw accuracy as contamination-free.
+benchmark_exclusions: >-
+  No observed item is excluded. Preparation rejects schema deviations, duplicate
+  UUIDs, invalid option letters, answer-text mismatches, and unknown difficulty.
+evaluator_revision: cpis-exact-match-casefold-v1
+preparation_algorithm: >-
+  balanced-10-per-subfield-stratified-4-3-3-v1 with salt
+  cpis-supergpqa-primary-v1: select 10 items in each subfield while balancing
+  difficulty, then freeze 4 development, 3 certification, and 3 test per subfield.
+prepared_partitions:
+  - partition: development
+    rows: 1140
+    sha256: 9938ae277c8444ec6c548b5b72d7cda0d4b735fff85487d4fc6fcecebccfe23e
+    relative_cache_path: prepared/supergpqa-v2-sealed/items-development.jsonl
+  - partition: certification
+    rows: 855
+    sha256: 4c93b7b5ff311c2247d9f28078fe101d58c0f31b564e0db1eda98547ba534bbc
+    relative_cache_path: prepared/supergpqa-v2-sealed/items-certification.jsonl
+  - partition: test
+    rows: 855
+    sha256: 2a438eb6e085b4ae01da0bb36542d7ecdc487fe7e5fd1f5893ab1c247775783c
+    relative_cache_path: prepared/supergpqa-v2-sealed/items-test.jsonl
+access_firewall: >-
+  Generation configurations must point to exactly one partition-specific file.
+  Development may access only items-development.jsonl. Certification and test
+  require separate versioned phase gates and emit immutable access events.
+sources:
+  - source_type: official_dataset_card
+    url: https://huggingface.co/datasets/m-a-p/SuperGPQA/blob/4430d4458112c7d4497fdcf94d7cc223313d6acf/README.md
+    revision: 4430d4458112c7d4497fdcf94d7cc223313d6acf
+    artifact_sha256: 0d670692d5f36a066d67c10741d160a5fcf0c2cb97f22c8dc8f453ac930b083a
+    note: Pinned official dataset description, license, usage notice, and citations.
+  - source_type: official_dataset_artifact
+    url: https://huggingface.co/datasets/m-a-p/SuperGPQA/blob/4430d4458112c7d4497fdcf94d7cc223313d6acf/SuperGPQA-all.jsonl
+    revision: 4430d4458112c7d4497fdcf94d7cc223313d6acf
+    artifact_sha256: 28b998e70205ee95e540317b5adc06a06552a3961fb50b153df126b833f7a910
+    note: Pinned 26,529-row source artifact with questions, ordered options, and answer letters.
+  - source_type: official_paper
+    url: https://arxiv.org/abs/2502.14739
+    revision: arXiv-2502.14739
+    artifact_sha256: null
+    note: Official SuperGPQA paper describing its 285-discipline benchmark design.
+  - source_type: local_validation
+    url: evidence/data/supergpqa_preparation_v2.json
+    revision: repository-record
+    artifact_sha256: null
+    note: Deterministic selection, partition counts, and sealed-artifact hashes.

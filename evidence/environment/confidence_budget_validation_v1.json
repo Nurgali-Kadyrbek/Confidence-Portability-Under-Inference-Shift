@@ -1,0 +1,296 @@
+{
+  "conditions": [
+    {
+      "candidates": {
+        "1024": {
+          "exceeding": 2400,
+          "non_binding": false,
+          "point_estimate": 0.721154,
+          "upper_bound": 0.733943
+        },
+        "128": {
+          "exceeding": 2405,
+          "non_binding": false,
+          "point_estimate": 0.722656,
+          "upper_bound": 0.735423
+        },
+        "16384": {
+          "exceeding": 4,
+          "non_binding": true,
+          "point_estimate": 0.001202,
+          "upper_bound": 0.002748
+        },
+        "2048": {
+          "exceeding": 2174,
+          "non_binding": false,
+          "point_estimate": 0.653245,
+          "upper_bound": 0.666862
+        },
+        "256": {
+          "exceeding": 2405,
+          "non_binding": false,
+          "point_estimate": 0.722656,
+          "upper_bound": 0.735423
+        },
+        "32768": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.0009
+        },
+        "4096": {
+          "exceeding": 1022,
+          "non_binding": false,
+          "point_estimate": 0.307091,
+          "upper_bound": 0.320516
+        },
+        "512": {
+          "exceeding": 2405,
+          "non_binding": false,
+          "point_estimate": 0.722656,
+          "upper_bound": 0.735423
+        },
+        "8192": {
+          "exceeding": 72,
+          "non_binding": false,
+          "point_estimate": 0.021635,
+          "upper_bound": 0.02626
+        }
+      },
+      "confidence": 0.95,
+      "configured_budget": 32768,
+      "dataset": "medxpertqa",
+      "margin": 0.005,
+      "max": 32768,
+      "median": 2972,
+      "mode": "thinking",
+      "model": "qwen35-4b",
+      "n": 3328,
+      "observed_truncation_rate": 0.001202,
+      "observed_truncations_at_configured_budget": 4,
+      "p99": 8984,
+      "run": "dev-matrix-qwen35-4b-thinking-medxpertqa-v1-4c4b9e4502f3",
+      "smallest_non_binding_budget": 16384
+    },
+    {
+      "candidates": {
+        "1024": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "128": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "16384": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "2048": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "256": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "32768": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "4096": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "512": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "8192": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        }
+      },
+      "confidence": 0.95,
+      "configured_budget": 256,
+      "dataset": "supergpqa",
+      "margin": 0.005,
+      "max": 94,
+      "median": 8,
+      "mode": "non_thinking",
+      "model": "qwen35-9b",
+      "n": 20000,
+      "observed_truncation_rate": 0.0,
+      "observed_truncations_at_configured_budget": 0,
+      "p99": 9,
+      "run": "dev-matrix-qwen35-9b-supergpqa-v1-d256493c2100",
+      "smallest_non_binding_budget": 128
+    },
+    {
+      "candidates": {
+        "1024": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "128": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "16384": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "2048": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "256": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "32768": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "4096": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "512": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "8192": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        }
+      },
+      "confidence": 0.95,
+      "configured_budget": 256,
+      "dataset": "stylembpp",
+      "margin": 0.005,
+      "max": 82,
+      "median": 8,
+      "mode": "non_thinking",
+      "model": "qwen35-9b",
+      "n": 20000,
+      "observed_truncation_rate": 0.0,
+      "observed_truncations_at_configured_budget": 0,
+      "p99": 9,
+      "run": "dev-matrix-qwen35-9b-stylembpp-v1-29063d1b1b7e",
+      "smallest_non_binding_budget": 128
+    },
+    {
+      "candidates": {
+        "1024": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "128": {
+          "exceeding": 1,
+          "non_binding": true,
+          "point_estimate": 5e-05,
+          "upper_bound": 0.000237
+        },
+        "16384": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "2048": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "256": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "32768": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "4096": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "512": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        },
+        "8192": {
+          "exceeding": 0,
+          "non_binding": true,
+          "point_estimate": 0.0,
+          "upper_bound": 0.00015
+        }
+      },
+      "confidence": 0.95,
+      "configured_budget": 256,
+      "dataset": "manyifeval",
+      "margin": 0.005,
+      "max": 256,
+      "median": 9,
+      "mode": "non_thinking",
+      "model": "qwen35-4b",
+      "n": 20000,
+      "observed_truncation_rate": 5e-05,
+      "observed_truncations_at_configured_budget": 1,
+      "p99": 9,
+      "run": "dev-matrix-qwen35-4b-manyifeval-v1-839548737bcd",
+      "smallest_non_binding_budget": 128
+    }
+  ],
+  "criterion": "budget B is non-binding when the one-sided 95% Clopper-Pearson upper bound on P(L_C > B) is below 0.005",
+  "note": "exceedance of a counterfactual budget and actual truncation at the configured budget are reported separately",
+  "partition": "development only",
+  "schema_version": "1.0"
+}

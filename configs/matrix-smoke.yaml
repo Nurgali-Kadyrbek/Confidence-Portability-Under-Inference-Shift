@@ -1,0 +1,121 @@
+schema_version: "2.0"
+experiment_id: cpis-matrix-smoke
+study: matrix_smoke
+confirmatory: false
+model_integration: null
+dataset_integration: null
+
+model:
+  model_id: test/mock-model
+  revision: fixture-v1
+  tokenizer_id: test/mock-tokenizer
+  tokenizer_revision: fixture-v1
+  parameter_count_billion: 0.001
+  dtype: bfloat16
+  tensor_parallel_size: 1
+  max_model_len: 512
+  gpu_memory_utilization: 0.9
+  trust_remote_code: false
+  language_model_only: true
+  enforce_eager: false
+  prompt_format: chat
+  chat_template_id: fixture-chat-v1
+  chat_template_sha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  chat_template_kwargs: {}
+  model_mode: mock
+
+dataset:
+  dataset_id: cpis/smoke-fixture
+  revision: fixture-v1
+  loader: jsonl_fixture
+  source_path: ../tests/fixtures/smoke_dataset.jsonl
+  source_url: null
+  content_sha256: 9c3015130342772f689d06202a60152c7ea7f7638441103fb38768f72fc12977
+  scorer: exact_match_casefold_v1
+  split:
+    salt: cpis-smoke-split-v1
+    development: 0.5
+    certification: 0.25
+    test: 0.25
+  partition: development
+  item_limit: null
+  item_selection_salt: null
+
+inference:
+  backend:
+    name: mock
+    version: builtin-1
+    use_flashinfer_sampler: null
+    mock_answer_response: '{"answer":"4"}'
+    mock_confidence_response: '{"confidence":0.9}'
+  engine_seed: 314159
+  seeds: [1729]
+  answer_conditions:
+    - condition_id: reference
+      sampling: &greedy_answer
+        temperature: 0.0
+        top_p: 1.0
+        top_k: null
+        min_p: null
+        max_tokens: 64
+        min_tokens: 0
+        n: 1
+        presence_penalty: 0.0
+        frequency_penalty: 0.0
+        repetition_penalty: 1.0
+        ignore_eos: false
+        detokenize: true
+        skip_special_tokens: true
+        spaces_between_special_tokens: true
+        include_stop_str_in_output: false
+        stop: []
+        thinking_token_budget: null
+    - condition_id: shifted
+      sampling: *greedy_answer
+  confidence_readouts:
+    - readout_id: reference
+      sampling: &greedy_confidence
+        <<: *greedy_answer
+        max_tokens: 16
+    - readout_id: shifted
+      sampling: *greedy_confidence
+    - readout_id: standardized
+      sampling: *greedy_confidence
+      chat_template_kwargs: {enable_thinking: false}
+      model_mode: non_thinking
+  design:
+    reference_answer_condition_id: reference
+    reference_confidence_readout_id: reference
+    coupled_readout_by_answer:
+      reference: reference
+      shifted: shifted
+    standardized_readout_id: standardized
+    report_only_readout_ids: [reference, shifted]
+
+confidence:
+  protocol_id: two-pass-json-v1
+  prompt_template_version: two-pass-json-v1
+  answer_prompt_template: |-
+    Answer the question. End with exactly one JSON object with key "answer".
+    Question: {question}
+  confidence_prompt_template: |-
+    Estimate the probability that the proposed answer satisfies the success criterion.
+    Return exactly one JSON object with key "confidence" and a number from 0 to 1.
+    Question: {question}
+    Proposed answer: {proposed_answer}
+    Success criterion: {success_criterion}
+  answer_parser_version: final_json_answer_v1
+  confidence_parser_version: final_json_confidence_v1
+  answer_response_format: json_answer_v1
+  confidence_response_format: json_confidence_v1
+
+execution:
+  replicas: 1
+  batch_size: 16
+
+storage:
+  root_env: CPIS_STORAGE_ROOT
+  model_cache_env: CPIS_MODEL_CACHE
+  dataset_cache_env: CPIS_DATASET_CACHE
+  output_root_env: CPIS_OUTPUT_ROOT
+  log_root_env: CPIS_LOG_ROOT

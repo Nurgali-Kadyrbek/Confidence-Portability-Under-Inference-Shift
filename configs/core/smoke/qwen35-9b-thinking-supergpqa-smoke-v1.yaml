@@ -1,0 +1,256 @@
+schema_version: '2.0'
+experiment_id: cpis-smoke-qwen35-9b-thinking-supergpqa-v1
+study: development_matrix
+confirmatory: false
+model_integration:
+  record_id: qwen35-9b-thinking-integration-v3
+  record_path: integrations/models/qwen35-9b-thinking-v3.yaml
+  canonical_sha256: 2db365a39a7dd8cc47fdcaf8c9a5ec3036380321758ba167d65cdb24a02b18c9
+dataset_integration:
+  record_id: supergpqa-integration-v1
+  record_path: integrations/datasets/supergpqa-v1.yaml
+  canonical_sha256: f59c5a6c112b8a29c7f5cd6b8fd305366961852879346ab5d9a0003c4c1e8bd7
+model:
+  model_id: Qwen/Qwen3.5-9B
+  revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+  tokenizer_id: Qwen/Qwen3.5-9B
+  tokenizer_revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+  parameter_count_billion: 9.653104368
+  dtype: bfloat16
+  tensor_parallel_size: 1
+  max_model_len: 65536
+  gpu_memory_utilization: 0.9
+  trust_remote_code: false
+  language_model_only: true
+  enforce_eager: false
+  prompt_format: chat
+  chat_template_id: qwen35-tokenizer-default-v1
+  chat_template_sha256: a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715
+  chat_template_kwargs:
+    enable_thinking: true
+  model_mode: thinking
+dataset:
+  dataset_id: m-a-p/SuperGPQA
+  revision: 4430d4458112c7d4497fdcf94d7cc223313d6acf
+  loader: cached_jsonl
+  source_path: prepared/supergpqa-v2-sealed/items-development.jsonl
+  source_url: https://huggingface.co/datasets/m-a-p/SuperGPQA/tree/4430d4458112c7d4497fdcf94d7cc223313d6acf
+  content_sha256: 9938ae277c8444ec6c548b5b72d7cda0d4b735fff85487d4fc6fcecebccfe23e
+  scorer: exact_match_casefold_v1
+  split:
+    salt: supergpqa-10-per-subfield-v1
+    development: 0.4
+    certification: 0.3
+    test: 0.3
+  partition: development
+  item_limit: 32
+  item_selection_salt: cpis-core-phase-subsets-v1
+  item_offset: 0
+inference:
+  backend:
+    name: vllm
+    version: 0.29.0+cu129
+    use_flashinfer_sampler: false
+    mock_answer_response: null
+    mock_confidence_response: null
+  engine_seed: 314159
+  seeds:
+  - 1729
+  answer_conditions:
+  - condition_id: reference
+    sampling:
+      temperature: 1.0
+      top_p: 0.95
+      top_k: 20
+      min_p: 0.0
+      max_tokens: 32768
+      min_tokens: 0
+      n: 1
+      presence_penalty: 1.5
+      frequency_penalty: 0.0
+      repetition_penalty: 1.0
+      ignore_eos: false
+      detokenize: true
+      skip_special_tokens: true
+      spaces_between_special_tokens: true
+      include_stop_str_in_output: false
+      stop: []
+      thinking_token_budget: null
+  - condition_id: high-temperature
+    sampling:
+      temperature: 1.2
+      top_p: 0.95
+      top_k: 20
+      min_p: 0.0
+      max_tokens: 32768
+      min_tokens: 0
+      n: 1
+      presence_penalty: 1.5
+      frequency_penalty: 0.0
+      repetition_penalty: 1.0
+      ignore_eos: false
+      detokenize: true
+      skip_special_tokens: true
+      spaces_between_special_tokens: true
+      include_stop_str_in_output: false
+      stop: []
+      thinking_token_budget: null
+  - condition_id: low-top-p
+    sampling:
+      temperature: 1.0
+      top_p: 0.7
+      top_k: 20
+      min_p: 0.0
+      max_tokens: 32768
+      min_tokens: 0
+      n: 1
+      presence_penalty: 1.5
+      frequency_penalty: 0.0
+      repetition_penalty: 1.0
+      ignore_eos: false
+      detokenize: true
+      skip_special_tokens: true
+      spaces_between_special_tokens: true
+      include_stop_str_in_output: false
+      stop: []
+      thinking_token_budget: null
+  confidence_readouts:
+  - readout_id: reference
+    sampling:
+      temperature: 1.0
+      top_p: 0.95
+      top_k: 20
+      min_p: 0.0
+      max_tokens: 32768
+      min_tokens: 0
+      n: 1
+      presence_penalty: 1.5
+      frequency_penalty: 0.0
+      repetition_penalty: 1.0
+      ignore_eos: false
+      detokenize: true
+      skip_special_tokens: true
+      spaces_between_special_tokens: true
+      include_stop_str_in_output: false
+      stop: []
+      thinking_token_budget: null
+    chat_template_kwargs: null
+    model_mode: null
+  - readout_id: high-temperature
+    sampling:
+      temperature: 1.2
+      top_p: 0.95
+      top_k: 20
+      min_p: 0.0
+      max_tokens: 32768
+      min_tokens: 0
+      n: 1
+      presence_penalty: 1.5
+      frequency_penalty: 0.0
+      repetition_penalty: 1.0
+      ignore_eos: false
+      detokenize: true
+      skip_special_tokens: true
+      spaces_between_special_tokens: true
+      include_stop_str_in_output: false
+      stop: []
+      thinking_token_budget: null
+    chat_template_kwargs: null
+    model_mode: null
+  - readout_id: low-top-p
+    sampling:
+      temperature: 1.0
+      top_p: 0.7
+      top_k: 20
+      min_p: 0.0
+      max_tokens: 32768
+      min_tokens: 0
+      n: 1
+      presence_penalty: 1.5
+      frequency_penalty: 0.0
+      repetition_penalty: 1.0
+      ignore_eos: false
+      detokenize: true
+      skip_special_tokens: true
+      spaces_between_special_tokens: true
+      include_stop_str_in_output: false
+      stop: []
+      thinking_token_budget: null
+    chat_template_kwargs: null
+    model_mode: null
+  - readout_id: standardized-direct-deterministic
+    sampling:
+      temperature: 0.0
+      top_p: 1.0
+      top_k: null
+      min_p: null
+      max_tokens: 32768
+      min_tokens: 0
+      n: 1
+      presence_penalty: 0.0
+      frequency_penalty: 0.0
+      repetition_penalty: 1.0
+      ignore_eos: false
+      detokenize: true
+      skip_special_tokens: true
+      spaces_between_special_tokens: true
+      include_stop_str_in_output: false
+      stop: []
+      thinking_token_budget: null
+    chat_template_kwargs:
+      enable_thinking: false
+    model_mode: non_thinking
+  design:
+    reference_answer_condition_id: reference
+    reference_confidence_readout_id: reference
+    coupled_readout_by_answer:
+      reference: reference
+      high-temperature: high-temperature
+      low-top-p: low-top-p
+    standardized_readout_id: standardized-direct-deterministic
+    report_only_readout_ids:
+    - reference
+    confidence_cells: coupled_only
+confidence:
+  protocol_id: supergpqa-two-pass-probability-v1
+  prompt_template_version: supergpqa-two-pass-probability-v1
+  answer_prompt_template: 'Choose the most likely correct option for the multiple-choice question. Do
+    not provide an explanation. Return only one JSON object of the form {"answer":"A"}, replacing A with
+    the letter of the selected option.
+
+
+    Question:
+
+    {question}'
+  confidence_prompt_template: 'A proposed answer to the multiple-choice question is shown below. Do not
+    revise or replace it. Estimate the probability that this proposed answer satisfies the stated success
+    criterion. Do not provide an explanation. Return only one JSON object of the form {"confidence":0.75},
+    replacing 0.75 with a JSON number from 0 to 1.
+
+
+    Question:
+
+    {question}
+
+
+    Proposed answer:
+
+    {proposed_answer}
+
+
+    Success criterion:
+
+    {success_criterion}'
+  answer_parser_version: final_json_answer_v2
+  confidence_parser_version: final_json_confidence_v2
+  answer_response_format: json_answer_v1
+  confidence_response_format: json_confidence_v1
+execution:
+  replicas: 2
+  batch_size: 64
+storage:
+  root_env: CPIS_STORAGE_ROOT
+  model_cache_env: CPIS_MODEL_CACHE
+  dataset_cache_env: CPIS_DATASET_CACHE
+  output_root_env: CPIS_OUTPUT_ROOT
+  log_root_env: CPIS_LOG_ROOT

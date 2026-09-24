@@ -1,0 +1,19 @@
+TEST (confirmatory)
+  items/dataset=600  answers=14,400  native confidence=14,400
+  answer GPU-h=38.6  confidence GPU-h=19.0  total GPU-h=57.6
+  wall-clock on 8 GPUs = 7.2 h
+DEVELOPMENT
+  items/dataset=300  answers=7,200  native confidence=7,200
+  answer GPU-h=19.3  confidence GPU-h=9.5  total GPU-h=28.8
+  wall-clock on 8 GPUs = 3.6 h
+CERTIFICATION
+  items/dataset=300  answers=7,200  native confidence=7,200
+  answer GPU-h=19.3  confidence GPU-h=9.5  total GPU-h=28.8
+  wall-clock on 8 GPUs = 3.6 h
+
+ALL THREE PHASES: 115.2 GPU-h = 14.4 h wall-clock on 8 GPUs
+wall-clock rule limit: 24 h  -> WITHIN
+
+assumptions: reasoning/thinking 200-212 answers/h/GPU (measured live);
+non-thinking 2000/h/GPU (short outputs, order-of-magnitude);
+confidence cost scaled by measured median completion tokens.

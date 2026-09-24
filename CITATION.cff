@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: "If you use this software or the released result artifacts, please cite the paper."
+title: "CPIS: Confidence Portability Under Inference Shift"
+abstract: >-
+  Code, configurations and frozen result artifacts for a study of whether a
+  confidence-threshold decision policy selected under one inference
+  configuration remains statistically reliable when decoding settings change.
+type: software
+license: MIT
+authors:
+  - family-names: Kadyrbek
+    given-names: Nurgali
+    orcid: "https://orcid.org/0000-0002-5461-8899"
+    affiliation: "Al-Farabi Kazakh National University"
+  - family-names: Mansurova
+    given-names: Madina
+    orcid: "https://orcid.org/0000-0002-9680-2758"
+    affiliation: "Al-Farabi Kazakh National University"
+  - family-names: Postolache
+    given-names: Octavian Adrian
+    orcid: "https://orcid.org/0000-0001-5055-6347"
+    affiliation: "Instituto Universitario de Lisboa (ISCTE-IUL)"
+  - family-names: Tleulesova
+    given-names: Aigerim Mekemtasovna
+    orcid: "https://orcid.org/0000-0001-9280-1048"
+    affiliation: "Al-Farabi Kazakh National University"
+  - family-names: Kasenov
+    given-names: Syrym
+    orcid: "https://orcid.org/0000-0002-0097-1873"
+    affiliation: "Al-Farabi Kazakh National University"
+preferred-citation:
+  type: article
+  title: >-
+    Portability of Confidence-Threshold Policies Under
+    Inference-Configuration Shift in Open-Weight Language Models
+  journal: Information
+  year: 2026
+  authors:
+    - family-names: Kadyrbek
+      given-names: Nurgali
+    - family-names: Mansurova
+      given-names: Madina
+    - family-names: Postolache
+      given-names: Octavian Adrian
+    - family-names: Tleulesova
+      given-names: Aigerim Mekemtasovna
+    - family-names: Kasenov
+      given-names: Syrym

@@ -1,0 +1,60 @@
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\footnotesize
+\caption{Seed robustness on the 128-item held-out subset. The variance share is the fraction of per-item contrast variability attributable to resampling the decoder; selective risk is a ratio with no per-item value and carries no split.\label{tab:seeds}}
+\begin{tabular}{llllclccr}
+\toprule
+\textbf{Model} & \textbf{Regime} & \textbf{Data} & \textbf{Shift} & \textbf{Endpoint} & \textbf{Per-seed values} & \textbf{SD} & \textbf{Sign stable} & \textbf{Seed share} \\
+\midrule
+Ministral-3-8B & instruct & ManyIFEval & high-$T$ & $\Delta R$ & +0.092, -0.107, -0.008 & 0.081 & \textbf{no} & -- \tabularnewline
+Ministral-3-8B & instruct & ManyIFEval & high-$T$ & $\Delta K$ & -0.383, -0.156, -0.297 & 0.093 & yes & 0.56 \tabularnewline
+Ministral-3-8B & instruct & ManyIFEval & high-$T$ & $\Delta S$ & -0.148, +0.000, -0.109 & 0.063 & yes & 0.39 \tabularnewline
+Ministral-3-8B & instruct & ManyIFEval & low-$p$ & $\Delta R$ & +0.009, -0.031, -0.003 & 0.017 & \textbf{no} & -- \tabularnewline
+Ministral-3-8B & instruct & ManyIFEval & low-$p$ & $\Delta K$ & -0.008, -0.008, +0.016 & 0.011 & \textbf{no} & 0.62 \tabularnewline
+Ministral-3-8B & instruct & ManyIFEval & low-$p$ & $\Delta S$ & -0.008, +0.016, +0.008 & 0.010 & \textbf{no} & 0.66 \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & high-$T$ & $\Delta R$ & +0.039, +0.037, +0.046 & 0.004 & yes & -- \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & high-$T$ & $\Delta K$ & -0.383, -0.375, -0.367 & 0.006 & yes & 0.46 \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & high-$T$ & $\Delta S$ & -0.148, -0.141, -0.141 & 0.004 & yes & 0.54 \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & low-$p$ & $\Delta R$ & +0.000, +0.000, -0.010 & 0.005 & yes & -- \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & low-$p$ & $\Delta K$ & +0.000, +0.000, +0.000 & 0.000 & yes & -- \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & low-$p$ & $\Delta S$ & +0.000, +0.000, +0.008 & 0.004 & yes & 0.67 \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & high-$T$ & $\Delta R$ & -0.050, -0.039, -0.068 & 0.012 & yes & -- \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & high-$T$ & $\Delta K$ & -0.078, -0.055, +0.047 & 0.054 & \textbf{no} & 0.71 \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & high-$T$ & $\Delta S$ & +0.016, +0.016, +0.047 & 0.015 & yes & 0.53 \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & low-$p$ & $\Delta R$ & -0.029, -0.045, -0.020 & 0.010 & yes & -- \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & low-$p$ & $\Delta K$ & +0.039, +0.094, +0.094 & 0.026 & yes & 0.64 \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & low-$p$ & $\Delta S$ & +0.023, +0.039, +0.023 & 0.007 & yes & 0.17 \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & high-$T$ & $\Delta R$ & +0.056, +0.037, +0.084 & 0.020 & yes & -- \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & high-$T$ & $\Delta K$ & +0.070, +0.000, -0.008 & 0.035 & \textbf{no} & 0.67 \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & high-$T$ & $\Delta S$ & +0.000, -0.023, -0.055 & 0.022 & yes & 0.50 \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & low-$p$ & $\Delta R$ & +0.020, -0.004, +0.026 & 0.013 & \textbf{no} & -- \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & low-$p$ & $\Delta K$ & -0.086, -0.055, -0.094 & 0.017 & yes & 0.59 \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & low-$p$ & $\Delta S$ & -0.055, -0.023, -0.062 & 0.017 & yes & 0.68 \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & high-$T$ & $\Delta R$ & +0.081, -0.098, +0.182 & 0.116 & \textbf{no} & -- \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & high-$T$ & $\Delta K$ & -0.016, +0.031, +0.086 & 0.042 & \textbf{no} & 0.67 \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & high-$T$ & $\Delta S$ & -0.031, +0.047, +0.023 & 0.033 & \textbf{no} & 0.59 \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & low-$p$ & $\Delta R$ & -0.040, -0.144, +0.079 & 0.091 & \textbf{no} & -- \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & low-$p$ & $\Delta K$ & -0.031, +0.008, +0.078 & 0.045 & \textbf{no} & 0.69 \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & low-$p$ & $\Delta S$ & -0.016, +0.039, +0.047 & 0.028 & \textbf{no} & -- \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & high-$T$ & $\Delta R$ & +0.062, +0.068, +0.023 & 0.020 & yes & -- \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & high-$T$ & $\Delta K$ & -0.086, -0.070, -0.023 & 0.027 & yes & 0.58 \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & high-$T$ & $\Delta S$ & -0.062, -0.062, -0.023 & 0.018 & yes & 0.58 \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & low-$p$ & $\Delta R$ & -0.008, -0.014, +0.006 & 0.008 & \textbf{no} & -- \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & low-$p$ & $\Delta K$ & +0.055, +0.062, +0.047 & 0.006 & yes & 0.55 \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & low-$p$ & $\Delta S$ & +0.023, +0.031, +0.016 & 0.006 & yes & 0.53 \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & high-$T$ & $\Delta R$ & +0.005, -0.021, +0.002 & 0.011 & \textbf{no} & -- \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & high-$T$ & $\Delta K$ & +0.039, -0.141, +0.016 & 0.080 & \textbf{no} & 0.62 \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & high-$T$ & $\Delta S$ & +0.000, -0.000, +0.000 & 0.000 & yes & -- \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & low-$p$ & $\Delta R$ & -0.025, -0.006, -0.024 & 0.008 & yes & -- \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & low-$p$ & $\Delta K$ & -0.203, -0.219, -0.148 & 0.030 & yes & 0.66 \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & low-$p$ & $\Delta S$ & -0.008, -0.016, -0.000 & 0.006 & yes & -- \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & high-$T$ & $\Delta R$ & -0.001, -0.068, -0.067 & 0.032 & yes & -- \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & high-$T$ & $\Delta K$ & -0.062, -0.055, -0.055 & 0.004 & yes & 0.62 \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & high-$T$ & $\Delta S$ & -0.039, +0.016, +0.016 & 0.026 & \textbf{no} & 0.78 \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & low-$p$ & $\Delta R$ & +0.007, -0.082, +0.008 & 0.042 & \textbf{no} & -- \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & low-$p$ & $\Delta K$ & +0.008, +0.062, +0.023 & 0.023 & yes & 0.68 \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & low-$p$ & $\Delta S$ & +0.000, +0.102, +0.008 & 0.046 & yes & 0.50 \tabularnewline
+\bottomrule
+\end{tabular}
+\end{adjustwidth}
+\end{table}

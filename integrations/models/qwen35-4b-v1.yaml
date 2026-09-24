@@ -1,0 +1,152 @@
+schema_version: "1.0"
+record_type: model_integration
+record_id: qwen35-4b-integration-v1
+model_id: Qwen/Qwen3.5-4B
+revision: 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+tokenizer_id: Qwen/Qwen3.5-4B
+tokenizer_revision: 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+parameter_count_exact: 4659865088
+parameter_count_method: >-
+  Sum of all tensor shapes in the two pinned safetensors shards using safetensors
+  metadata; 4,539,265,536 model parameters plus 120,599,552 MTP parameters.
+architecture: >-
+  Qwen3_5ForConditionalGeneration multimodal dense model; its text component has
+  32 layers in a repeating three-linear-attention/one-full-attention pattern,
+  hidden size 2560, 16 attention heads, 4 KV heads, and tied embeddings. CPIS
+  loads the language model only and does not load/use the vision encoder.
+framework: vLLM CUDA inference, language-model-only, no offload
+framework_version: 0.29.0+cu129
+framework_requirement: >-
+  The pinned model card requires vLLM from its then-current main/nightly branch
+  for Qwen3.5. The installed pinned 0.29.0+cu129 build recognizes qwen3_5 and was
+  validated on an NVIDIA L40 without CPU or NVMe offload.
+precision: [bfloat16, float32_state]
+official_chat_template_sha256: a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715
+message_format: >-
+  Use the pinned tokenizer Jinja template with user messages and an assistant
+  generation prompt. The template emits ChatML-style im_start/im_end framing.
+  No system message or tools are supplied in the SuperGPQA study.
+reasoning_controls: >-
+  Qwen3.5 thinks by default and does not support Qwen3 /think or /nothink soft
+  switches. Non-thinking mode must set chat_template_kwargs.enable_thinking=false;
+  the template then inserts an empty think block before the direct response.
+required_special_tokens:
+  - <|im_start|>
+  - <|im_end|>
+  - <|endoftext|>
+  - <think>
+  - </think>
+eos_and_stop_behavior: >-
+  Pinned text_config eos_token_id is 248044 (<|endoftext|>). CPIS leaves stop
+  strings empty, sets ignore_eos=false, and preserves the backend finish reason.
+recommended_context_limit: 262144
+configured_context_limit: 8192
+recommended_output_limits: >-
+  The card recommends 32,768 output tokens for most open-ended queries and up to
+  81,920 for complex math/programming. CPIS requests a single no-explanation JSON
+  answer (512-token cap) and 8-9-token confidence object (256-token cap); the v5
+  development preflight had 64/64 stopped outputs and no truncation. These caps
+  are task-format limits, not hidden decoder-condition changes.
+native_reference_sampling:
+  temperature: 0.7
+  top_p: 0.8
+  top_k: 20
+  min_p: 0.0
+  presence_penalty: 1.5
+  frequency_penalty: 0.0
+  repetition_penalty: 1.0
+sampler_constraints: >-
+  top_k=20 is an active native constraint and is held fixed in deployment-relative
+  temperature and top-p interventions. Consequently, top-p operates inside the
+  native top-20 candidate set and the high-diversity condition remains top-20
+  bounded; neither condition is described as full-vocabulary nucleus sampling.
+  min_p=0 is inactive. Every sampler value is passed explicitly to vLLM.
+greedy_decoding_caveats: >-
+  Greedy decoding is not an official native recommendation. It is used only as
+  the standardized confidence-readout mitigation, with temperature=0, top_p=1,
+  top_k unset, min_p unset, and penalties neutralized. It is not used for answer
+  generation or substituted for the model-native reference.
+tool_calling_requirements: >-
+  Tool use would require vLLM auto-tool choice and qwen3_coder parsing, but this
+  non-agentic MCQ study supplies no tools and must not enable tool parsing.
+structured_output_constraints: >-
+  The official card recommends prompt-level JSON structure for multiple-choice
+  benchmarking. CPIS uses that recommendation and retains raw text; it does not
+  use guided decoding, which could alter the sampling intervention.
+engine_requirements: >-
+  Native CUDA vLLM sampling, BF16 weights, tensor parallel size 1, one replica per
+  L40, FlashInfer sampler explicitly disabled after preflight incompatibility,
+  and all caches on RAID. CPU/NVMe offload and DeepSpeed are prohibited.
+unsupported_configurations:
+  - Qwen3 /think and /nothink soft switches for Qwen3.5
+  - Treating top_p shifts as full-vocabulary interventions while native top_k=20 remains active
+  - Tool calls without qwen3_coder tool-call parsing
+  - Any CPU or NVMe parameter offload
+interventions:
+  - intervention_id: reference
+    changed_parameters: {}
+    held_fixed_parameters:
+      temperature: 0.7
+      top_p: 0.8
+      top_k: 20
+      min_p: 0.0
+      presence_penalty: 1.5
+      repetition_penalty: 1.0
+    status: supported
+    interpretation: Official non-thinking general-task model-native deployment reference.
+  - intervention_id: low-temperature
+    changed_parameters: {temperature: 0.2}
+    held_fixed_parameters: {top_p: 0.8, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Deployment-relative temperature intervention with every other native sampler held fixed.
+  - intervention_id: high-temperature
+    changed_parameters: {temperature: 1.2}
+    held_fixed_parameters: {top_p: 0.8, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Deployment-relative temperature intervention with every other native sampler held fixed.
+  - intervention_id: low-top-p
+    changed_parameters: {top_p: 0.7}
+    held_fixed_parameters: {temperature: 0.7, top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Native-relative nucleus intervention inside the retained official top-20 candidate set.
+  - intervention_id: high-diversity
+    changed_parameters: {temperature: 1.2, top_p: 1.0}
+    held_fixed_parameters: {top_k: 20, min_p: 0.0, presence_penalty: 1.5, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Prespecified joint high-temperature/high-top-p contrast, still bounded by native top_k=20.
+  - intervention_id: standardized-deterministic-readout
+    changed_parameters: {temperature: 0.0, top_p: 1.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    held_fixed_parameters: {}
+    status: supported_with_limitation
+    interpretation: Development-only deterministic confidence-readout mitigation, not a native answer configuration.
+validation_status: development_validated
+validation_evidence: >-
+  evidence/environment/l40_gpu_stack.json and the v5 64-item development pilot
+  establish direct BF16 residency, valid template use, complete stopped output,
+  immutable raw records, and safe resume under the pinned runtime.
+sources:
+  - source_type: official_model_card
+    url: https://huggingface.co/Qwen/Qwen3.5-4B/blob/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a/README.md
+    revision: 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+    artifact_sha256: null
+    note: Pinned official sampling, mode, context, structured-output, vLLM, and tool guidance.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/Qwen/Qwen3.5-4B/blob/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a/config.json
+    revision: 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+    artifact_sha256: ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670
+    note: Pinned architecture, dtype, context length, and EOS token configuration.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/Qwen/Qwen3.5-4B/blob/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a/chat_template.jinja
+    revision: 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
+    artifact_sha256: a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715
+    note: Pinned official role framing and enable_thinking behavior.
+  - source_type: official_engine_documentation
+    url: https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html
+    revision: accessed-2026-09-20
+    artifact_sha256: null
+    note: Official vLLM project Qwen3.5 runtime guidance.
+  - source_type: local_validation
+    url: evidence/environment/l40_gpu_stack.json
+    revision: repository-record
+    artifact_sha256: null
+    note: Local pinned L40 runtime and no-offload validation evidence.

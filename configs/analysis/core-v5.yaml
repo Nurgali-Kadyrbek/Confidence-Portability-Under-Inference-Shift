@@ -1,0 +1,110 @@
+schema_version: "4.0"
+plan_id: cpis-core-analysis-v5
+
+risk_contract:
+  target_risk: 0.10
+  certification_tail_probability: 0.05
+  minimum_coverage: 0.10
+  threshold_selection: max_coverage_subject_to_empirical_risk
+  certification_method: one_sided_clopper_pearson
+  infeasible_label: risk-contract infeasible
+  certification_replicate_seed: 1729
+
+grouped_certification:
+  method: deterministic_balanced_one_variant_per_source_group
+  selector_salt: cpis-group-certification-anchor-v1
+  variant_order_key: instruction_count
+  rationale: >-
+    ManyIFEval and StyleMBPP rows are dependent variants of one source task.
+    One outcome-blind, load-balanced variant per source group preserves the
+    binomial certification unit and prevents derived rows from inflating N.
+
+agent_grouped_certification:
+  method: deterministic_balanced_one_category_per_source_group
+  selector_salt: cpis-bfcl-certification-anchor-v1
+  variant_key: category
+  categories: [base, long_context, miss_func, miss_param]
+  rationale: >-
+    BFCL's four category rows sharing a base scenario are dependent variants.
+    One outcome-blind category-balanced row per scenario supplies exactly one
+    Bernoulli outcome per independent unit for exact binomial certification.
+
+fixed_coverage:
+  targets: [0.10, 0.25, 0.50]
+  tie_rule: smallest_coverage_not_below_target
+  universal_confirmatory_target: 0.50
+
+invalid_confidence:
+  operational: forced_abstention
+  calibration: valid_only_with_denominator_and_invalid_rate
+  imputation: prohibited
+
+bootstrap:
+  replicates: 5000
+  seed: 20260920
+  unit: original_benchmark_item
+  strata: [discipline, subfield]
+
+multiplicity:
+  method: holm_step_down
+  familywise_alpha: 0.05
+  family_definition: two_decoder_contrasts_within_model_dataset
+  raw_p_value_method: paired_cluster_randomization
+  randomization_replicates: 9999
+  randomization_seed: 20260921
+  endpoint_rule: certified_risk_threshold_else_fixed_coverage_target
+  alternative_rule: one_sided_risk_increase_when_certified_else_two_sided_change
+  # The frozen core retains two single-mechanism interventions: from each
+  # model's native reference, high-temperature moves only temperature and
+  # low-top-p moves only top-p. low_temperature and high_diversity are out of
+  # scope and are excluded from primary inference whatever they may show.
+  confirmatory_contrasts:
+    - reference_to_high_temperature
+    - reference_to_low_top_p
+
+equivalence_margins:
+  selective_risk: 0.025
+  coverage: 0.05
+  rationale: >-
+    A 2.5 percentage-point selective-risk change is operationally material but
+    small enough not to equate substantial degradation; a 5 percentage-point
+    coverage change is the corresponding provisional capacity tolerance. These
+    margins were fixed before certification and test analysis.
+
+equivalence_testing:
+  method: paired_cluster_bootstrap_tost
+  interval_level: 0.90
+  noninferiority_interval_level: 0.95
+
+pooled_analysis:
+  method: two_stage_reml_random_effects_meta_analysis
+  input_unit: model_dataset_contrast
+  variance_source: paired_item_cluster_bootstrap
+  heterogeneity_statistics: [tau_squared, i_squared]
+  moderators: [model_family, reasoning_regime, scale_band, task_domain]
+  minimum_effects_per_fitted_coefficient: 10
+  sparse_moderator_fallback: stratified_effects_without_meta_regression
+  claim_rule: pooled_effect_never_implies_every_model
+
+dense_surface:
+  role: secondary_model_based_description
+  model: clustered_fractional_logit_and_logistic_response_surfaces
+  cluster: original_benchmark_item_or_source_group
+  predictors:
+    - centered_temperature
+    - centered_logit_top_p
+    - temperature_squared
+    - logit_top_p_squared
+    - temperature_by_logit_top_p
+    - model_condition
+    - dataset
+  uncertainty: item_clustered_bootstrap
+  pooling: model_specific_surfaces_then_reml_meta_analysis
+  top_p_logit_epsilon: 0.000001
+
+robustness:
+  same_answer_definition: exact_parsed_answer_identity_within_item_seed
+  accuracy_match_absolute_tolerance: 0.01
+  confidence_metrics: [auroc, aurc, brier, ece]
+  ece_bins: 10
+  calibration_sensitivity_epsilon: 0.000001

@@ -1,0 +1,28 @@
+\begin{table}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\small
+\caption{Precision of the selective-risk contrasts against the equivalence region. The accepted count is $NK$ at the reference configuration. The last column records whether the 95\% interval could have fitted inside the region at all.\label{tab:precision}}
+\begin{tabular}{llllcrccl}
+\toprule
+\textbf{Model} & \textbf{Regime} & \textbf{Data} & \textbf{Shift} & \textbf{Accepted} $\boldsymbol{n}$ & \textbf{SE} & \textbf{CI width} & \textbf{vs band} & \textbf{Could fit} \\
+\midrule
+Ministral-3-8B & instruct & ManyIFEval & high-$T$ & 382 & 0.024 & 0.128 & 2.6$\times$ & \textbf{no} \tabularnewline
+Ministral-3-8B & instruct & ManyIFEval & low-$p$ & 382 & 0.024 & 0.050 & 1.0$\times$ & \textbf{no} \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & high-$T$ & 474 & 0.021 & 0.097 & 1.9$\times$ & \textbf{no} \tabularnewline
+Ministral-3-8B & instruct & SuperGPQA & low-$p$ & 474 & 0.021 & 0.015 & 0.3$\times$ & yes \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & high-$T$ & 366 & 0.018 & 0.069 & 1.4$\times$ & \textbf{no} \tabularnewline
+Ministral-3-8B & reasoning & ManyIFEval & low-$p$ & 366 & 0.018 & 0.063 & 1.3$\times$ & \textbf{no} \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & high-$T$ & 346 & 0.026 & 0.083 & 1.7$\times$ & \textbf{no} \tabularnewline
+Ministral-3-8B & reasoning & SuperGPQA & low-$p$ & 346 & 0.026 & 0.110 & 2.2$\times$ & \textbf{no} \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & high-$T$ & 138 & 0.024 & 0.180 & 3.6$\times$ & \textbf{no} \tabularnewline
+Qwen3.5-9B & non-thinking & ManyIFEval & low-$p$ & 138 & 0.024 & 0.156 & 3.1$\times$ & \textbf{no} \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & high-$T$ & 376 & 0.024 & 0.063 & 1.3$\times$ & \textbf{no} \tabularnewline
+Qwen3.5-9B & non-thinking & SuperGPQA & low-$p$ & 376 & 0.024 & 0.045 & 0.9$\times$ & yes \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & high-$T$ & 390 & 0.016 & 0.020 & 0.4$\times$ & yes \tabularnewline
+Qwen3.5-9B & thinking & ManyIFEval & low-$p$ & 390 & 0.016 & 0.026 & 0.5$\times$ & yes \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & high-$T$ & 416 & 0.024 & 0.073 & 1.5$\times$ & \textbf{no} \tabularnewline
+Qwen3.5-9B & thinking & SuperGPQA & low-$p$ & 416 & 0.024 & 0.072 & 1.4$\times$ & \textbf{no} \tabularnewline
+\bottomrule
+\end{tabular}
+\end{adjustwidth}
+\end{table}

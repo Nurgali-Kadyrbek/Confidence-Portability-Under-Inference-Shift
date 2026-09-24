@@ -1,0 +1,938 @@
+{
+  "artifact": "cpis-measurement-properties-v1",
+  "artifact_sha256": "f4926545ae6754932151e905bbb093c9dba6176dcf043af7fb10aeb6905307db",
+  "created_at_utc": "2026-09-22T15:15:37.401411+00:00",
+  "equivalence_margin_selective_risk": 0.025,
+  "pairs": [
+    {
+      "confidence_quantisation": {
+        "distinct_reported_values": 9,
+        "entropy_bits": 1.8383253806378077,
+        "largest_atom_mass": 0.61,
+        "largest_atom_value": 0.98,
+        "mass_by_value": {
+          "0.000": 0.013333333333333334,
+          "0.050": 0.0033333333333333335,
+          "0.600": 0.006666666666666667,
+          "0.850": 0.016666666666666666,
+          "0.880": 0.06666666666666667,
+          "0.920": 0.16333333333333333,
+          "0.950": 0.09333333333333334,
+          "0.980": 0.61,
+          "0.990": 0.02666666666666667
+        },
+        "max_entropy_bits": 3.169925001442312,
+        "observations": 300,
+        "reachable_coverage_steps": [
+          {
+            "coverage_at_or_above": 0.02666666666666667,
+            "threshold": 0.99
+          },
+          {
+            "coverage_at_or_above": 0.6366666666666667,
+            "threshold": 0.98
+          },
+          {
+            "coverage_at_or_above": 0.73,
+            "threshold": 0.95
+          },
+          {
+            "coverage_at_or_above": 0.8933333333333333,
+            "threshold": 0.92
+          },
+          {
+            "coverage_at_or_above": 0.96,
+            "threshold": 0.88
+          },
+          {
+            "coverage_at_or_above": 0.9766666666666667,
+            "threshold": 0.85
+          },
+          {
+            "coverage_at_or_above": 0.9833333333333333,
+            "threshold": 0.6
+          },
+          {
+            "coverage_at_or_above": 0.9866666666666667,
+            "threshold": 0.05
+          },
+          {
+            "coverage_at_or_above": 1.0,
+            "threshold": 0.0
+          }
+        ]
+      },
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "endpoint": "fixed_coverage_0.5",
+      "model_id": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "model_mode": "instruct",
+      "selective_risk_precision": {
+        "accepted_observations_at_calibration": 191,
+        "asymptotic_se_at_held_out": 0.024055263578085125,
+        "calibration_asymptotic_se": 0.03401928890415704,
+        "contrasts": {
+          "reference_to_high_temperature": {
+            "band_could_contain_interval": false,
+            "bootstrap_ci_width": 0.128045,
+            "width_over_equivalence_band": 2.561
+          },
+          "reference_to_low_top_p": {
+            "band_could_contain_interval": false,
+            "bootstrap_ci_width": 0.050384,
+            "width_over_equivalence_band": 1.008
+          }
+        },
+        "equivalence_band_width": 0.05,
+        "held_out_items": 600,
+        "implied_accepted_at_held_out": 382,
+        "reference_coverage": 0.636667,
+        "reference_risk": 0.670157
+      },
+      "threshold": 0.98
+    },
+    {
+      "confidence_quantisation": {
+        "distinct_reported_values": 16,
+        "entropy_bits": 1.7175060934497426,
+        "largest_atom_mass": 0.7266666666666667,
+        "largest_atom_value": 0.95,
+        "mass_by_value": {
+          "0.000": 0.013333333333333334,
+          "0.050": 0.0033333333333333335,
+          "0.100": 0.02,
+          "0.200": 0.016666666666666666,
+          "0.300": 0.01,
+          "0.350": 0.006666666666666667,
+          "0.400": 0.0033333333333333335,
+          "0.600": 0.01,
+          "0.800": 0.0033333333333333335,
+          "0.850": 0.06,
+          "0.880": 0.0033333333333333335,
+          "0.900": 0.056666666666666664,
+          "0.920": 0.0033333333333333335,
+          "0.950": 0.7266666666666667,
+          "0.980": 0.01,
+          "0.990": 0.05333333333333334
+        },
+        "max_entropy_bits": 4.0,
+        "observations": 300,
+        "reachable_coverage_steps": [
+          {
+            "coverage_at_or_above": 0.05333333333333334,
+            "threshold": 0.99
+          },
+          {
+            "coverage_at_or_above": 0.06333333333333334,
+            "threshold": 0.98
+          },
+          {
+            "coverage_at_or_above": 0.79,
+            "threshold": 0.95
+          },
+          {
+            "coverage_at_or_above": 0.7933333333333333,
+            "threshold": 0.92
+          },
+          {
+            "coverage_at_or_above": 0.85,
+            "threshold": 0.9
+          },
+          {
+            "coverage_at_or_above": 0.8533333333333334,
+            "threshold": 0.88
+          },
+          {
+            "coverage_at_or_above": 0.9133333333333333,
+            "threshold": 0.85
+          },
+          {
+            "coverage_at_or_above": 0.9166666666666666,
+            "threshold": 0.8
+          },
+          {
+            "coverage_at_or_above": 0.9266666666666666,
+            "threshold": 0.6
+          },
+          {
+            "coverage_at_or_above": 0.93,
+            "threshold": 0.4
+          },
+          {
+            "coverage_at_or_above": 0.9366666666666666,
+            "threshold": 0.35
+          },
+          {
+            "coverage_at_or_above": 0.9466666666666667,
+            "threshold": 0.3
+          },
+          {
+            "coverage_at_or_above": 0.9633333333333334,
+            "threshold": 0.2
+          },
+          {
+            "coverage_at_or_above": 0.9833333333333333,
+            "threshold": 0.1
+          },
+          {
+            "coverage_at_or_above": 0.9866666666666667,
+            "threshold": 0.05
+          },
+          {
+            "coverage_at_or_above": 1.0,
+            "threshold": 0.0
+          }
+        ]
+      },
+      "dataset_id": "m-a-p/SuperGPQA",
+      "endpoint": "fixed_coverage_0.5",
+      "model_id": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+      "model_mode": "instruct",
+      "selective_risk_precision": {
+        "accepted_observations_at_calibration": 237,
+        "asymptotic_se_at_held_out": 0.020775924966841983,
+        "calibration_asymptotic_se": 0.029381594858953728,
+        "contrasts": {
+          "reference_to_high_temperature": {
+            "band_could_contain_interval": false,
+            "bootstrap_ci_width": 0.096722,
+            "width_over_equivalence_band": 1.934
+          },
+          "reference_to_low_top_p": {
+            "band_could_contain_interval": true,
+            "bootstrap_ci_width": 0.015094,
+            "width_over_equivalence_band": 0.302
+          }
+        },
+        "equivalence_band_width": 0.05,
+        "held_out_items": 600,
+        "implied_accepted_at_held_out": 474,
+        "reference_coverage": 0.79,
+        "reference_risk": 0.71308
+      },
+      "threshold": 0.95
+    },
+    {
+      "confidence_quantisation": {
+        "distinct_reported_values": 15,
+        "entropy_bits": 2.5672846568887224,
+        "largest_atom_mass": 0.43728813559322033,
+        "largest_atom_value": 0.95,
+        "mass_by_value": {
+          "0.000": 0.013559322033898305,
+          "0.050": 0.003389830508474576,
+          "0.200": 0.006779661016949152,
+          "0.250": 0.006779661016949152,
+          "0.300": 0.003389830508474576,
+          "0.500": 0.006779661016949152,
+          "0.600": 0.013559322033898305,
+          "0.750": 0.003389830508474576,
+          "0.800": 0.0711864406779661,
+          "0.850": 0.07457627118644068,
+          "0.900": 0.17627118644067796,
+          "0.950": 0.43728813559322033,
+          "0.980": 0.023728813559322035,
+          "0.990": 0.02711864406779661,
+          "1.000": 0.13220338983050847
+        },
+        "max_entropy_bits": 3.9068905956085187,
+        "observations": 295,
+        "reachable_coverage_steps": [
+          {
+            "coverage_at_or_above": 0.13220338983050847,
+            "threshold": 1.0
+          },
+          {
+            "coverage_at_or_above": 0.15932203389830507,
+            "threshold": 0.99
+          },
+          {
+            "coverage_at_or_above": 0.18305084745762712,
+            "threshold": 0.98
+          },
+          {
+            "coverage_at_or_above": 0.6203389830508474,
+            "threshold": 0.95
+          },
+          {
+            "coverage_at_or_above": 0.7966101694915254,
+            "threshold": 0.9
+          },
+          {
+            "coverage_at_or_above": 0.8711864406779661,
+            "threshold": 0.85
+          },
+          {
+            "coverage_at_or_above": 0.9423728813559322,
+            "threshold": 0.8
+          },
+          {
+            "coverage_at_or_above": 0.9457627118644067,
+            "threshold": 0.75
+          },
+          {
+            "coverage_at_or_above": 0.9593220338983051,
+            "threshold": 0.6
+          },
+          {
+            "coverage_at_or_above": 0.9661016949152542,
+            "threshold": 0.5
+          },
+          {
+            "coverage_at_or_above": 0.9694915254237289,
+            "threshold": 0.3
+          },
+          {
+            "coverage_at_or_above": 0.976271186440678,
+            "threshold": 0.25
+          },
+          {
+            "coverage_at_or_above": 0.9830508474576272,
+            "threshold": 0.2
+          },
+          {
+            "coverage_at_or_above": 0.9864406779661017,
+            "threshold": 0.05
+          },
+          {
+            "coverage_at_or_above": 1.0,
+            "threshold": 0.0
+          }
+        ]
+      },
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "endpoint": "fixed_coverage_0.5",
+      "model_id": "mistralai/Ministral-3-8B-Reasoning-2512",
+      "model_mode": "reasoning",
+      "selective_risk_precision": {
+        "accepted_observations_at_calibration": 183,
+        "asymptotic_se_at_held_out": 0.017644656004246632,
+        "calibration_asymptotic_se": 0.024953311824613453,
+        "contrasts": {
+          "reference_to_high_temperature": {
+            "band_could_contain_interval": false,
+            "bootstrap_ci_width": 0.069067,
+            "width_over_equivalence_band": 1.381
+          },
+          "reference_to_low_top_p": {
+            "band_could_contain_interval": false,
+            "bootstrap_ci_width": 0.062996,
+            "width_over_equivalence_band": 1.26
+          }
+        },
+        "equivalence_band_width": 0.05,
+        "held_out_items": 600,
+        "implied_accepted_at_held_out": 366,
+        "reference_coverage": 0.61,
+        "reference_risk": 0.868852
+      },
+      "threshold": 0.95
+    },
+    {
+      "confidence_quantisation": {
+        "distinct_reported_values": 19,
+        "entropy_bits": 3.6835256446502243,
+        "largest_atom_mass": 0.1310344827586207,
+        "largest_atom_value": 0.8,
+        "mass_by_value": {
+          "0.000": 0.06551724137931035,
+          "0.016": 0.0034482758620689655,
+          "0.050": 0.0034482758620689655,
+          "0.100": 0.10689655172413794,
+          "0.200": 0.08620689655172414,
+          "0.250": 0.017241379310344827,
+          "0.300": 0.013793103448275862,
+          "0.400": 0.020689655172413793,
+          "0.500": 0.1103448275862069,
+          "0.600": 0.027586206896551724,
+          "0.700": 0.02413793103448276,
+          "0.720": 0.0034482758620689655,
+          "0.750": 0.07586206896551724,
+          "0.800": 0.1310344827586207,
+          "0.850": 0.006896551724137931,
+          "0.900": 0.10689655172413794,
+          "0.950": 0.06551724137931035,
+          "0.990": 0.013793103448275862,
+          "1.000": 0.11724137931034483
+        },
+        "max_entropy_bits": 4.247927513443585,
+        "observations": 290,
+        "reachable_coverage_steps": [
+          {
+            "coverage_at_or_above": 0.11724137931034483,
+            "threshold": 1.0
+          },
+          {
+            "coverage_at_or_above": 0.1310344827586207,
+            "threshold": 0.99
+          },
+          {
+            "coverage_at_or_above": 0.19655172413793104,
+            "threshold": 0.95
+          },
+          {
+            "coverage_at_or_above": 0.30344827586206896,
+            "threshold": 0.9
+          },
+          {
+            "coverage_at_or_above": 0.3103448275862069,
+            "threshold": 0.85
+          },
+          {
+            "coverage_at_or_above": 0.4413793103448276,
+            "threshold": 0.8
+          },
+          {
+            "coverage_at_or_above": 0.5172413793103449,
+            "threshold": 0.75
+          },
+          {
+            "coverage_at_or_above": 0.5206896551724138,
+            "threshold": 0.72
+          },
+          {
+            "coverage_at_or_above": 0.5448275862068965,
+            "threshold": 0.7
+          },
+          {
+            "coverage_at_or_above": 0.5724137931034483,
+            "threshold": 0.6
+          },
+          {
+            "coverage_at_or_above": 0.6827586206896552,
+            "threshold": 0.5
+          },
+          {
+            "coverage_at_or_above": 0.7034482758620689,
+            "threshold": 0.4
+          },
+          {
+            "coverage_at_or_above": 0.7172413793103448,
+            "threshold": 0.3
+          },
+          {
+            "coverage_at_or_above": 0.7344827586206897,
+            "threshold": 0.25
+          },
+          {
+            "coverage_at_or_above": 0.8206896551724138,
+            "threshold": 0.2
+          },
+          {
+            "coverage_at_or_above": 0.9275862068965517,
+            "threshold": 0.1
+          },
+          {
+            "coverage_at_or_above": 0.9310344827586207,
+            "threshold": 0.05
+          },
+          {
+            "coverage_at_or_above": 0.9344827586206896,
+            "threshold": 0.016
+          },
+          {
+            "coverage_at_or_above": 1.0,
+            "threshold": 0.0
+          }
+        ]
+      },
+      "dataset_id": "m-a-p/SuperGPQA",
+      "endpoint": "fixed_coverage_0.5",
+      "model_id": "mistralai/Ministral-3-8B-Reasoning-2512",
+      "model_mode": "reasoning",
+      "selective_risk_precision": {
+        "accepted_observations_at_calibration": 173,
+        "asymptotic_se_at_held_out": 0.02649980397610332,
+        "calibration_asymptotic_se": 0.03747639301455655,
+        "contrasts": {
+          "reference_to_high_temperature": {
+            "band_could_contain_interval": false,
+            "bootstrap_ci_width": 0.083495,
+            "width_over_equivalence_band": 1.67
+          },
+          "reference_to_low_top_p": {
+            "band_could_contain_interval": false,
+            "bootstrap_ci_width": 0.110292,
+            "width_over_equivalence_band": 2.206
+          }
+        },
+        "equivalence_band_width": 0.05,
+        "held_out_items": 600,
+        "implied_accepted_at_held_out": 346,
+        "reference_coverage": 0.576667,
+        "reference_risk": 0.583815
+      },
+      "threshold": 0.5
+    },
+    {
+      "confidence_quantisation": {
+        "distinct_reported_values": 12,
+        "entropy_bits": 2.499745558631448,
+        "largest_atom_mass": 0.4033333333333333,
+        "largest_atom_value": 0.95,
+        "mass_by_value": {
+          "0.000": 0.04,
+          "0.100": 0.0033333333333333335,
+          "0.150": 0.01,
+          "0.600": 0.01,
+          "0.650": 0.006666666666666667,
+          "0.800": 0.02666666666666667,
+          "0.850": 0.09666666666666666,
+          "0.900": 0.12666666666666668,
+          "0.920": 0.013333333333333334,
+          "0.950": 0.4033333333333333,
+          "0.980": 0.03333333333333333,
+          "1.000": 0.23
+        },
+        "max_entropy_bits": 3.584962500721156,
+        "observations": 300,
+        "reachable_coverage_steps": [
+          {
+            "coverage_at_or_above": 0.23,
+            "threshold": 1.0
+          },
+          {
+            "coverage_at_or_above": 0.2633333333333333,
+            "threshold": 0.98
+          },
+          {
+            "coverage_at_or_above": 0.6666666666666666,
+            "threshold": 0.95
+          },
+          {
+            "coverage_at_or_above": 0.68,
+            "threshold": 0.92
+          },
+          {
+            "coverage_at_or_above": 0.8066666666666666,
+            "threshold": 0.9
+          },
+          {
+            "coverage_at_or_above": 0.9033333333333333,
+            "threshold": 0.85
+          },
+          {
+            "coverage_at_or_above": 0.93,
+            "threshold": 0.8
+          },
+          {
+            "coverage_at_or_above": 0.9366666666666666,
+            "threshold": 0.65
+          },
+          {
+            "coverage_at_or_above": 0.9466666666666667,
+            "threshold": 0.6
+          },
+          {
+            "coverage_at_or_above": 0.9566666666666667,
+            "threshold": 0.15
+          },
+          {
+            "coverage_at_or_above": 0.96,
+            "threshold": 0.1
+          },
+          {
+            "coverage_at_or_above": 1.0,
+            "threshold": 0.0
+          }
+        ]
+      },
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "endpoint": "certified_risk_threshold",
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "non_thinking",
+      "selective_risk_precision": {
+        "accepted_observations_at_calibration": 69,
+        "asymptotic_se_at_held_out": 0.023986028564804016,
+        "calibration_asymptotic_se": 0.0339213669038143,
+        "contrasts": {
+          "reference_to_high_temperature": {
+            "band_could_contain_interval": false,
+            "bootstrap_ci_width": 0.179691,
+            "width_over_equivalence_band": 3.594
+          },
+          "reference_to_low_top_p": {
+            "band_could_contain_interval": false,
+            "bootstrap_ci_width": 0.155599,
+            "width_over_equivalence_band": 3.112
+          }
+        },
+        "equivalence_band_width": 0.05,
+        "held_out_items": 600,
+        "implied_accepted_at_held_out": 138,
+        "reference_coverage": 0.23,
+        "reference_risk": 0.086957
+      },
+      "threshold": 1.0
+    },
+    {
+      "confidence_quantisation": {
+        "distinct_reported_values": 11,
+        "entropy_bits": 1.8433890597911116,
+        "largest_atom_mass": 0.6266666666666667,
+        "largest_atom_value": 1.0,
+        "mass_by_value": {
+          "0.000": 0.06333333333333334,
+          "0.100": 0.0033333333333333335,
+          "0.500": 0.01,
+          "0.750": 0.0033333333333333335,
+          "0.800": 0.016666666666666666,
+          "0.850": 0.03333333333333333,
+          "0.900": 0.07,
+          "0.950": 0.16,
+          "0.980": 0.01,
+          "0.990": 0.0033333333333333335,
+          "1.000": 0.6266666666666667
+        },
+        "max_entropy_bits": 3.4594316186372973,
+        "observations": 300,
+        "reachable_coverage_steps": [
+          {
+            "coverage_at_or_above": 0.6266666666666667,
+            "threshold": 1.0
+          },
+          {
+            "coverage_at_or_above": 0.63,
+            "threshold": 0.99
+          },
+          {
+            "coverage_at_or_above": 0.64,
+            "threshold": 0.98
+          },
+          {
+            "coverage_at_or_above": 0.8,
+            "threshold": 0.95
+          },
+          {
+            "coverage_at_or_above": 0.87,
+            "threshold": 0.9
+          },
+          {
+            "coverage_at_or_above": 0.9033333333333333,
+            "threshold": 0.85
+          },
+          {
+            "coverage_at_or_above": 0.92,
+            "threshold": 0.8
+          },
+          {
+            "coverage_at_or_above": 0.9233333333333333,
+            "threshold": 0.75
+          },
+          {
+            "coverage_at_or_above": 0.9333333333333333,
+            "threshold": 0.5
+          },
+          {
+            "coverage_at_or_above": 0.9366666666666666,
+            "threshold": 0.1
+          },
+          {
+            "coverage_at_or_above": 1.0,
+            "threshold": 0.0
+          }
+        ]
+      },
+      "dataset_id": "m-a-p/SuperGPQA",
+      "endpoint": "fixed_coverage_0.5",
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "non_thinking",
+      "selective_risk_precision": {
+        "accepted_observations_at_calibration": 188,
+        "asymptotic_se_at_held_out": 0.024342953579173005,
+        "calibration_asymptotic_se": 0.03442614425577092,
+        "contrasts": {
+          "reference_to_high_temperature": {
+            "band_could_contain_interval": false,
+            "bootstrap_ci_width": 0.062543,
+            "width_over_equivalence_band": 1.251
+          },
+          "reference_to_low_top_p": {
+            "band_could_contain_interval": true,
+            "bootstrap_ci_width": 0.045052,
+            "width_over_equivalence_band": 0.901
+          }
+        },
+        "equivalence_band_width": 0.05,
+        "held_out_items": 600,
+        "implied_accepted_at_held_out": 376,
+        "reference_coverage": 0.626667,
+        "reference_risk": 0.664894
+      },
+      "threshold": 1.0
+    },
+    {
+      "confidence_quantisation": {
+        "distinct_reported_values": 21,
+        "entropy_bits": 3.478712743422881,
+        "largest_atom_mass": 0.17869415807560138,
+        "largest_atom_value": 0.0,
+        "mass_by_value": {
+          "0.000": 0.17869415807560138,
+          "0.010": 0.027491408934707903,
+          "0.020": 0.003436426116838488,
+          "0.050": 0.12027491408934708,
+          "0.100": 0.1718213058419244,
+          "0.150": 0.044673539518900345,
+          "0.200": 0.05154639175257732,
+          "0.300": 0.010309278350515464,
+          "0.400": 0.020618556701030927,
+          "0.450": 0.003436426116838488,
+          "0.500": 0.003436426116838488,
+          "0.600": 0.006872852233676976,
+          "0.650": 0.003436426116838488,
+          "0.700": 0.003436426116838488,
+          "0.750": 0.013745704467353952,
+          "0.850": 0.013745704467353952,
+          "0.900": 0.027491408934707903,
+          "0.950": 0.16838487972508592,
+          "0.980": 0.07216494845360824,
+          "0.990": 0.041237113402061855,
+          "1.000": 0.013745704467353952
+        },
+        "max_entropy_bits": 4.392317422778761,
+        "observations": 291,
+        "reachable_coverage_steps": [
+          {
+            "coverage_at_or_above": 0.013745704467353952,
+            "threshold": 1.0
+          },
+          {
+            "coverage_at_or_above": 0.054982817869415807,
+            "threshold": 0.99
+          },
+          {
+            "coverage_at_or_above": 0.12714776632302405,
+            "threshold": 0.98
+          },
+          {
+            "coverage_at_or_above": 0.29553264604810997,
+            "threshold": 0.95
+          },
+          {
+            "coverage_at_or_above": 0.3230240549828179,
+            "threshold": 0.9
+          },
+          {
+            "coverage_at_or_above": 0.33676975945017185,
+            "threshold": 0.85
+          },
+          {
+            "coverage_at_or_above": 0.35051546391752575,
+            "threshold": 0.75
+          },
+          {
+            "coverage_at_or_above": 0.3539518900343643,
+            "threshold": 0.7
+          },
+          {
+            "coverage_at_or_above": 0.35738831615120276,
+            "threshold": 0.65
+          },
+          {
+            "coverage_at_or_above": 0.3642611683848797,
+            "threshold": 0.6
+          },
+          {
+            "coverage_at_or_above": 0.36769759450171824,
+            "threshold": 0.5
+          },
+          {
+            "coverage_at_or_above": 0.3711340206185567,
+            "threshold": 0.45
+          },
+          {
+            "coverage_at_or_above": 0.3917525773195876,
+            "threshold": 0.4
+          },
+          {
+            "coverage_at_or_above": 0.4020618556701031,
+            "threshold": 0.3
+          },
+          {
+            "coverage_at_or_above": 0.4536082474226804,
+            "threshold": 0.2
+          },
+          {
+            "coverage_at_or_above": 0.49828178694158076,
+            "threshold": 0.15
+          },
+          {
+            "coverage_at_or_above": 0.6701030927835051,
+            "threshold": 0.1
+          },
+          {
+            "coverage_at_or_above": 0.7903780068728522,
+            "threshold": 0.05
+          },
+          {
+            "coverage_at_or_above": 0.7938144329896907,
+            "threshold": 0.02
+          },
+          {
+            "coverage_at_or_above": 0.8213058419243986,
+            "threshold": 0.01
+          },
+          {
+            "coverage_at_or_above": 1.0,
+            "threshold": 0.0
+          }
+        ]
+      },
+      "dataset_id": "kenoharada/Multiple-Instructions-Following:ManyIFEval",
+      "endpoint": "fixed_coverage_0.5",
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "thinking",
+      "selective_risk_precision": {
+        "accepted_observations_at_calibration": 195,
+        "asymptotic_se_at_held_out": 0.01569700552334744,
+        "calibration_asymptotic_se": 0.02219891809976333,
+        "contrasts": {
+          "reference_to_high_temperature": {
+            "band_could_contain_interval": true,
+            "bootstrap_ci_width": 0.019602,
+            "width_over_equivalence_band": 0.392
+          },
+          "reference_to_low_top_p": {
+            "band_could_contain_interval": true,
+            "bootstrap_ci_width": 0.025622,
+            "width_over_equivalence_band": 0.512
+          }
+        },
+        "equivalence_band_width": 0.05,
+        "held_out_items": 600,
+        "implied_accepted_at_held_out": 390,
+        "reference_coverage": 0.65,
+        "reference_risk": 0.892308
+      },
+      "threshold": 0.1
+    },
+    {
+      "confidence_quantisation": {
+        "distinct_reported_values": 17,
+        "entropy_bits": 2.881506572070642,
+        "largest_atom_mass": 0.38666666666666666,
+        "largest_atom_value": 0.95,
+        "mass_by_value": {
+          "0.050": 0.01,
+          "0.100": 0.03,
+          "0.150": 0.006666666666666667,
+          "0.200": 0.02,
+          "0.250": 0.013333333333333334,
+          "0.300": 0.0033333333333333335,
+          "0.350": 0.0033333333333333335,
+          "0.650": 0.0033333333333333335,
+          "0.750": 0.01,
+          "0.800": 0.01,
+          "0.850": 0.05333333333333334,
+          "0.900": 0.13333333333333333,
+          "0.920": 0.006666666666666667,
+          "0.950": 0.38666666666666666,
+          "0.980": 0.09,
+          "0.990": 0.10333333333333333,
+          "1.000": 0.11666666666666667
+        },
+        "max_entropy_bits": 4.087462841250339,
+        "observations": 300,
+        "reachable_coverage_steps": [
+          {
+            "coverage_at_or_above": 0.11666666666666667,
+            "threshold": 1.0
+          },
+          {
+            "coverage_at_or_above": 0.22,
+            "threshold": 0.99
+          },
+          {
+            "coverage_at_or_above": 0.31,
+            "threshold": 0.98
+          },
+          {
+            "coverage_at_or_above": 0.6966666666666667,
+            "threshold": 0.95
+          },
+          {
+            "coverage_at_or_above": 0.7033333333333334,
+            "threshold": 0.92
+          },
+          {
+            "coverage_at_or_above": 0.8366666666666667,
+            "threshold": 0.9
+          },
+          {
+            "coverage_at_or_above": 0.89,
+            "threshold": 0.85
+          },
+          {
+            "coverage_at_or_above": 0.9,
+            "threshold": 0.8
+          },
+          {
+            "coverage_at_or_above": 0.91,
+            "threshold": 0.75
+          },
+          {
+            "coverage_at_or_above": 0.9133333333333333,
+            "threshold": 0.65
+          },
+          {
+            "coverage_at_or_above": 0.9166666666666666,
+            "threshold": 0.35
+          },
+          {
+            "coverage_at_or_above": 0.92,
+            "threshold": 0.3
+          },
+          {
+            "coverage_at_or_above": 0.9333333333333333,
+            "threshold": 0.25
+          },
+          {
+            "coverage_at_or_above": 0.9533333333333334,
+            "threshold": 0.2
+          },
+          {
+            "coverage_at_or_above": 0.96,
+            "threshold": 0.15
+          },
+          {
+            "coverage_at_or_above": 0.99,
+            "threshold": 0.1
+          },
+          {
+            "coverage_at_or_above": 1.0,
+            "threshold": 0.05
+          }
+        ]
+      },
+      "dataset_id": "m-a-p/SuperGPQA",
+      "endpoint": "fixed_coverage_0.5",
+      "model_id": "Qwen/Qwen3.5-9B",
+      "model_mode": "thinking",
+      "selective_risk_precision": {
+        "accepted_observations_at_calibration": 208,
+        "asymptotic_se_at_held_out": 0.023673967122062572,
+        "calibration_asymptotic_se": 0.03348003733110684,
+        "contrasts": {
+          "reference_to_high_temperature": {
+            "band_could_contain_interval": false,
+            "bootstrap_ci_width": 0.073061,
+            "width_over_equivalence_band": 1.461
+          },
+          "reference_to_low_top_p": {
+            "band_could_contain_interval": false,
+            "bootstrap_ci_width": 0.071524,
+            "width_over_equivalence_band": 1.43
+          }
+        },
+        "equivalence_band_width": 0.05,
+        "held_out_items": 600,
+        "implied_accepted_at_held_out": 416,
+        "reference_coverage": 0.693333,
+        "reference_risk": 0.370192
+      },
+      "threshold": 0.95
+    }
+  ],
+  "schema_version": "1.0",
+  "status": "secondary descriptive; explains precision and threshold granularity"
+}

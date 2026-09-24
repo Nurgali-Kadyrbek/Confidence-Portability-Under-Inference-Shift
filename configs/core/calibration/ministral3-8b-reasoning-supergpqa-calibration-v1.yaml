@@ -1,0 +1,187 @@
+schema_version: '2.0'
+experiment_id: cpis-calibration-ministral3-8b-reasoning-supergpqa-v1
+study: development_matrix
+confirmatory: false
+model_integration:
+  record_id: ministral3-8b-reasoning-integration-v2
+  record_path: integrations/models/ministral3-8b-reasoning-v2.yaml
+  canonical_sha256: 0593c5cc783083aca043742ff56ff3217c498e92bb9f596d1296fc44234adcca
+dataset_integration:
+  record_id: supergpqa-integration-v1
+  record_path: integrations/datasets/supergpqa-v1.yaml
+  canonical_sha256: f59c5a6c112b8a29c7f5cd6b8fd305366961852879346ab5d9a0003c4c1e8bd7
+model:
+  model_id: mistralai/Ministral-3-8B-Reasoning-2512
+  revision: 81eaece1948f3875421d9a45bc55487d10e2d894
+  tokenizer_id: mistralai/Ministral-3-8B-Reasoning-2512
+  tokenizer_revision: 81eaece1948f3875421d9a45bc55487d10e2d894
+  parameter_count_billion: 8.91802624
+  dtype: bfloat16
+  tensor_parallel_size: 1
+  max_model_len: 65536
+  gpu_memory_utilization: 0.9
+  trust_remote_code: false
+  language_model_only: true
+  enforce_eager: false
+  prompt_format: chat
+  chat_template_id: ministral3-8b-reasoning-tokenizer-default-v1
+  chat_template_sha256: 6b5044075f09f4daa57beebe2d989d9fbe67dea351f220e1a84e19ddc893f2c2
+  chat_template_kwargs: {}
+  system_prompt: '# HOW YOU SHOULD THINK AND ANSWER
+
+
+    First draft your thinking process (inner monologue) until you arrive at a response. Format your response
+    using Markdown, and use LaTeX for any mathematical equations. Write both your thoughts and the response
+    in the same language as the input.
+
+
+    Your thinking process must follow the template below:[THINK]Your thoughts or/and draft, like working
+    through an exercise on scratch paper. Be as casual and as long as you want until you are confident
+    to generate the response to the user.[/THINK]Here, provide a self-contained response.'
+  model_mode: reasoning
+dataset:
+  dataset_id: m-a-p/SuperGPQA
+  revision: 4430d4458112c7d4497fdcf94d7cc223313d6acf
+  loader: cached_jsonl
+  source_path: prepared/supergpqa-v2-sealed/items-development.jsonl
+  source_url: https://huggingface.co/datasets/m-a-p/SuperGPQA/tree/4430d4458112c7d4497fdcf94d7cc223313d6acf
+  content_sha256: 9938ae277c8444ec6c548b5b72d7cda0d4b735fff85487d4fc6fcecebccfe23e
+  scorer: exact_match_casefold_v1
+  split:
+    salt: supergpqa-10-per-subfield-v1
+    development: 0.4
+    certification: 0.3
+    test: 0.3
+  partition: development
+  item_limit: 300
+  item_selection_salt: cpis-core-phase-subsets-v1
+  item_offset: 32
+inference:
+  backend:
+    name: vllm
+    version: 0.29.0+cu129
+    use_flashinfer_sampler: false
+    mock_answer_response: null
+    mock_confidence_response: null
+    tokenizer_mode: mistral
+    config_format: mistral
+    load_format: mistral
+    worker_multiproc_method: spawn
+  engine_seed: 314159
+  seeds:
+  - 1729
+  answer_conditions:
+  - condition_id: reference
+    sampling:
+      temperature: 0.7
+      top_p: 0.95
+      top_k: null
+      min_p: 0.0
+      max_tokens: 32768
+      min_tokens: 0
+      n: 1
+      presence_penalty: 0.0
+      frequency_penalty: 0.0
+      repetition_penalty: 1.0
+      ignore_eos: false
+      detokenize: true
+      skip_special_tokens: true
+      spaces_between_special_tokens: true
+      include_stop_str_in_output: false
+      stop: []
+      thinking_token_budget: null
+  confidence_readouts:
+  - readout_id: reference
+    sampling:
+      temperature: 0.7
+      top_p: 0.95
+      top_k: null
+      min_p: 0.0
+      max_tokens: 32768
+      min_tokens: 0
+      n: 1
+      presence_penalty: 0.0
+      frequency_penalty: 0.0
+      repetition_penalty: 1.0
+      ignore_eos: false
+      detokenize: true
+      skip_special_tokens: true
+      spaces_between_special_tokens: true
+      include_stop_str_in_output: false
+      stop: []
+      thinking_token_budget: null
+    chat_template_kwargs: null
+    model_mode: null
+  - readout_id: standardized-deterministic
+    sampling:
+      temperature: 0.0
+      top_p: 1.0
+      top_k: null
+      min_p: 0.0
+      max_tokens: 32768
+      min_tokens: 0
+      n: 1
+      presence_penalty: 0.0
+      frequency_penalty: 0.0
+      repetition_penalty: 1.0
+      ignore_eos: false
+      detokenize: true
+      skip_special_tokens: true
+      spaces_between_special_tokens: true
+      include_stop_str_in_output: false
+      stop: []
+      thinking_token_budget: null
+    chat_template_kwargs: null
+    model_mode: null
+  design:
+    reference_answer_condition_id: reference
+    reference_confidence_readout_id: reference
+    coupled_readout_by_answer:
+      reference: reference
+    standardized_readout_id: standardized-deterministic
+    report_only_readout_ids:
+    - reference
+    confidence_cells: coupled_only
+confidence:
+  protocol_id: supergpqa-two-pass-probability-v1
+  prompt_template_version: supergpqa-two-pass-probability-v1
+  answer_prompt_template: 'Choose the most likely correct option for the multiple-choice question. Do
+    not provide an explanation. Return only one JSON object of the form {"answer":"A"}, replacing A with
+    the letter of the selected option.
+
+
+    Question:
+
+    {question}'
+  confidence_prompt_template: 'A proposed answer to the multiple-choice question is shown below. Do not
+    revise or replace it. Estimate the probability that this proposed answer satisfies the stated success
+    criterion. Do not provide an explanation. Return only one JSON object of the form {"confidence":0.75},
+    replacing 0.75 with a JSON number from 0 to 1.
+
+
+    Question:
+
+    {question}
+
+
+    Proposed answer:
+
+    {proposed_answer}
+
+
+    Success criterion:
+
+    {success_criterion}'
+  answer_parser_version: final_json_answer_v2
+  confidence_parser_version: final_json_confidence_v2
+  answer_response_format: json_answer_v1
+  confidence_response_format: json_confidence_v1
+execution:
+  replicas: 2
+  batch_size: 64
+storage:
+  root_env: CPIS_STORAGE_ROOT
+  model_cache_env: CPIS_MODEL_CACHE
+  dataset_cache_env: CPIS_DATASET_CACHE
+  output_root_env: CPIS_OUTPUT_ROOT
+  log_root_env: CPIS_LOG_ROOT

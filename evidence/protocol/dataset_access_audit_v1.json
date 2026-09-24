@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "audit_id": "cpis-dataset-access-audit-v1",
+  "events": [
+    {
+      "event_id": "supergpqa-preparation-v1",
+      "timestamp": "2026-09-20T06:32:12+05:00",
+      "access_type": "authorized_dataset_preparation",
+      "artifact": "pinned SuperGPQA source JSONL",
+      "partitions_exposed_to_process": [
+        "development",
+        "certification",
+        "test"
+      ],
+      "human_outcome_analysis": false,
+      "reason": "Deterministic source validation, sampling, and partition assignment.",
+      "git_commit": "4873a81ede25ddd6895074bc88348919199db3d4"
+    },
+    {
+      "event_id": "legacy-v5-combined-loader",
+      "timestamp": "2026-09-20T01:46:19.766758Z",
+      "access_type": "firewall_defect",
+      "artifact": "prepared/supergpqa-v1/items.jsonl",
+      "partitions_exposed_to_process": [
+        "development",
+        "certification",
+        "test"
+      ],
+      "human_outcome_analysis": false,
+      "reason": "The legacy loader read the combined prepared artifact into memory before selecting 64 declared development items. Only development items were sent to the model or scored.",
+      "run_id": "dev-pilot-qwen35-4b-supergpqa-v5-2f8338b90dbf",
+      "git_commit": "e5977a2786b0810186c2703453a0a2175c7a03eb"
+    },
+    {
+      "event_id": "firewall-remediation-inspection",
+      "timestamp": "2026-09-20T07:12:04+05:00",
+      "access_type": "firewall_defect_investigation",
+      "artifact": "prepared/supergpqa-v1/items.jsonl",
+      "partitions_exposed_to_human": [
+        "certification",
+        "test"
+      ],
+      "human_outcome_analysis": false,
+      "reason": "Two leading prepared rows were printed while diagnosing the combined-file defect; one certification and one test item became visible. Neither was generated, scored, selected, excluded, or used to change an estimand. This event motivated immediate sealed partition artifacts.",
+      "remediation": "Future development configurations use only items-development.jsonl. Certification and test files require explicit versioned phase gates and immutable runtime access events."
+    },
+    {
+      "event_id": "supergpqa-sealed-preparation-v2",
+      "timestamp": "2026-09-20T07:05:44.755403611+05:00",
+      "access_type": "authorized_dataset_preparation",
+      "artifact": "pinned SuperGPQA source JSONL",
+      "partitions_exposed_to_process": [
+        "development",
+        "certification",
+        "test"
+      ],
+      "human_outcome_analysis": false,
+      "reason": "Reproduced the identical frozen assignment into three content-addressed, partition-specific files. No model output or outcome was read.",
+      "evidence": "evidence/data/supergpqa_preparation_v2.json"
+    },
+    {
+      "event_id": "medxpertqa-text-sealed-preparation-v1",
+      "timestamp": "2026-09-20T13:10:47+05:00",
+      "access_type": "authorized_dataset_preparation",
+      "artifact": "pinned MedXpertQA Text official test JSONL",
+      "partitions_exposed_to_process": [
+        "development",
+        "certification",
+        "test"
+      ],
+      "human_outcome_analysis": false,
+      "reason": "Validated the official source and deterministically assigned its 2,450 items to three content-addressed partition files. The only item text inspected during integration (Text-0 and Text-1) was verified to belong to the internal development partition; no certification/test model outcome exists.",
+      "git_commit": "5c46854f23cb0a0bfc21d782a4328a1488491c26",
+      "evidence": "evidence/data/medxpertqa_text_preparation_v1.json"
+    },
+    {
+      "event_id": "manyifeval-sealed-preparation-v1",
+      "timestamp": "2026-09-20T13:26:03+05:00",
+      "access_type": "authorized_dataset_preparation",
+      "artifact": "pinned official ManyIFEval JSONL",
+      "partitions_exposed_to_process": [
+        "development",
+        "certification",
+        "test"
+      ],
+      "human_outcome_analysis": false,
+      "reason": "Validated source schema and instruction-load structure, then assigned all variants of each base key to one content-addressed partition. Only aggregate keys, counts, field types, and evaluator code were inspected; task content and model outcomes were not analyzed.",
+      "git_commit": "b9d0dfd534ed029e2a342a1d6046ac051eab0a0c",
+      "evidence": "evidence/data/manyifeval_preparation_v1.json"
+    },
+    {
+      "event_id": "stylembpp-sealed-preparation-v1",
+      "timestamp": "2026-09-20T13:26:03+05:00",
+      "access_type": "authorized_dataset_preparation",
+      "artifact": "pinned official StyleMBPP JSONL",
+      "partitions_exposed_to_process": [
+        "development",
+        "certification",
+        "test"
+      ],
+      "human_outcome_analysis": false,
+      "reason": "Validated source schema, tests, and six-variant grouping, then assigned each MBPP base task wholly to one content-addressed partition. Only aggregate IDs, counts, field types, and evaluator code were inspected; task content and model outcomes were not analyzed.",
+      "git_commit": "b9d0dfd534ed029e2a342a1d6046ac051eab0a0c",
+      "evidence": "evidence/data/stylembpp_preparation_v1.json"
+    }
+  ],
+  "scientific_impact_assessment": "No certification or test model outcomes exist, and no held-out outcomes informed the protocol. One test question/reference row was exposed during remediation; it will remain in the frozen test set and the exposure will be disclosed as a limitation rather than silently excluded.",
+  "current_firewall_status": "remediated"
+}

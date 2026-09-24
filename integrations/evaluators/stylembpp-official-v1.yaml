@@ -1,0 +1,43 @@
+schema_version: "1.0"
+record_type: evaluator_integration
+record_id: stylembpp-official-evaluator-v1
+scorer: stylembpp_official_v1
+source_project: kenoharada/Multiple-Instructions-Following
+source_revision: 5c1ba29e631e2bbee981ebd620898c2750c5ddbf
+source_root_relative_to_dataset_cache: upstream/multiple-instructions-following/5c1ba29e631e2bbee981ebd620898c2750c5ddbf
+source_archive_sha256: 3a3d6b6a96ed9642ecb9f6a54d33ba795c4e42ec65d2bf929c6a35d4158fcd48
+artifacts:
+  - relative_path: code_bench/eval.py
+    sha256: 899d0f6e98c3144d65c38c1f7d65bfff46b132c4d855a124520fc3c071091d1a
+  - relative_path: code_bench/eval_utils.py
+    sha256: 69c327be331747c7154658bc14fc5bb580af5c517e30751d428c9f28f76c5e10
+  - relative_path: code_bench/check_pylint.py
+    sha256: 62763f10d39e5fbc88ba3131417e92406b9abc230fea4ffa3c71025615cb1323
+  - relative_path: code_bench/coding_vis_utils.py
+    sha256: c9d266922e1db6154ffa54f5197822be2d1df51d0f7ec63f9ecbb4f71103fb70
+  - relative_path: code_bench/.pylintrc
+    sha256: e4bd990df2cfd429b327f52f5daa70fc5db5e4b834ba39dc70ec09401ad5564f
+  - relative_path: code_bench/custom_pylint_plugins/__init__.py
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - relative_path: code_bench/custom_pylint_plugins/custom_plugin.py
+    sha256: 5f195f87015eb16322fdd1103c4165b81c2494a54abd1d9a45361da9fce9c478
+runtime_assets:
+  - relative_path: evaluator-assets/docker/stylembpp-scorer-b9e900510b62.tar
+    sha256: bd9f09cd46939d6181328ff7efc221158ae0317c58aee040db607fcde7605ad0
+python_version: "3.11"
+package_versions:
+  pylint: 2.17.7
+deterministic_controls:
+  - Extract only the first fenced Python block with the released regular expression.
+  - Execute the released test list and requested rules without response repair.
+  - Treat timeout, exception, missing code, or any required-rule failure as unsuccessful.
+sandbox:
+  required: true
+  engine: docker
+  network: none
+  read_only_root: true
+  run_as_non_root: true
+  memory_limit_mb: 512
+  pids_limit: 64
+  image_reference: cpis-stylembpp-scorer:1.0
+  image_id_sha256: b9e900510b621a02717445fab9dc284bc7c4e6296c890cb0376a64d7f6623bcb

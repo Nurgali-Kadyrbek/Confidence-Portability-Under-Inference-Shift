@@ -1,0 +1,58 @@
+{
+  "batch_homogeneity": {
+    "note": "run_id embeds config_sha256, so a batch change forks a new run directory; no paired contrast spans a batch boundary",
+    "runs_checked": 33,
+    "runs_mixing_configs": 0
+  },
+  "cells_per_answer": {
+    "coupled_primary": 1.0,
+    "note": "primary estimand needs the coupled cell only; 72% of cells serve H5 and the crossed decomposition",
+    "total": 3.6
+  },
+  "criterion": "a ceiling B is non-binding when P(L_C > B) < 0.005",
+  "direct_mode": {
+    "configured_budget": 256,
+    "exceedance": {
+      "1024": 0.0,
+      "128": 0.0,
+      "16384": 0.0,
+      "2048": 0.0,
+      "256": 0.0,
+      "32768": 0.0,
+      "4096": 0.0,
+      "512": 0.0,
+      "8192": 0.0
+    },
+    "max": 27,
+    "median": 8,
+    "n": 6000,
+    "p99": 9,
+    "p999": 12,
+    "run": "dev-matrix-qwen35-9b-supergpqa-v1-d256493c2100",
+    "truncated_fraction": 0.0
+  },
+  "purpose": "native confidence elicitation cost and the smallest non-binding ceiling",
+  "schema_version": "1.0",
+  "thinking_mode": {
+    "configured_budget": 32768,
+    "exceedance": {
+      "1024": 0.721154,
+      "128": 0.722656,
+      "16384": 0.001202,
+      "2048": 0.653245,
+      "256": 0.722656,
+      "32768": 0.0,
+      "4096": 0.307091,
+      "512": 0.722656,
+      "8192": 0.021635
+    },
+    "max": 32768,
+    "median": 2972,
+    "n": 3328,
+    "p99": 8984,
+    "p999": 32768,
+    "run": "dev-matrix-qwen35-4b-thinking-medxpertqa-v1-4c4b9e4502f3",
+    "smallest_non_binding_budget": 16384,
+    "truncated_fraction": 0.001202
+  }
+}

@@ -1,0 +1,161 @@
+schema_version: "1.0"
+record_type: model_integration
+record_id: ministral3-8b-instruct-bf16-integration-v1
+model_id: mistralai/Ministral-3-8B-Instruct-2512-BF16
+revision: f6fae9795746f63c9be8344932f01275f3c63734
+tokenizer_id: mistralai/Ministral-3-8B-Instruct-2512-BF16
+tokenizer_revision: f6fae9795746f63c9be8344932f01275f3c63734
+parameter_count_exact: 8918026240
+parameter_count_method: >-
+  Exact total_parameters metadata from the pinned model.safetensors.index.json;
+  the checkpoint contains 8,489,553,920 language-model, 25,166,848 projector,
+  and 403,305,472 vision parameters. CPIS loads the language model only.
+architecture: >-
+  Mistral3ForConditionalGeneration multimodal dense model. The text model has
+  34 layers, hidden size 4096, intermediate size 14336, 32 attention heads,
+  8 KV heads, head dimension 128, and vocabulary size 131072. The vision tower
+  has 24 layers; CPIS disables it with language_model_only=true.
+framework: vLLM CUDA inference, language-model-only, no offload
+framework_version: 0.29.0+cu129
+framework_requirement: >-
+  The official matched Instruct card requires vLLM >=0.12.0 and
+  mistral-common >=1.8.6, with tokenizer_mode=mistral,
+  config_format=mistral, and load_format=mistral. The pinned environment has
+  vLLM 0.29.0+cu129, mistral-common 1.11.7, and Transformers 5.16.1. The
+  Transformers pin is required because 5.17.0 renamed the Pixtral rotary class
+  imported by vLLM 0.29. Native Mistral loading also requires an explicitly
+  spawned vLLM worker after parent-side configuration initializes CUDA.
+precision: [bfloat16]
+official_chat_template_sha256: 74eeb55fd3341286ec3fd44e902b7120721acc81cd394e96b431f85e93a1ea56
+message_format: >-
+  Use vLLM's pinned MistralTokenizer/mistral-common renderer. A user-only
+  conversation inserts the official default system message and INST framing.
+  CPIS passes the native renderer's token IDs directly to vLLM, preventing a
+  second tokenization pass from duplicating BOS or instruction framing. The
+  upstream Jinja artifact is separately hash-verified as documentation of the
+  official template. CPIS supplies no replacement system prompt or tools.
+reasoning_controls: >-
+  This is the Instruct checkpoint and has no reasoning-trace control. It must
+  not be treated as the matched Reasoning checkpoint or parsed as one.
+required_special_tokens: [<s>, </s>, <pad>, "[SYSTEM_PROMPT]", "[/SYSTEM_PROMPT]", "[INST]", "[/INST]"]
+eos_and_stop_behavior: >-
+  The pinned generation config sets BOS=1, EOS=2, and PAD=11. CPIS uses the
+  template-supplied BOS, leaves explicit stop strings empty, sets
+  ignore_eos=false, and records the backend finish reason.
+recommended_context_limit: 262144
+configured_context_limit: 65536
+recommended_output_limits: >-
+  Official examples allow max_tokens=262144, but the card explicitly permits a
+  smaller max-model-len to preserve memory. CPIS will establish task-specific
+  answer and confidence limits by development preflight; no confirmatory run is
+  allowed until stopped-output and truncation behavior are recorded.
+native_reference_sampling:
+  temperature: 0.05
+  top_p: 1.0
+  min_p: 0.0
+  presence_penalty: 0.0
+  frequency_penalty: 0.0
+  repetition_penalty: 1.0
+sampler_constraints: >-
+  The official production recommendation is temperature below 0.1. CPIS
+  prespecifies 0.05 as the native reference before observing model outcomes.
+  Official examples use 0.15 but the recommendation has priority. The card
+  does not recommend top-k or min-p, so they remain disabled; top_p=1 and
+  neutral penalties make those coordinates explicit rather than relying on
+  backend defaults.
+greedy_decoding_caveats: >-
+  Temperature zero is not the native reference because the official guidance
+  says below 0.1 rather than greedy. It may be tested only as a separately
+  labeled deterministic confidence readout after preflight.
+tool_calling_requirements: >-
+  Tool use requires vLLM auto-tool choice with the mistral tool-call parser.
+  Static benchmark runs provide no tools and must not enable tool parsing.
+structured_output_constraints: >-
+  The checkpoint advertises native JSON output. CPIS elicits JSON with the
+  prompt and preserves raw text; guided decoding is not used because it would
+  alter the sampling intervention.
+engine_requirements: >-
+  CUDA-only vLLM 0.29.0+cu129, mistral-common 1.11.7, Transformers 5.16.1,
+  BF16, TP=1, worker_multiproc_method=spawn, native Mistral token-ID rendering,
+  language-model-only, one direct-resident L40 replica, pinned Mistral loading
+  modes, RAID caches, and no CPU/NVMe offload or DeepSpeed.
+unsupported_configurations:
+  - Treating the FP8 Instruct checkpoint as equivalent to this BF16 checkpoint
+  - Treating temperature 0.15 from examples as the production recommendation when the card says below 0.1
+  - Enabling Mistral tool parsing without a tool-use condition
+  - Loading the vision tower for the text-only CPIS tasks
+  - Any CPU or NVMe parameter offload
+interventions:
+  - intervention_id: reference
+    changed_parameters: {}
+    held_fixed_parameters: {temperature: 0.05, top_p: 1.0, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported
+    interpretation: Prespecified point inside the official below-0.1 production range, validated on the development preflight.
+  - intervention_id: low-temperature
+    changed_parameters: {temperature: 0.0}
+    held_fixed_parameters: {top_p: 1.0, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Deterministic downward temperature intervention, explicitly distinct from the stochastic native reference.
+  - intervention_id: high-temperature
+    changed_parameters: {temperature: 0.7}
+    held_fixed_parameters: {top_p: 1.0, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Upward temperature intervention outside the production recommendation, requiring development validation.
+  - intervention_id: low-top-p
+    changed_parameters: {top_p: 0.7}
+    held_fixed_parameters: {temperature: 0.05, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Single-factor nucleus intervention with top-k and min-p disabled.
+  - intervention_id: high-diversity
+    changed_parameters: {temperature: 1.0, top_p: 1.0}
+    held_fixed_parameters: {min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Prespecified joint high-temperature contrast outside native production guidance and subject to development validation.
+  - intervention_id: standardized-deterministic-readout
+    changed_parameters: {temperature: 0.0}
+    held_fixed_parameters: {top_p: 1.0, min_p: 0.0, presence_penalty: 0.0, repetition_penalty: 1.0}
+    status: supported_with_limitation
+    interpretation: Development-only deterministic confidence-readout mitigation, not the native answer reference.
+validation_status: development_validated
+validation_evidence: >-
+  Run dev-preflight-ministral3-8b-instruct-supergpqa-v4-793e581dcb09 at
+  generation commit 52a92674be37b292a761170804cec1eb43e74d2e completed on one
+  L40 with direct BF16 residency. All 8 answers and 8 confidence reports parsed,
+  every finish reason was stop, answer lengths were 6--10 tokens, confidence
+  lengths were 13--14 tokens, and a GPU-disabled resume created no records.
+sources:
+  - source_type: official_model_card
+    url: https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-BF16/blob/f6fae9795746f63c9be8344932f01275f3c63734/README.md
+    revision: f6fae9795746f63c9be8344932f01275f3c63734
+    artifact_sha256: f390689977775d8ee2196a56d469f77293a1a33400069a6a2a00c5dc95f53510
+    note: Pinned BF16 checkpoint identity, precision, architecture family, context, capabilities, and license.
+  - source_type: official_model_card
+    url: https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512/blob/5b26027e7b19eeb4b7352e1fed3926375dd2cb4d/README.md
+    revision: 5b26027e7b19eeb4b7352e1fed3926375dd2cb4d
+    artifact_sha256: null
+    note: Matched official Instruct card supplies production sampling and Mistral-vLLM engine guidance omitted from the BF16 card.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-BF16/blob/f6fae9795746f63c9be8344932f01275f3c63734/model.safetensors.index.json
+    revision: f6fae9795746f63c9be8344932f01275f3c63734
+    artifact_sha256: null
+    note: Pinned exact parameter count, tensor inventory, shard mapping, and total byte size.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-BF16/blob/f6fae9795746f63c9be8344932f01275f3c63734/chat_template.jinja
+    revision: f6fae9795746f63c9be8344932f01275f3c63734
+    artifact_sha256: 74eeb55fd3341286ec3fd44e902b7120721acc81cd394e96b431f85e93a1ea56
+    note: Pinned official default system prompt, message roles, special framing, and generation prompt behavior.
+  - source_type: official_model_artifact
+    url: https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-BF16/blob/f6fae9795746f63c9be8344932f01275f3c63734/config.json
+    revision: f6fae9795746f63c9be8344932f01275f3c63734
+    artifact_sha256: 3953b565385881fe1e80980fa8f797ffef5dbcc170851b5f90d60ddcb1905f58
+    note: Pinned architecture, BF16 dtype, 262144 context, and text/vision configuration.
+  - source_type: local_validation
+    url: evidence/environment/l40_gpu_stack.json
+    revision: repository-record
+    artifact_sha256: null
+    note: Pinned L40 CUDA runtime and global no-offload engine validation.
+  - source_type: local_validation
+    url: evidence/pilots/ministral3-8b-instruct-supergpqa-preflight-v4.md
+    revision: repository-record
+    artifact_sha256: null
+    note: Successful native-renderer, direct-BF16, output-limit, parser, and no-generation-resume preflight.

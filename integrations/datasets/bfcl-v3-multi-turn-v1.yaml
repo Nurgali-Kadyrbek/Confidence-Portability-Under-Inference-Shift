@@ -1,0 +1,113 @@
+schema_version: "1.0"
+record_type: dataset_integration
+record_id: bfcl-v3-multi-turn-integration-v1
+dataset_id: gorilla-llm/Berkeley-Function-Calling-Leaderboard:BFCL-v3-multi-turn
+revision: ea13468e4423454d0c213704fb87cf7cb3990433
+source_sha256: e880d798410f78f8e4ab04bb4eb560bc9310fc10d0215a4ae9433876f7a031dc
+license_and_access: >-
+  Public, unauthenticated official Gorilla/BFCL repository under Apache-2.0.
+  CPIS pins the last selected BFCL V3 revision before the V4 release and keeps
+  source cases, simulator state, and generated trajectories on RAID.
+official_splits: >-
+  BFCL V3 publishes four primary multi-turn categories with 200 cases each and
+  no development/certification/test split. CPIS freezes an internal 40/30/30
+  split by underlying numeric scenario, carrying all four category variants.
+unit_of_observation: >-
+  The independent unit is the underlying base scenario indexed 0--199. The
+  base, missing-parameter, missing-function, and long-context category cases
+  sharing that index are dependent variants, as are decoder settings, seeds,
+  turns, and tool calls within an episode.
+grouping_and_dependence: >-
+  Each of 200 scenario indices occurs once in every category. All four variants
+  stay in one partition. Statistical resampling and hierarchical analysis must
+  cluster on base scenario; the 800 category cases are not treated as 800
+  independent experimental units.
+official_task_representation: >-
+  Use the official sequence of user turns, function documentation for the
+  involved simulator classes, initial backend configuration, native tool-call
+  format, and the official execute-observe loop. Preserve the complete episode,
+  tool calls, tool responses, and final simulator state.
+official_scoring: >-
+  Use the pinned BFCL V3 multi-turn evaluator. It executes decoded calls against
+  the official stateful simulator and verifies execution responses and instance
+  state after every non-empty ground-truth turn. The pinned eval_runner has the
+  separate multi_turn_irrelevance_checker call commented out, and the method
+  order checker is also commented out; CPIS must not claim or silently add those
+  checks. Primary success is complete episode success under that exact pinned
+  evaluator, not per-call syntax alone.
+allowed_normalization: >-
+  Only the pinned model-family tool-call parser and BFCL decoder may translate
+  native tool calls into the evaluator representation. Do not repair argument
+  values, insert calls, reorder calls, or infer omitted parameters.
+invalid_output_handling: >-
+  Tool-call parse failure, execution exception, step-limit exhaustion, incorrect
+  state, missing required behavior, or evaluator failure is unsuccessful. The
+  parse-failure rule is a prespecified CPIS validity override because the official
+  runner otherwise ignores undecodable messages; its rate is reported separately.
+  An invalid confidence is forced abstention and separately reported.
+evaluation_type: deterministic official stateful simulator and evaluator; no model judge
+duplicate_and_transformed_relationships: >-
+  The four categories are transformations of common scenarios, which is visible
+  in their shared initial state, task structure, and numeric IDs. Composite
+  categories are excluded from the primary study. Category variants remain
+  linked through group_id and never cross a partition.
+contamination_considerations: >-
+  BFCL V3 is public and may be represented in model training. CPIS uses a pinned
+  executable environment and paired within-scenario decoder contrasts; raw
+  success is not described as contamination-free.
+benchmark_exclusions: >-
+  Include all 800 cases from base, missing-parameter, missing-function, and
+  long-context. Exclude the derived composite category by design. A case may be
+  declared technically unsupported only by a prespecified engine/tool-parser
+  rule, never because its observed result is unfavorable.
+evaluator_revision: ea13468e4423454d0c213704fb87cf7cb3990433:bfcl-v3-multi-turn
+preparation_algorithm: >-
+  scenario-group-preserving-hash-40-30-30-v1 with salt
+  bfcl-v3-base-scenario-split-v1; deterministic hashing assigns 80 base
+  scenarios to development and 60 each to certification/test, carrying all four
+  category variants with the scenario.
+prepared_partitions:
+  - partition: development
+    rows: 320
+    sha256: 55b751cf36651266453644ff0a8a54c8f31f7f233fbf0ef1da761e44568f27fa
+    relative_cache_path: prepared/bfcl-v3-multi-turn-v1-sealed/items-development.jsonl
+  - partition: certification
+    rows: 240
+    sha256: 5407e3ed99c19e6caae9a4e2145cf62039f5d5b99ff5258931de56b1afa8da0d
+    relative_cache_path: prepared/bfcl-v3-multi-turn-v1-sealed/items-certification.jsonl
+  - partition: test
+    rows: 240
+    sha256: 040047950d472ad1ee8258b6a56f6969e216634706bfeb0f7317957ee5002e02
+    relative_cache_path: prepared/bfcl-v3-multi-turn-v1-sealed/items-test.jsonl
+access_firewall: >-
+  Agent generation configurations point to one partition-specific artifact.
+  Development may access only its file; certification and test require their
+  respective immutable phase gates and emit dataset-access events.
+sources:
+  - source_type: official_dataset_artifact
+    url: https://github.com/ShishirPatil/gorilla/tree/ea13468e4423454d0c213704fb87cf7cb3990433/berkeley-function-call-leaderboard/bfcl_eval/data
+    revision: ea13468e4423454d0c213704fb87cf7cb3990433
+    artifact_sha256: e880d798410f78f8e4ab04bb4eb560bc9310fc10d0215a4ae9433876f7a031dc
+    note: Canonical bundle digest over the eight pinned question and possible-answer files.
+  - source_type: official_dataset_artifact
+    url: https://github.com/ShishirPatil/gorilla/blob/ea13468e4423454d0c213704fb87cf7cb3990433/berkeley-function-call-leaderboard/bfcl_eval/eval_checker/multi_turn_eval/multi_turn_checker.py
+    revision: ea13468e4423454d0c213704fb87cf7cb3990433
+    artifact_sha256: b3b787515eda3bf0e365e39634a8fc7f831763f010f716d35d86f96fd5aab1b5
+    note: >-
+      Pinned official state and execution-response checker. The source visibly
+      contains but does not invoke the method-order and irrelevance checks.
+  - source_type: official_paper
+    url: https://proceedings.mlr.press/v267/patil25a.html
+    revision: PMLR-v267-patil25a
+    artifact_sha256: null
+    note: Official ICML 2025 BFCL paper defining function-calling evaluation.
+  - source_type: official_dataset_card
+    url: https://gorilla.cs.berkeley.edu/blogs/13_bfcl_v3_multi_turn.html
+    revision: bfcl-v3-multi-turn
+    artifact_sha256: null
+    note: Official BFCL V3 multi-turn design and category documentation.
+  - source_type: local_validation
+    url: evidence/data/bfcl_v3_multi_turn_preparation_v1.json
+    revision: repository-record
+    artifact_sha256: null
+    note: Frozen group-preserving partition counts, source hashes, and sealed hashes.
