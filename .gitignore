@@ -7,3 +7,4 @@ paper/*.out
 paper/*.bbl
 paper/*.blg
 paper/*.pdf
+.pytest_cache/
